@@ -1,0 +1,60 @@
+@import '../../assets/scss/variables';
+
+.page-header {
+  width: 100%;
+  box-sizing: border-box;
+  padding-bottom: 0.3em;
+  border-bottom: 1em solid $light-beige;
+}
+
+.main-nav {
+  width: 100%;
+  padding: 0.5em 2vw;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.site-list {
+  width: 70%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, 20%);
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.site-list__item {
+  margin: 0 auto;
+  &:first-child {
+    margin-left: auto;
+    margin-right: 2.5vw;
+  }
+}
+
+
+.site-list__link {
+  font-size: 1.1em;
+}
+
+.site-list__logo {
+  margin: 0;
+  padding: 0;
+}
+
+.site-list__profile {
+  position: absolute;
+  top: -0.2em;
+  right: 2vw;
+}
+
+.site-list__profile-btn {
+  font-size: 1.1em;
+  color: $default-font-color;
+}
+
+.profile-menu {
+  display: none;
+}
