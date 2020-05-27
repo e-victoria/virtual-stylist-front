@@ -2,15 +2,16 @@
 
 .page-header {
   width: 100%;
+  padding: 1.4em 0vw;
+  position: relative;
   box-sizing: border-box;
-  padding-bottom: 0.3em;
   border-bottom: 1em solid $light-beige;
 }
 
 .main-nav {
   width: 100%;
-  padding: 0.5em 2vw;
-  position: relative;
+  margin: 0 auto;
+  padding-left: 2.5vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,30 +19,46 @@
 }
 
 .site-list {
-  width: 70%;
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(5, 20%);
+  padding: 0;
   align-items: center;
-  box-sizing: border-box;
+  flex-wrap: wrap;
 }
 
 .site-list__item {
-  margin: 0 auto;
+  width: 25%;
+  box-sizing: border-box;
+  text-align: center;
+
+  &:last-child {
+    text-align: left;
+  }
+
+  &:nth-child(3) {
+    padding-left: 8%;
+  }
+
+  &:nth-child(2) {
+    padding-right: 9%;
+  }
+
   &:first-child {
-    margin-left: auto;
-    margin-right: 2.5vw;
+    text-align: right;
   }
 }
-
 
 .site-list__link {
   font-size: 1.1em;
 }
 
-.site-list__logo {
-  margin: 0;
-  padding: 0;
+.page-header__logo {
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: 0.3em;
 }
 
 .site-list__profile {
