@@ -26,6 +26,11 @@
   margin: -1px;
 }
 
+img {
+  width: 100%;
+  height: auto;
+}
+
 body {
   margin: 0;
   font-size: 16px;
@@ -59,4 +64,15 @@ ul {
 
 .show-flex {
   display: flex !important;
+}
+
+.section-title {
+  margin: 0;
+  margin-bottom: 2em;
+  padding: 0;
+  width: 100%;
+  text-align: center;
+  font-weight: 400;
+  color: $darker-font-color;
+  font-size: 1.65em;
 }

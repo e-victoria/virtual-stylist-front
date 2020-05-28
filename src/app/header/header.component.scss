@@ -51,7 +51,13 @@
 }
 
 .site-list__link {
+  color: $default-font-color;
+  text-decoration: none;
   font-size: 1.1em;
+}
+
+.site-list__link--active {
+  text-decoration: underline;
 }
 
 .page-header__logo {
@@ -70,6 +76,7 @@
 .site-list__profile-btn {
   font-size: 1.5em;
   color: $default-font-color;
+  background-color: #ffffff;
 }
 
 .profile-menu {
