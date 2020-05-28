@@ -3,10 +3,33 @@
   <form class="new-clothes__form">
       <label for="new-clothes-tag" class="add-card__label visually-hidden"></label>
       <input id="new-clothes-tag" class="add-card__input" type="text" formControlName="newCardForm" placeholder="Tag #MyFavouriteDress">
-      <label for="new-clothes-category" class="add-card__label visually-hidden"></label>
-      <input id="new-clothes-category" class="add-card__input" type="text" formControlName="newCardForm" placeholder="Category*">
-      <label for="new-clothes-color" class="add-card__label visually-hidden"></label>
-      <input id="new-clothes-color" class="add-card__input" type="text" formControlName="newCardForm" placeholder="Color">
+
+      <div class="new-clothes__category">
+        <ul class="select-list" #selectList>
+          <li class="select-option">Blouse</li>
+          <li class="select-option">Tshirt</li>
+          <li class="select-option">Top</li>
+          <li class="select-option">Trousers</li>
+          <li class="select-option">Dress</li>
+          <li class="select-option">Jeans</li>
+        </ul>
+        <label for="new-clothes-category" class="add-card__label" (click)="toggleOptions()">Category*<span class="arrow-down" #arrowDown><fa-icon [icon]="faSortDown"></fa-icon></span></label>
+        <select id="new-clothes-category" class="add-card__input" type="text" formControlName="newCardForm">
+        </select>
+      </div>
+
+    <div class="new-clothes__color">
+      <ul class="select-list" #selectList>
+        <li class="select-option">Blouse</li>
+        <li class="select-option">Tshirt</li>
+        <li class="select-option">Top</li>
+        <li class="select-option">Trousers</li>
+        <li class="select-option">Dress</li>
+        <li class="select-option">Jeans</li>
+      </ul>
+      <label for="new-clothes-color" class="add-card__label" (click)="toggleOptions()">Color*<span class="arrow-down" #arrowDown><fa-icon [icon]="faSortDown"></fa-icon></span></label>
+      <select id="new-clothes-color" class="add-card__input" type="text" formControlName="newCardForm"></select>
+    </div>
       <label for="new-clothes-brand" class="add-card__label visually-hidden"></label>
       <input id="new-clothes-brand" class="add-card__input" type="text" formControlName="newCardForm" placeholder="Brand">
       <label for="new-clothes-product-code" class="add-card__label visually-hidden"></label>

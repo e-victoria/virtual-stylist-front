@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
+import { faCloudUploadAlt, faSortDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-create-form',
@@ -9,8 +9,13 @@ import { faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
 })
 export class CreateFormComponent implements OnInit {
 
+  @ViewChild('selectList')
+  private selectList: ElementRef;
+  @ViewChild('arrowDown')
+  private arrowDown: ElementRef;
   faCloudUploadAlt = faCloudUploadAlt;
-  
+  faSortDown = faSortDown;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -30,4 +35,9 @@ export class CreateFormComponent implements OnInit {
       Validators.required
     ])
   });
+
+  toggleOptions(){
+    this.selectList.nativeElement.classList.toggle('show-flex');
+    this.arrowDown.nativeElement.classList.toggle('rotate');
+  }
 }
