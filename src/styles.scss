@@ -59,3 +59,13 @@ ul {
 .show-flex {
   display: flex !important;
 }
+
+.section-title {
+  margin: 0;
+  padding: 1.25em 0;
+  width: 100%;
+  text-align: center;
+  font-weight: 400;
+  color: $darker-font-color;
+  font-size: 1.65em;
+}
