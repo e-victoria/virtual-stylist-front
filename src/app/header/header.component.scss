@@ -11,7 +11,7 @@
 .main-nav {
   width: 100%;
   margin: 0 auto;
-  padding-left: 2.5vw;
+  padding: 0 2.5vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -63,15 +63,52 @@
 
 .site-list__profile {
   position: absolute;
-  top: -0.2em;
-  right: 2vw;
+  top: 0.6em;
+  right: 2.3em;
 }
 
 .site-list__profile-btn {
-  font-size: 1.1em;
+  font-size: 1.5em;
   color: $default-font-color;
 }
 
 .profile-menu {
+  min-width: 10vw;
+  position: absolute;
+  top: 4.5em;
+  padding: 1em 2em;
+  right: 0.3em;
   display: none;
+  flex-direction: column;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 1.1em;
+  box-sizing: border-box;
+  animation: toggleProfileMenu;
+  animation-duration: 500ms;
+}
+
+@keyframes toggleProfileMenu {
+  from {
+    top: 3em;
+    transform: scale(0.7);
+  }
+  to {
+    top: 4.5em;
+    transform: scale(1);
+  }
+}
+
+.profile-menu__item {
+  padding: 0.6em 0;
+  text-align: center;
+  cursor: pointer;
+
+  &:hover {
+    color: $dark-grey;
+  }
+}
+
+.profile-menu__link {
+  font-size: 1.1em;
 }

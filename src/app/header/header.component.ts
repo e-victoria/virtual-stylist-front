@@ -9,6 +9,8 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 export class HeaderComponent implements AfterViewInit {
 
   faUser = faUser;
+  @ViewChild('profileMenu')
+  private profileMenu: ElementRef;
   @ViewChild('logo')
   private logo: ElementRef;
 
@@ -16,6 +18,22 @@ export class HeaderComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.logo.nativeElement.style.marginLeft = `-${this.logo.nativeElement.offsetWidth/2}px`;
+  }
+
+  toggleMenu(event) {
+    event.preventDefault();
+    this.profileMenu.nativeElement.classList.toggle('show-flex');
+
+    const closeProfileMenu = (e) => {
+      if (e.target.tagName != 'BUTTON' && e.target.tagName != 'path' && e.target.tagName != 'svg') {
+        this.profileMenu.nativeElement.classList.remove('show-flex');
+        document.removeEventListener('click', closeProfileMenu);
+      }
+    }
+
+    if (this.profileMenu.nativeElement.classList.contains('show-flex')) {
+      document.addEventListener('click', closeProfileMenu);
+    }
   }
 
 }

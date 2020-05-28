@@ -15,18 +15,18 @@
         <a class="site-list__link">New stylisation</a>
       </li>
     </ul>
-    <p class="site-list__profile">
-      <button class="btn site-list__profile-btn">
+    <div class="site-list__profile">
+      <button class="btn site-list__profile-btn" (click)="toggleMenu($event)">
         <fa-icon [icon]="faUser"></fa-icon>
       </button>
-    </p>
-    <ul class="main-nav__sublist profile-menu">
-      <li class="profile-menu__item">
-        <a class="profile-menu__link">Profile</a>
-      </li>
-      <li class="profile-menu__item">
-        <a class="profile-menu__link">Log out</a>
-      </li>
-    </ul>
+      <ul #profileMenu class="main-nav__sublist profile-menu">
+        <li class="profile-menu__item">
+          <a class="profile-menu__link">Profile</a>
+        </li>
+        <li class="profile-menu__item">
+          <a class="profile-menu__link">Log out</a>
+        </li>
+      </ul>
+    </div>
   </nav>
 </header>
