@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "virtual-stylist"
+    }
+  },
+  "defaultProject": "virtual-stylist",
+  "cli": {
+    "analytics": false
+  }
 }
