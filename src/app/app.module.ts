@@ -14,7 +14,7 @@ import { ClothesComponent } from './clothes/clothes.component';
     AppComponent,
     HeaderComponent,
     WardrobeComponent,
-    ClothesComponent
+    ClothesComponent,
     HeaderComponent,
     CreateFormComponent
   ],

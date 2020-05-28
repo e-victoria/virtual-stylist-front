@@ -1,54 +1,29 @@
-
-<div class="container">
-  <h1 class="form-title">Add new item</h1>
-  <form class="form">
-    <ul class="flex-outer">
-      <li>
-        <label for="tag" class="add-card__label"></label>
-        <input id="tag" class="add-card__input" type="text" formControlName="newCardForm" placeholder="Tag #MyFavouriteDress">
-      </li>
-    </ul>
-    <ul class="flex-outer in-row">
-      <li id="left-category">
-        <label for="category" class="add-card__label"></label>
-        <input id="category" class="add-card__input" type="text" formControlName="newCardForm" placeholder="Category*">
-      </li>
-      <li id="right-color">
-        <label for="color" class="add-card__label"></label>
-        <input id="color" class="add-card__input" type="text" formControlName="newCardForm" placeholder="Color">
-      </li>
-    </ul>
-    <ul class="flex-outer in-row">
-      <li id="left-brand">
-        <label for="brand" class="add-card__label"></label>
-        <input id="brand" class="add-card__input" type="text" formControlName="newCardForm" placeholder="Brand">
-      </li>
-      <li id="right-product-code">
-        <label for="product-code" class="add-card__label"></label>
-        <input id="product-code" class="add-card__input" type="text" formControlName="newCardForm" placeholder="Product Code">
-      </li>
-    </ul>
-    <ul class="flex-outer">
-      <li>
-        <label for="link" class="add-card__label"></label>
-        <input id="link" class="add-card__input" type="text" formControlName="newCardForm" placeholder="Link">
-      </li>
-    </ul>
-    <ul class="flex-outer in-row">
-      <li id="left-size">
-        <label for="size" class="add-card__label"></label>
-        <input id="size" class="add-card__input" type="text" formControlName="newCardForm" placeholder="Size">
-      </li>
-      <li id="right-style">
-        <label for="style" class="add-card__label"></label>
-        <input id="style" class="add-card__input" type="text" formControlName="newCardForm" placeholder="Style">
-      </li>
-    </ul>
+<section class="new-clothes">
+  <h2 class="section-title">Add new item</h2>
+  <form class="new-clothes__form">
+      <label for="new-clothes-tag" class="add-card__label visually-hidden"></label>
+      <input id="new-clothes-tag" class="add-card__input" type="text" formControlName="newCardForm" placeholder="Tag #MyFavouriteDress">
+      <label for="new-clothes-category" class="add-card__label visually-hidden"></label>
+      <input id="new-clothes-category" class="add-card__input" type="text" formControlName="newCardForm" placeholder="Category*">
+      <label for="new-clothes-color" class="add-card__label visually-hidden"></label>
+      <input id="new-clothes-color" class="add-card__input" type="text" formControlName="newCardForm" placeholder="Color">
+      <label for="new-clothes-brand" class="add-card__label visually-hidden"></label>
+      <input id="new-clothes-brand" class="add-card__input" type="text" formControlName="newCardForm" placeholder="Brand">
+      <label for="new-clothes-product-code" class="add-card__label visually-hidden"></label>
+      <input id="new-clothes-product-code" class="add-card__input" type="text" formControlName="newCardForm" placeholder="Product Code">
+      <label for="new-clothes-link" class="add-card__label visually-hidden"></label>
+      <input id="new-clothes-link" class="add-card__input" type="text" formControlName="newCardForm" placeholder="Link">
+      <label for="new-clothes-size" class="add-card__label visually-hidden"></label>
+      <input id="new-clothes-size" class="add-card__input" type="text" formControlName="newCardForm" placeholder="Size">
+      <label for="new-clothes-style" class="add-card__label visually-hidden"></label>
+      <input id="new-clothes-style" class="add-card__input" type="text" formControlName="newCardForm" placeholder="Style">
+    <div class="new-clothes__btn-wrapper">
+      <input formControlName="upload-photo__button" class="upload-photo add-new-item__form" type="file" accept="image/*" hidden>
+      <button class="btn upload-photo__btn" type="submit"><fa-icon [icon]="faCloudUploadAlt"></fa-icon> Upload photo*</button>
+    </div>
+    <div class="button-container">
+      <input formControlName="add-new-item__button" class="add-new-item add-new-item__form" type="file" accept="image/*" hidden>
+      <button class="btn add-new-item__btn" type="submit">ADD NEW ITEM</button>
+    </div>
   </form>
-  <input formControlName="upload-photo__button" class="upload-photo add-new-item__form" type="file" accept="image/*" hidden>
-  <button class="btn upload-photo__btn" type="submit"><fa-icon [icon]="faCloudUploadAlt"></fa-icon> Upload photo*</button>
-<div class="button-container">
-  <input formControlName="add-new-item__button" class="add-new-item add-new-item__form" type="file" accept="image/*" hidden>
-  <button class="btn add-new-item__btn" type="submit">ADD NEW ITEM</button>
-</div>
-</div>
+</section>
