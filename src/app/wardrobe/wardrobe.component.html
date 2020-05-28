@@ -1,3 +1,12 @@
 <section class="wardrobe">
   <h2 class="section-title wardrobe__title">Your wardrobe</h2>
+  <div class="clothes__wrapper">
+    <ul class="clothes__list">
+      <li class="clothes__item" *ngFor="let clothes of exampleClothesList">
+        <a class="clothes__link">
+          <img class="clothes__img" src="../../assets/img/{{clothes?.imageName}}" alt="clothes">
+        </a>
+      </li>
+    </ul>
+  </div>
 </section>
