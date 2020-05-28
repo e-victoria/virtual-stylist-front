@@ -22,18 +22,17 @@ export class HeaderComponent implements AfterViewInit {
 
   toggleMenu(event) {
     event.preventDefault();
+    event.stopPropagation();
     this.profileMenu.nativeElement.classList.toggle('show-flex');
 
-    const closeProfileMenu = (e) => {
-      if (e.target.tagName != 'BUTTON' && e.target.tagName != 'path' && e.target.tagName != 'svg') {
+    const hideMenu = (e) => {
+      if (!this.profileMenu.nativeElement.contains(e.target)) {
         this.profileMenu.nativeElement.classList.remove('show-flex');
-        document.removeEventListener('click', closeProfileMenu);
+        document.removeEventListener('click', hideMenu);
       }
     }
 
-    if (this.profileMenu.nativeElement.classList.contains('show-flex')) {
-      document.addEventListener('click', closeProfileMenu);
-    }
+    document.addEventListener('click', hideMenu);
   }
 
 }
