@@ -68,10 +68,9 @@
     </datalist>
 
 
-
     <div class="new-clothes__btn-wrapper">
-      <input formControlName="upload-photo__button" class="upload-photo add-new-item__form" type="file" accept="image/*" hidden>
-      <button class="btn upload-photo__btn" type="submit"><fa-icon [icon]="faCloudUploadAlt"></fa-icon> Upload photo*</button>
+      <input #filePicker formControlName="upload-photo__button" class="upload-photo add-new-item__form" type="file" accept="image/*" hidden>
+      <button class="btn upload-photo__btn" type="submit" (click)="filePicker.click()"><fa-icon [icon]="faCloudUploadAlt"></fa-icon> Upload photo*</button>
     </div>
     <div class="button-container">
       <input formControlName="add-new-item__button" class="add-new-item add-new-item__form" type="file" accept="image/*" hidden>
