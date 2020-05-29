@@ -3,16 +3,16 @@
   <form class="new-clothes__form">
     <label for="new-clothes-tag" class="visually-hidden"></label>
     <input id="new-clothes-tag" class="form-input add-card__input" type="text" formControlName="newCardForm" placeholder="Tag #MyFavouriteDress">
-    <app-select-input class="new-clothes__select new-clothes__select--category" inputId="new-clothes-category" inputName="category" [options]="options"></app-select-input>
-    <app-select-input class="new-clothes__select new-clothes__select--color" inputId="new-clothes-color" inputName="color" [options]="colorOptions"></app-select-input>
+    <app-select-input (selectedValue)="seeValue($event)" class="new-clothes__select new-clothes__select--category" inputId="new-clothes-category" inputName="category" [options]="options"></app-select-input>
+    <app-select-input (selectedValue)="seeValue($event)" class="new-clothes__select new-clothes__select--color" inputId="new-clothes-color" inputName="color" [options]="colorOptions"></app-select-input>
 
     <label for="new-clothes-brand" class="visually-hidden"></label>
     <input id="new-clothes-brand" class="form-input add-card__input" type="text" formControlName="newCardForm" placeholder="Brand">
     <label for="new-clothes-product-code" class="visually-hidden"></label>
     <input id="new-clothes-product-code" class="form-input add-card__input" type="text" formControlName="newCardForm" placeholder="Product Code">
 
-    <app-select-input class="new-clothes__select new-clothes__select--size" inputId="new-clothes-size" inputName="size" [options]="sizeOptions"></app-select-input>
-    <app-select-input class="new-clothes__select new-clothes__select--style" inputId="new-clothes-style" inputName="style" [options]="styleOptions"></app-select-input>
+    <app-select-input (selectedValue)="seeValue($event)" class="new-clothes__select new-clothes__select--size" inputId="new-clothes-size" inputName="size" [options]="sizeOptions"></app-select-input>
+    <app-select-input (selectedValue)="seeValue($event)" class="new-clothes__select new-clothes__select--style" inputId="new-clothes-style" inputName="style" [options]="styleOptions"></app-select-input>
 
     <label for="new-clothes-link" class="visually-hidden"></label>
     <input id="new-clothes-link" class="form-input add-card__input" type="text" formControlName="newCardForm" placeholder="Link">

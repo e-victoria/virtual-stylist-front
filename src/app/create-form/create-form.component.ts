@@ -16,8 +16,6 @@ export class CreateFormComponent implements OnInit {
   @ViewChild('selectLabel')
   private selectLabel: ElementRef;
   faCloudUploadAlt = faCloudUploadAlt;
-  faSortDown = faSortDown;
-  private image: Blob;
   options: string[];
   colorOptions: string[];
   sizeOptions: string[];
@@ -48,12 +46,8 @@ export class CreateFormComponent implements OnInit {
     ])
   });
 
-  toggleOptions(event){
-    event.stopPropagation();
-    if (this.selectLabel.nativeElement.contains(event.target)) {
-      this.selectList.nativeElement.classList.toggle('show-flex');
-      this.arrowDown.nativeElement.classList.toggle('rotate');
-    }
+  seeValue(event) {
+    console.log(event);
   }
 
 }

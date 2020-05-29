@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import { faSortDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -23,6 +23,8 @@ export class SelectInputComponent implements OnInit {
   options: string[];
   @Input()
   inputId: string;
+  @Output()
+  selectedValue: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() { }
 
@@ -45,6 +47,10 @@ export class SelectInputComponent implements OnInit {
     }
 
     document.addEventListener('click', closeOptions);
+  }
+
+  getSelectedValue(event) {
+    this.selectedValue.emit(event.target.textContent)
   }
 
 }
