@@ -18,10 +18,18 @@ export class CreateFormComponent implements OnInit {
   faCloudUploadAlt = faCloudUploadAlt;
   faSortDown = faSortDown;
   private image: Blob;
+  category: string;
+  options: string[];
+  category2: string;
+  options2: string[];
 
   constructor() { }
 
   ngOnInit(): void {
+    this.category = 'category';
+    this.options = ['dress', 'jeans']
+    this.category2 = 'category2';
+    this.options2 = ['dress2', 'jeans2']
   }
 
   newCardForm = new FormGroup({
@@ -41,7 +49,6 @@ export class CreateFormComponent implements OnInit {
 
   toggleOptions(event){
     event.stopPropagation();
-    console.log(event.target);
     if (this.selectLabel.nativeElement.contains(event.target)) {
       this.selectList.nativeElement.classList.toggle('show-flex');
       this.arrowDown.nativeElement.classList.toggle('rotate');

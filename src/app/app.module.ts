@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { CreateFormComponent } from './create-form/create-form.component';
 import { WardrobeComponent } from './wardrobe/wardrobe.component';
 import { ClothesComponent } from './clothes/clothes.component';
+import { SelectInputComponent } from './select-input/select-input.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ClothesComponent } from './clothes/clothes.component';
     WardrobeComponent,
     ClothesComponent,
     HeaderComponent,
-    CreateFormComponent
+    CreateFormComponent,
+    SelectInputComponent
   ],
   imports: [
     BrowserModule,
