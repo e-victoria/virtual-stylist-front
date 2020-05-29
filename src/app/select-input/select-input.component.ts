@@ -8,6 +8,8 @@ import { faSortDown } from '@fortawesome/free-solid-svg-icons';
 })
 export class SelectInputComponent implements OnInit {
 
+  @ViewChild('selectWrapper')
+  private selectWrapper: ElementRef;
   @ViewChild('selectList')
   private selectList: ElementRef;
   @ViewChild('arrowDown')
@@ -33,6 +35,16 @@ export class SelectInputComponent implements OnInit {
       this.selectList.nativeElement.classList.toggle('show-flex');
       this.arrowDown.nativeElement.classList.toggle('rotate');
     }
+
+    const closeOptions = (e) => {
+      if (!this.selectWrapper.nativeElement.contains(e.target)) {
+        this.selectList.nativeElement.classList.remove('show-flex');
+        this.arrowDown.nativeElement.classList.remove('rotate');
+        document.removeEventListener('click', closeOptions);
+      }
+    }
+
+    document.addEventListener('click', closeOptions);
   }
 
 }
