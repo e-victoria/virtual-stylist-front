@@ -16,37 +16,40 @@
   flex-wrap: wrap;
 }
 
-.add-card__input, .add-card__label{
-  width: 100%;
-  padding: 1em 0.5em;
-  margin-bottom: 0.5em;
-  margin-top: 0.5em;
-  border-radius: 0.37em;
-  border: 1px solid $border-input-color;
-  background: $input-color;
-  font-size: 1em;
-  color: $default-font-color;
-}
-
-::-webkit-input-placeholder{
-  text-align: center;
-}
-
-.upload-photo__btn {
-  background-color: $pink;
-  color: $light-grey;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 0.6em;
-  width: 12em;
-  height: 3em;
-  padding: 0.8em 1em 1em;
-  margin-top: 0.8em;
-}
-
-.button-container {
+.add-card__label{
+  display: inline-block;
   width: 100%;
   text-align: center;
-  margin: 2.5em auto 0 auto;
+  box-sizing: border-box;
+}
+
+.new-clothes__select--category {
+  width: 62%;
+  position: relative;
+}
+
+.new-clothes__select--color,
+.new-clothes__photo-btn-wrapper {
+  width: 37%;
+  position: relative;
+}
+
+#new-clothes-brand {
+  width: 41%;
+}
+
+#new-clothes-product-code {
+  width: 51%;
+}
+
+.new-clothes__select--style,
+.new-clothes__select--size {
+  width: 49.3%;
+  position: relative;
+}
+
+.new-clothes__photo-btn-wrapper {
+  margin-right: auto;
 }
 
 .btn.add-new-item__btn {
@@ -60,52 +63,10 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   font-size: 1.1em;
 }
-.add-card__label{
-  display: inline-block;
+
+.new-clothes__submit-wrapper {
   width: 100%;
   text-align: center;
-  box-sizing: border-box;
+  margin: 2.5em auto 0 auto;
 }
-
-.new-clothes__category {
-  width: 62%;
-  position: relative;
-}
-
-.new-clothes__color,
-.new-clothes__btn-wrapper {
-  width: 37%;
-  position: relative;
-}
-
-#new-clothes-brand {
-  width: 41%;
-}
-
-#new-clothes-product-code {
-  width: 51%;
-}
-
-.new-clothes__style,
-.new-clothes__size {
-  width: 49.3%;
-  position: relative;
-}
-
-.new-clothes__btn-wrapper {
-  margin-right: auto;
-}
-
-#new-clothes-category, #new-clothes-color, #new-clothes-size, #new-clothes-style {
-  display: none;
-}
-
-
-.arrow-down{
-  position: absolute;
-  font-size: 1.5em;
-  top: 0.7em;
-  right: 0.8em;
-}
-
 

@@ -84,30 +84,44 @@ ul {
   right: 0.8em;
 }
 
-.select-list{
-  display: none;
-  flex-direction: column;
-  position: absolute;
-  top: 4em;
-  left: 0;
-  border: 1px solid $border-input-color;
-  background-color: $input-color;
-  width: 104%;
-  border-radius: 0.37em;
-  z-index: 2;
-}
-
-.select-option{
-  text-align: center;
-  padding: 0.9em 0;
-  width: 100%;
-
-  &:hover{
-    background-color: #ffffff;
-  }
-}
-
 .rotate {
   transform: rotate(180deg);
+}
+
+.upload-photo__btn {
+  background-color: $pink;
+  color: $light-grey;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 0.6em;
+  width: 12em;
+  height: 3em;
+  padding: 0.8em 1em 1em;
+  margin-top: 0.8em;
+}
+
+.form-input,
+.form-label {
+  width: 100%;
+  padding: 1em 0.5em;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+  border-radius: 0.37em;
+  border: 1px solid $border-input-color;
+  background: $input-color;
+  font-size: 1em;
+  color: $default-font-color;
+}
+
+.form-input::placeholder {
+  text-align: center;
+}
+
+.form-label {
+  position: relative;
+  text-align: center;
+}
+
+.select-wrapper {
+  position: relative;
 }
 

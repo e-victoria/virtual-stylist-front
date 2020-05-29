@@ -1,110 +1,49 @@
 @import "../../assets/scss/variables";
 
-.new-clothes {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.arrow-down {
+  position: absolute;
+  height: 100%;
+  top: 0em;
+  padding-top: 0.25em;
+  right: 1em;
   box-sizing: border-box;
-  padding: 3.8em 4vw;
 }
 
-.new-clothes__form {
-  width: 45%;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.add-card__input, .add-card__label{
-  width: 100%;
-  padding: 1em 0.5em;
-  margin-bottom: 0.5em;
-  margin-top: 0.5em;
-  border-radius: 0.37em;
-  border: 1px solid $border-input-color;
-  background: $input-color;
-  font-size: 1em;
-  color: $default-font-color;
-}
-
-::-webkit-input-placeholder{
-  text-align: center;
-}
-
-.upload-photo__btn {
-  background-color: $pink;
-  color: $light-grey;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 0.6em;
-  width: 12em;
-  height: 3em;
-  padding: 0.8em 1em 1em;
-  margin-top: 0.8em;
-}
-
-.button-container {
-  width: 100%;
-  text-align: center;
-  margin: 2.5em auto 0 auto;
-}
-
-.btn.add-new-item__btn {
-  justify-content: center;
-  background-color: $beige;
-  color: $light-grey;
-  border-radius: 0.6em;
-
-  width: 20em;
-  height: 4em;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+.arrow-down fa-icon {
   font-size: 1.1em;
 }
-.add-card__label{
-  display: inline-block;
+
+.select-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-select-label {
   width: 100%;
-  text-align: center;
   box-sizing: border-box;
 }
 
-.new-clothes__category {
-  width: 62%;
-  position: relative;
-}
-
-.new-clothes__color,
-.new-clothes__btn-wrapper {
-  width: 37%;
-  position: relative;
-}
-
-#new-clothes-brand {
-  width: 41%;
-}
-
-#new-clothes-product-code {
-  width: 51%;
-}
-
-.new-clothes__style,
-.new-clothes__size {
-  width: 49.3%;
-  position: relative;
-}
-
-.new-clothes__btn-wrapper {
-  margin-right: auto;
-}
-
-#new-clothes-category, #new-clothes-color, #new-clothes-size, #new-clothes-style {
+.select-list{
   display: none;
-}
-
-
-.arrow-down{
+  flex-direction: column;
   position: absolute;
-  font-size: 1.5em;
-  top: 0.7em;
-  right: 0.8em;
+  top: 4em;
+  left: 0;
+  border: 1px solid $border-input-color;
+  background-color: $input-color;
+  width: 100%;
+  border-radius: 0.37em;
+  z-index: 2;
 }
 
+.select-option{
+  text-align: center;
+  padding: 0.9em 0;
+  width: 100%;
+  cursor: pointer;
+
+  &:hover{
+    border-radius: 0.3em;
+    background-color: #ffffff;
+  }
+}

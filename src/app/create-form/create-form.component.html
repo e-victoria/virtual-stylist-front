@@ -1,41 +1,30 @@
 <section class="new-clothes">
   <h2 class="section-title">Add new item</h2>
   <form class="new-clothes__form">
-      <label for="new-clothes-tag" class="add-card__label visually-hidden"></label>
-      <input id="new-clothes-tag" class="add-card__input" type="text" formControlName="newCardForm" placeholder="Tag #MyFavouriteDress">
-      <app-select-input new-clothes__category
-        inputName="category"
-      [options]="options">
-      </app-select-input>
-    <app-select-input new-clothes__color
-                      inputName="color"
-                      [options]="colorOptions">
-    </app-select-input>
+    <label for="new-clothes-tag" class="visually-hidden"></label>
+    <input id="new-clothes-tag" class="form-input add-card__input" type="text" formControlName="newCardForm" placeholder="Tag #MyFavouriteDress">
+    <app-select-input class="new-clothes__select new-clothes__select--category" inputId="new-clothes-category" inputName="category" [options]="options"></app-select-input>
+    <app-select-input class="new-clothes__select new-clothes__select--color" inputId="new-clothes-color" inputName="color" [options]="colorOptions"></app-select-input>
 
-      <label for="new-clothes-brand" class="add-card__label visually-hidden"></label>
-      <input id="new-clothes-brand" class="add-card__input" type="text" formControlName="newCardForm" placeholder="Brand">
-      <label for="new-clothes-product-code" class="add-card__label visually-hidden"></label>
-      <input id="new-clothes-product-code" class="add-card__input" type="text" formControlName="newCardForm" placeholder="Product Code">
-      <label for="new-clothes-link" class="add-card__label visually-hidden"></label>
-      <input id="new-clothes-link" class="add-card__input" type="text" formControlName="newCardForm" placeholder="Link">
+    <label for="new-clothes-brand" class="visually-hidden"></label>
+    <input id="new-clothes-brand" class="form-input add-card__input" type="text" formControlName="newCardForm" placeholder="Brand">
+    <label for="new-clothes-product-code" class="visually-hidden"></label>
+    <input id="new-clothes-product-code" class="form-input add-card__input" type="text" formControlName="newCardForm" placeholder="Product Code">
 
-    <app-select-input new-clothes__size
-                      inputName="size"
-                      [options]="sizeOptions">
-    </app-select-input>
-    <app-select-input new-clothes__size
-                      inputName="style"
-                      [options]="styleOptions">
-    </app-select-input>
+    <app-select-input class="new-clothes__select new-clothes__select--size" inputId="new-clothes-size" inputName="size" [options]="sizeOptions"></app-select-input>
+    <app-select-input class="new-clothes__select new-clothes__select--style" inputId="new-clothes-style" inputName="style" [options]="styleOptions"></app-select-input>
 
-    <div class="new-clothes__btn-wrapper">
-      <input #filePicker formControlName="upload-photo__button" class="upload-photo add-new-item__form" type="file" accept="image/*" hidden>
-      <button class="btn upload-photo__btn" type="submit" (click)="filePicker.click()"><fa-icon [icon]="faCloudUploadAlt"></fa-icon> Upload photo*</button>
+    <label for="new-clothes-link" class="visually-hidden"></label>
+    <input id="new-clothes-link" class="form-input add-card__input" type="text" formControlName="newCardForm" placeholder="Link">
+
+    <div class="new-clothes__photo-btn-wrapper">
+    <input #filePicker formControlName="upload-photo__button" class="new-clothes__photo-input" type="file" accept="image/*" hidden>
+    <button class="btn upload-photo__btn" type="submit" (click)="filePicker.click()"><fa-icon [icon]="faCloudUploadAlt"></fa-icon> Upload photo*</button>
     </div>
 
-    <div class="button-container">
-      <input formControlName="add-new-item__button" class="add-new-item add-new-item__form" type="file" accept="image/*" hidden>
-      <button class="btn add-new-item__btn" type="submit">ADD NEW ITEM</button>
+    <div class="new-clothes__submit-wrapper">
+    <input formControlName="add-new-item__button" class="add-new-item add-new-item__form" type="file" accept="image/*" hidden>
+    <button class="btn add-new-item__btn" type="submit">ADD NEW ITEM</button>
     </div>
   </form>
 </section>

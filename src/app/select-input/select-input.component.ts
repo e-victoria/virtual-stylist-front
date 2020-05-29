@@ -19,6 +19,8 @@ export class SelectInputComponent implements OnInit {
   inputName: string;
   @Input()
   options: string[];
+  @Input()
+  inputId: string;
 
   constructor() { }
 
