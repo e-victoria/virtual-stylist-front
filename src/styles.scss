@@ -102,7 +102,7 @@ ul {
 .form-input,
 .form-label {
   width: 100%;
-  padding: 1em 0.5em;
+  padding: 1em;
   margin-bottom: 0.5em;
   margin-top: 0.5em;
   border-radius: 0.37em;
@@ -110,6 +110,7 @@ ul {
   background: $input-color;
   font-size: 1em;
   color: $default-font-color;
+  box-sizing: border-box;
 }
 
 .form-input::placeholder {
@@ -119,9 +120,5 @@ ul {
 .form-label {
   position: relative;
   text-align: center;
-}
-
-.select-wrapper {
-  position: relative;
 }
 
