@@ -13,8 +13,11 @@ export class CreateFormComponent implements OnInit {
   private selectList: ElementRef;
   @ViewChild('arrowDown')
   private arrowDown: ElementRef;
+  @ViewChild('selectLabel')
+  private selectLabel: ElementRef;
   faCloudUploadAlt = faCloudUploadAlt;
   faSortDown = faSortDown;
+  private image: Blob;
 
   constructor() { }
 
@@ -36,8 +39,13 @@ export class CreateFormComponent implements OnInit {
     ])
   });
 
-  toggleOptions(){
-    this.selectList.nativeElement.classList.toggle('show-flex');
-    this.arrowDown.nativeElement.classList.toggle('rotate');
+  toggleOptions(event){
+    event.stopPropagation();
+    console.log(event.target);
+    if (this.selectLabel.nativeElement.contains(event.target)) {
+      this.selectList.nativeElement.classList.toggle('show-flex');
+      this.arrowDown.nativeElement.classList.toggle('rotate');
+    }
   }
+
 }

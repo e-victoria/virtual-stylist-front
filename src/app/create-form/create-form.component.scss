@@ -64,6 +64,7 @@
   display: inline-block;
   width: 100%;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .new-clothes__category {
@@ -73,7 +74,8 @@
 
 .new-clothes__color,
 .new-clothes__btn-wrapper {
-  width: 30%;
+  width: 37%;
+  position: relative;
 }
 
 #new-clothes-brand {
@@ -84,16 +86,17 @@
   width: 51%;
 }
 
-#new-clothes-style,
-#new-clothes-size {
-  width: 46%;
+.new-clothes__style,
+.new-clothes__size {
+  width: 49.3%;
+  position: relative;
 }
 
 .new-clothes__btn-wrapper {
   margin-right: auto;
 }
 
-#new-clothes-category, #new-clothes-color {
+#new-clothes-category, #new-clothes-color, #new-clothes-size, #new-clothes-style {
   display: none;
 }
 
@@ -104,3 +107,5 @@
   top: 0.7em;
   right: 0.8em;
 }
+
+
