@@ -18,18 +18,19 @@ export class CreateFormComponent implements OnInit {
   faCloudUploadAlt = faCloudUploadAlt;
   faSortDown = faSortDown;
   private image: Blob;
-  category: string;
   options: string[];
-  category2: string;
-  options2: string[];
+  colorOptions: string[];
+  sizeOptions: string[];
+  styleOptions: string[];
+
 
   constructor() { }
 
   ngOnInit(): void {
-    this.category = 'category';
     this.options = ['dress', 'jeans']
-    this.category2 = 'category2';
-    this.options2 = ['dress2', 'jeans2']
+    this.colorOptions = ['red', 'white', 'black', 'green']
+    this.sizeOptions = ['S', 'M', 'L', 'XL']
+    this.styleOptions = ['casual', 'chick', 'sporty']
   }
 
   newCardForm = new FormGroup({

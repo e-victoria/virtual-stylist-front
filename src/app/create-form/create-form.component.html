@@ -4,85 +4,35 @@
       <label for="new-clothes-tag" class="add-card__label visually-hidden"></label>
       <input id="new-clothes-tag" class="add-card__input" type="text" formControlName="newCardForm" placeholder="Tag #MyFavouriteDress">
       <app-select-input new-clothes__category
-        [inputName]="category"
-      [options]="options"></app-select-input>
-    <app-select-input new-clothes__category
-                      [inputName]="category2"
-                      [options]="options2"></app-select-input>
-<!--      <div class="new-clothes__category">-->
-<!--        <ul class="select-list" #selectList>-->
-<!--          <li class="select-option">Blouse</li>-->
-<!--          <li class="select-option">Tshirt</li>-->
-<!--          <li class="select-option">Top</li>-->
-<!--          <li class="select-option">Trousers</li>-->
-<!--          <li class="select-option">Dress</li>-->
-<!--          <li class="select-option">Jeans</li>-->
-<!--        </ul>-->
-<!--        <label #selectLabel (click)="toggleOptions($event)" for="new-clothes-category" class="add-card__label" >Category*<span class="arrow-down" #arrowDown><fa-icon [icon]="faSortDown"></fa-icon></span></label>-->
-<!--        <select id="new-clothes-category" class="add-card__input" type="text" formControlName="newCardForm">-->
-<!--        </select>-->
-<!--      </div>-->
+        inputName="category"
+      [options]="options">
+      </app-select-input>
+    <app-select-input new-clothes__color
+                      inputName="color"
+                      [options]="colorOptions">
+    </app-select-input>
 
-<!--      <div class="new-clothes__color">-->
-<!--        <ul class="select-list" #selectList>-->
-<!--          <li class="select-option">Black</li>-->
-<!--          <li class="select-option">White</li>-->
-<!--          <li class="select-option">Red</li>-->
-<!--        </ul>-->
-<!--        <label (click)="toggleOptions($event)" #selectLabel for="new-clothes-color" class="add-card__label">Color*<span class="arrow-down" #arrowDown><fa-icon [icon]="faSortDown"></fa-icon></span></label>-->
-<!--        <select id="new-clothes-color" class="add-card__input" type="text" formControlName="newCardForm">-->
-<!--        </select>-->
-<!--      </div>-->
+      <label for="new-clothes-brand" class="add-card__label visually-hidden"></label>
+      <input id="new-clothes-brand" class="add-card__input" type="text" formControlName="newCardForm" placeholder="Brand">
+      <label for="new-clothes-product-code" class="add-card__label visually-hidden"></label>
+      <input id="new-clothes-product-code" class="add-card__input" type="text" formControlName="newCardForm" placeholder="Product Code">
+      <label for="new-clothes-link" class="add-card__label visually-hidden"></label>
+      <input id="new-clothes-link" class="add-card__input" type="text" formControlName="newCardForm" placeholder="Link">
 
-
-<!--      <label for="new-clothes-brand" class="add-card__label visually-hidden"></label>-->
-<!--      <input id="new-clothes-brand" class="add-card__input" type="text" formControlName="newCardForm" placeholder="Brand">-->
-<!--      <label for="new-clothes-product-code" class="add-card__label visually-hidden"></label>-->
-<!--      <input id="new-clothes-product-code" class="add-card__input" type="text" formControlName="newCardForm" placeholder="Product Code">-->
-<!--      <label for="new-clothes-link" class="add-card__label visually-hidden"></label>-->
-<!--      <input id="new-clothes-link" class="add-card__input" type="text" formControlName="newCardForm" placeholder="Link">-->
-
-<!--    <div class="new-clothes__size">-->
-<!--      <ul class="select-list" #selectList>-->
-<!--        <li class="select-option">XS</li>-->
-<!--        <li class="select-option">S</li>-->
-<!--        <li class="select-option">M</li>-->
-<!--        <li class="select-option">L</li>-->
-<!--        <li class="select-option">XL</li>-->
-<!--      </ul>-->
-<!--      <label #selectLabel for="new-clothes-size" class="add-card__label" (click)="toggleOptions($event)">Size<span class="arrow-down" #arrowDown (click)="toggleOptions($event)"><fa-icon [icon]="faSortDown"></fa-icon></span></label>-->
-<!--      <select id="new-clothes-size" class="add-card__input" type="text" formControlName="newCardForm"></select>-->
-<!--    </div>-->
-
-
-<!--    <div class="new-clothes__style">-->
-<!--      <ul class="select-list" #selectList>-->
-<!--        <li class="select-option">Casual</li>-->
-<!--        <li class="select-option">Chic</li>-->
-<!--        <li class="select-option">Tomboy</li>-->
-<!--        <li class="select-option">Sporty</li>-->
-<!--      </ul>-->
-<!--      <label #selectLabel for="new-clothes-style" class="add-card__label" (click)="toggleOptions($event)">Style<span class="arrow-down" #arrowDown (click)="toggleOptions($event)"><fa-icon [icon]="faSortDown"></fa-icon></span></label>-->
-<!--      <select id="new-clothes-style" class="add-card__input" type="text" formControlName="newCardForm"></select>-->
-<!--    </div>-->
-
-
-<!--    <input type="text" class="add-card__label" list="new-clothes__style" placeholder="Style">-->
-<!--    <datalist id="new-clothes__style" class="select-list" (click)="toggleOptions($event)">-->
-<!--    <option class="option">Casual</option>-->
-<!--    <option class="option">dupa</option>-->
-<!--    </datalist>-->
-
+    <app-select-input new-clothes__size
+                      inputName="size"
+                      [options]="sizeOptions">
+    </app-select-input>
+    <app-select-input new-clothes__size
+                      inputName="style"
+                      [options]="styleOptions">
+    </app-select-input>
 
     <div class="new-clothes__btn-wrapper">
       <input #filePicker formControlName="upload-photo__button" class="upload-photo add-new-item__form" type="file" accept="image/*" hidden>
       <button class="btn upload-photo__btn" type="submit" (click)="filePicker.click()"><fa-icon [icon]="faCloudUploadAlt"></fa-icon> Upload photo*</button>
     </div>
 
-<!--    <div class="new-clothes__btn-wrapper">-->
-<!--      <input formControlName="upload-photo__button" class="upload-photo add-new-item__form" type="file" accept="image/*" hidden>-->
-<!--      <button class="btn upload-photo__btn" type="submit"><fa-icon [icon]="faCloudUploadAlt"></fa-icon> Upload photo*</button>-->
-<!--    </div>-->
     <div class="button-container">
       <input formControlName="add-new-item__button" class="add-new-item add-new-item__form" type="file" accept="image/*" hidden>
       <button class="btn add-new-item__btn" type="submit">ADD NEW ITEM</button>
