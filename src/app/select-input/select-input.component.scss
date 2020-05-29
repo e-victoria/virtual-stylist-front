@@ -1,0 +1,49 @@
+@import "../../assets/scss/variables";
+
+.arrow-down {
+  position: absolute;
+  height: 100%;
+  top: 0em;
+  padding-top: 0.25em;
+  right: 1em;
+  box-sizing: border-box;
+}
+
+.arrow-down fa-icon {
+  font-size: 1.1em;
+}
+
+.select-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-select-label {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.select-list {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 4em;
+  left: 0;
+  border: 1px solid $border-input-color;
+  background-color: $input-color;
+  width: 100%;
+  border-radius: 0.37em;
+  z-index: 2;
+}
+
+.select-option {
+  text-align: center;
+  padding: 0.9em 0;
+  width: 100%;
+  cursor: pointer;
+
+  &:hover {
+    border-radius: 0.3em;
+    background-color: #ffffff;
+  }
+}

@@ -1,0 +1,12 @@
+<div #selectWrapper class="select-wrapper">
+  <ul (click)="getSelectedValue($event)" class="select-list" #selectList>
+    <li class="select-option" *ngFor="let option of options">{{option}}</li>
+  </ul>
+  <label (click)="toggleOptions($event)" #selectLabel [for]="inputId" class="form-select-label form-label">{{inputName | titlecase}}
+    <span class="arrow-down" #arrowDown>
+      <fa-icon [icon]="faSortDown"></fa-icon>
+    </span>
+  </label>
+  <select [id]="inputId" class="form-input form-select visually-hidden" type="text" formControlName="newCardForm">
+  </select>
+</div>
