@@ -1,5 +1,9 @@
 <section class="wardrobe">
   <h2 class="section-title wardrobe__title">Your wardrobe</h2>
+  <button (click)="openForm($event)" class="btn">
+    <span class="visually-hidden">Add new item</span>
+    <span class="plus-icon"></span>
+  </button>
   <div class="clothes__wrapper">
     <ul class="clothes__list">
       <li class="clothes__item" *ngFor="let clothes of exampleClothesList">
@@ -9,4 +13,8 @@
       </li>
     </ul>
   </div>
+  <div #form class="wardrobe__new-wrapper">
+    <app-create-form (closeEvent)="closePopUp($event)"></app-create-form>
+  </div>
 </section>
+<router-outlet></router-outlet>

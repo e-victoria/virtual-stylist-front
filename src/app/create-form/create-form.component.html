@@ -1,5 +1,8 @@
-<section class="new-clothes">
+<section #form class="new-clothes">
   <h2 class="section-title">Add new item</h2>
+  <button (click)="closeForm($event)" class="btn close-btn">
+    <span class="visually-hidden">Close</span>
+  </button>
   <form class="new-clothes__form">
     <label for="new-clothes-tag" class="visually-hidden"></label>
     <input id="new-clothes-tag" class="form-input add-card__input" type="text" formControlName="newCardForm" placeholder="Tag #MyFavouriteDress">
@@ -28,3 +31,4 @@
     </div>
   </form>
 </section>
+<router-outlet></router-outlet>

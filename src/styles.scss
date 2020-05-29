@@ -122,3 +122,44 @@ ul {
   text-align: center;
 }
 
+.close-btn {
+  position: absolute;
+  top: 1.6em;
+  right: 2.1em;
+  width: 2.7em;
+  height: 2.7em;
+  cursor: pointer;
+  outline: none;
+
+  &:hover::before {
+    transform: rotate(315deg);
+  }
+
+  &:hover::after {
+    transform: rotate(405deg);
+  }
+
+  &:focus {
+    box-shadow: 0 0 5px #347fb4;
+  }
+
+  &::after,
+  &::before {
+    transition: all 900ms ease-in-out;
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 1em;
+    right: 0;
+    width: 2.38em;
+    height: 0.29em;
+    border-radius: 0.15em;
+    background-color: $default-font-color;
+    transform: rotate(45deg);
+  }
+
+  &::before {
+    transform: rotate(-45deg);
+  }
+}
+
