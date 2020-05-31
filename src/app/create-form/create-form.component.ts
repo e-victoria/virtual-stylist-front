@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef, EventEmitter, Output} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { faCloudUploadAlt, faSortDown } from '@fortawesome/free-solid-svg-icons';
 
@@ -20,6 +20,8 @@ export class CreateFormComponent implements OnInit {
   colorOptions: string[];
   sizeOptions: string[];
   styleOptions: string[];
+  @Output()
+  closeEvent: EventEmitter<string> = new EventEmitter<string>();
 
 
   constructor() { }
@@ -48,6 +50,11 @@ export class CreateFormComponent implements OnInit {
 
   seeValue(event) {
     console.log(event);
+  }
+
+  closeForm(event) {
+    event.preventDefault();
+    this.closeEvent.emit('close')
   }
 
 }

@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import IClothes from "../clothes/clothes";
 
 @Component({
@@ -10,6 +10,8 @@ import IClothes from "../clothes/clothes";
 export class WardrobeComponent implements AfterViewInit, OnInit {
 
   exampleClothesList: IClothes[];
+  @ViewChild('form')
+  private form: ElementRef;
 
   constructor() { }
 
@@ -40,6 +42,17 @@ export class WardrobeComponent implements AfterViewInit, OnInit {
 
     console.log(item.imageName)
 
+  }
+
+  openForm(event) {
+    event.preventDefault();
+    this.form.nativeElement.classList.add('show-flex');
+  }
+
+  closePopUp(event) {
+    if(event === 'close') {
+      this.form.nativeElement.classList.remove('show-flex');
+    }
   }
 
 }

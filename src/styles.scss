@@ -102,7 +102,7 @@ ul {
 .form-input,
 .form-label {
   width: 100%;
-  padding: 1em 0.5em;
+  padding: 1em;
   margin-bottom: 0.5em;
   margin-top: 0.5em;
   border-radius: 0.37em;
@@ -110,6 +110,7 @@ ul {
   background: $input-color;
   font-size: 1em;
   color: $default-font-color;
+  box-sizing: border-box;
 }
 
 .form-input::placeholder {
@@ -121,7 +122,44 @@ ul {
   text-align: center;
 }
 
-.select-wrapper {
-  position: relative;
+.close-btn {
+  position: absolute;
+  top: 1.6em;
+  right: 2.1em;
+  width: 2.7em;
+  height: 2.7em;
+  cursor: pointer;
+  outline: none;
+
+  &:hover::before {
+    transform: rotate(315deg);
+  }
+
+  &:hover::after {
+    transform: rotate(405deg);
+  }
+
+  &:focus {
+    box-shadow: 0 0 5px #347fb4;
+  }
+
+  &::after,
+  &::before {
+    transition: all 900ms ease-in-out;
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 1em;
+    right: 0;
+    width: 2.38em;
+    height: 0.29em;
+    border-radius: 0.15em;
+    background-color: $default-font-color;
+    transform: rotate(45deg);
+  }
+
+  &::before {
+    transform: rotate(-45deg);
+  }
 }
 

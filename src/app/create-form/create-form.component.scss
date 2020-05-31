@@ -1,16 +1,20 @@
 @import "../../assets/scss/variables";
 
 .new-clothes {
-  width: 100%;
+  width: 59%;
+  position: relative;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-  padding: 3.8em 4vw;
+  padding: 4.5em 8.5vw 3.8em 8.5vw;
+  background-color: white;
+  border-radius: 0.2em;
 }
 
 .new-clothes__form {
-  width: 45%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -24,7 +28,7 @@
 }
 
 .new-clothes__select--category {
-  width: 62%;
+  width: 61%;
   position: relative;
 }
 
@@ -35,7 +39,7 @@
 }
 
 #new-clothes-brand {
-  width: 41%;
+  width: 47%;
 }
 
 #new-clothes-product-code {
@@ -44,7 +48,7 @@
 
 .new-clothes__select--style,
 .new-clothes__select--size {
-  width: 49.3%;
+  width: 49%;
   position: relative;
 }
 
