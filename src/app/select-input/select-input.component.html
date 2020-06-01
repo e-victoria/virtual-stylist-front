@@ -1,3 +1,4 @@
+<ng-container>
 <div #selectWrapper class="select-wrapper">
   <ul class="select-list" #selectList>
     <li (click)="getSelectedValue($event)" *ngFor="let option of options" [attr.data-name]="inputName" class="select-option">{{option}}</li>
@@ -7,7 +8,8 @@
       <fa-icon [icon]="faSortDown"></fa-icon>
     </span>
   </label>
-  <select [id]="inputId" class="form-input form-select visually-hidden" type="text" formControlName="newCardForm">
+  <select [id]="inputId" class="form-input form-select visually-hidden" type="text">
     <option *ngFor="let option of options" class="select__option">{{option}}</option>
   </select>
 </div>
+</ng-container>

@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild, ElementRef, EventEmitter, Output} from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { faCloudUploadAlt, faSortDown } from '@fortawesome/free-solid-svg-icons';
+import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
+import { faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
+import {CreateFormService} from "./create-form.service";
 
 @Component({
   selector: 'app-create-form',
@@ -22,36 +23,44 @@ export class CreateFormComponent implements OnInit {
   styleOptions: string[];
   @Output()
   closeEvent: EventEmitter<string> = new EventEmitter<string>();
+  private imageToSend: FormGroup = this.formBuilder.group({
+    image: ['']
+  });
 
-  newCardForm = new FormGroup({
-    'category': new FormControl('', [
+  newCardForm: FormGroup = new FormGroup({
+    'clothType': new FormControl('', [
       Validators.required
     ]),
     'size': new FormControl(''),
     'color': new FormControl('',[
       Validators.required
     ]),
+    'brand': new FormControl(''),
+    'shopLink': new FormControl(''),
+    'tag': new FormControl(''),
     'style': new FormControl('',[
       Validators.required
     ]),
-    'upload-photo__button': new FormControl('',[
+    'code': new FormControl(''),
+    'imagePath': new FormControl('',[
       Validators.required
     ])
   });
 
-  constructor() { }
+  constructor(private createFormService: CreateFormService, private formBuilder: FormBuilder) {
+  }
 
   ngOnInit(): void {
-    this.options = ['dress', 'jeans']
-    this.colorOptions = ['red', 'white', 'black', 'green']
-    this.sizeOptions = ['S', 'M', 'L', 'XL']
-    this.styleOptions = ['casual', 'chick', 'sporty']
+    this.options = ['BLOUSE', 'T-SHIRT', 'TOP', 'TROUSERS', 'DRESS', 'JEANS'];
+    this.colorOptions = ['WHITE', 'BLACK', 'RED'];
+    this.sizeOptions = ['S', 'M', 'L', 'XL'];
+    this.styleOptions = ['CASUAL', 'CLASSIC'];
   }
 
   getSelectValue(event) {
     const selectedValue = event[0];
     const inputName = event[1];
-    this.newCardForm.value[inputName] = selectedValue;
+    this.newCardForm.get(inputName).setValue(selectedValue);
   }
 
   closeForm(event) {
@@ -59,9 +68,38 @@ export class CreateFormComponent implements OnInit {
     this.closeEvent.emit('close')
   }
 
-  saveItem(event) {
+  saveImage(event) {
     event.preventDefault();
-    console.log(this.newCardForm.value)
+
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.newCardForm.get('imagePath').setValue('smth');
+      this.imageToSend.get('image').setValue(file);
+    }
+  }
+
+  saveItem(event) {
+
+    event.preventDefault();
+
+    const getImagePath = (path) => {
+      console.log(path);
+      this.newCardForm.value.imagePath = path;
+
+      const getResponse = (response) => {
+        console.log(response)
+      }
+
+      this.createFormService.saveClothes(this.newCardForm.value, getResponse);
+    }
+    const formData = new FormData();
+    formData.append('file', this.imageToSend.get('image').value);
+
+    if (this.newCardForm.valid) {
+      this.createFormService.postImage(formData, getImagePath);
+    } else {
+      alert('not valid')
+    }
   }
 
 }
