@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {WardrobeComponent} from "./wardrobe/wardrobe.component";
+import {WardrobeComponent} from './wardrobe/wardrobe.component';
+import { ItemDetailsComponent } from './wardrobe/item-details.component';
 
 
 const routes: Routes = [
-  { path: 'wardrobe', component: WardrobeComponent }
+  { path: 'wardrobe', component: WardrobeComponent },
+  { path: 'wardrobe/:id', component: ItemDetailsComponent}
 ];
 
 @NgModule({

@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
-import IClothes from "../clothes/clothes";
+import IClothes from '../wardrobe/item-detail.model';
 
 @Component({
   selector: 'app-wardrobe',
@@ -31,16 +31,16 @@ export class WardrobeComponent implements AfterViewInit, OnInit {
       tag: ['white'],
       brand: 'not known',
       shopLink: null,
-      id: null,
+      id: 1,
       style: 'casual',
       stylizations: null
     };
 
-    for(let i = 0; i < 8; i++) {
+    for (let i = 0; i < 8; i++) {
       this.exampleClothesList.push(item);
     }
 
-    console.log(item.imageName)
+    console.log(item.imageName);
 
   }
 
@@ -50,7 +50,7 @@ export class WardrobeComponent implements AfterViewInit, OnInit {
   }
 
   closePopUp(event) {
-    if(event === 'close') {
+    if (event === 'close') {
       this.form.nativeElement.classList.remove('show-flex');
     }
   }
