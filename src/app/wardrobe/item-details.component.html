@@ -1,0 +1,17 @@
+<section class="item">
+  <h2 class="section-title">Clothes Detail</h2>
+  <div class="item__wrapper">
+    <a class="item__link">
+      <img class="clothes__img item__img" src="../../assets/img/{{item?.imageName}}" alt="clothes">
+    </a>
+    <div class="item__details">
+      <p class="item__details-content"><span>Tag: </span>{{item.tag}}</p>
+      <p class="item__details-content"><span>Category: </span>{{item.clothType}}</p>
+      <p class="item__details-content"><span>Color: </span>{{item.color}}</p>
+      <p class="item__details-content"><span>Brand: </span>{{item?.brand}}</p>
+      <p class="item__details-content"><span>Size: </span>{{item?.size}}</p>
+      <p class="item__details-content"><span>Product Code: </span>{{item?.code}}</p>
+      <p class="item__details-content"><span>Link: </span>{{item.shopLink ? item.shopLink : 'no link'}} </p>
+    </div>
+  </div>
+</section>

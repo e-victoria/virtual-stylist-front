@@ -7,7 +7,7 @@
   <div class="clothes__wrapper">
     <ul class="clothes__list">
       <li class="clothes__item" *ngFor="let clothes of exampleClothesList">
-        <a class="clothes__link">
+        <a class="clothes__link" [routerLink]="['/wardrobe', clothes.id]">
           <img class="clothes__img" src="../../assets/img/{{clothes?.imageName}}" alt="clothes">
         </a>
       </li>
