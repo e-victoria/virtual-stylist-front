@@ -8,7 +8,7 @@
     <ul class="clothes__list">
       <li class="clothes__item" *ngFor="let clothes of exampleClothesList">
         <a class="clothes__link" [routerLink]="['/wardrobe', clothes.id]">
-          <img class="clothes__img btn-4" src="../../assets/img/{{clothes?.imageName}}" alt="clothes">
+          <img class="clothes__img" src="../../assets/img/{{clothes?.imageName}}" alt="clothes">
         </a>
       </li>
     </ul>

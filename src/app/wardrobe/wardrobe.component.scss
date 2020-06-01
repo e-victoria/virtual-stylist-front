@@ -17,45 +17,6 @@
   gap: 2.5em 6%;
 }
 
-.clothes__link{
-  z-index: 2;
-  position: relative;
-}
-
-//card hover effect
-.btn-4 {
-  border: 1px solid;
-  overflow: hidden;
-  position: relative;
-
-  span {
-    z-index: 20;
-  }
-
-  &:after {
-    background: #fff;
-    content: "";
-    height: 155px;
-    left: -75px;
-    opacity: .2;
-    position: absolute;
-    top: -50px;
-    transform: rotate(35deg);
-    transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
-    width: 50px;
-    z-index: -10;
-  }
-}
-
-.btn-4:hover {
-
-  &:after {
-    left: 120%;
-    transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
-  }
-
-}
-
 .clothes__item {
   position: relative;
   border-radius: 1.15em;
@@ -63,8 +24,38 @@
   cursor: pointer;
 }
 
+.clothes__link {
+  display: flex;
+  position: relative;
+  border: 1px solid transparent;
+  overflow: hidden;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: -75%;
+    z-index: 2;
+    display: block;
+    content: '';
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+    transform: skewX(-25deg);
+  }
+
+  &:hover::before {
+    animation: shine .75s;
+  }
+}
+
 .clothes__img {
   border-radius: 1.15em;
+}
+
+@keyframes shine {
+  100% {
+    left: 125%;
+  }
 }
 
 .plus-icon {
