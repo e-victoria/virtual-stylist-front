@@ -23,20 +23,11 @@ export class CreateFormComponent implements OnInit {
   @Output()
   closeEvent: EventEmitter<string> = new EventEmitter<string>();
 
-
-  constructor() { }
-
-  ngOnInit(): void {
-    this.options = ['dress', 'jeans']
-    this.colorOptions = ['red', 'white', 'black', 'green']
-    this.sizeOptions = ['S', 'M', 'L', 'XL']
-    this.styleOptions = ['casual', 'chick', 'sporty']
-  }
-
   newCardForm = new FormGroup({
     'category': new FormControl('', [
       Validators.required
     ]),
+    'size': new FormControl(''),
     'color': new FormControl('',[
       Validators.required
     ]),
@@ -48,13 +39,29 @@ export class CreateFormComponent implements OnInit {
     ])
   });
 
-  seeValue(event) {
-    console.log(event);
+  constructor() { }
+
+  ngOnInit(): void {
+    this.options = ['dress', 'jeans']
+    this.colorOptions = ['red', 'white', 'black', 'green']
+    this.sizeOptions = ['S', 'M', 'L', 'XL']
+    this.styleOptions = ['casual', 'chick', 'sporty']
+  }
+
+  getSelectValue(event) {
+    const selectedValue = event[0];
+    const inputName = event[1];
+    this.newCardForm.value[inputName] = selectedValue;
   }
 
   closeForm(event) {
     event.preventDefault();
     this.closeEvent.emit('close')
+  }
+
+  saveItem(event) {
+    event.preventDefault();
+    console.log(this.newCardForm.value)
   }
 
 }
