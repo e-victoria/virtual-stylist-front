@@ -17,6 +17,7 @@ export class CreateFormComponent implements OnInit {
   @ViewChild('selectLabel')
   private selectLabel: ElementRef;
   faCloudUploadAlt = faCloudUploadAlt;
+  isSubmitted: boolean;
   options: string[];
   colorOptions: string[];
   sizeOptions: string[];
@@ -47,14 +48,32 @@ export class CreateFormComponent implements OnInit {
     ])
   });
 
-  constructor(private createFormService: CreateFormService, private formBuilder: FormBuilder) {
-  }
+  constructor(private createFormService: CreateFormService, private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
+    this.isSubmitted = false;
     this.options = ['BLOUSE', 'T-SHIRT', 'TOP', 'TROUSERS', 'DRESS', 'JEANS'];
     this.colorOptions = ['WHITE', 'BLACK', 'RED'];
     this.sizeOptions = ['S', 'M', 'L', 'XL'];
     this.styleOptions = ['CASUAL', 'CLASSIC'];
+  }
+
+  get clothType() {
+    if(this.newCardForm.get('clothType')) {
+
+    }
+    return this.newCardForm.get('clothType');
+  }
+  get color(){
+    return this.newCardForm.get('color');
+  }
+
+  get style(){
+    return this.newCardForm.get('style');
+  }
+
+  get imagePath(){
+    return this.newCardForm.get('imagePath');
   }
 
   getSelectValue(event) {
@@ -64,6 +83,7 @@ export class CreateFormComponent implements OnInit {
   }
 
   closeForm(event) {
+    console.log('ds')
     event.preventDefault();
     this.closeEvent.emit('close')
   }
@@ -79,15 +99,14 @@ export class CreateFormComponent implements OnInit {
   }
 
   saveItem(event) {
-
     event.preventDefault();
-
+    this.isSubmitted = true;
     const getImagePath = (path) => {
-      console.log(path);
       this.newCardForm.value.imagePath = path;
 
       const getResponse = (response) => {
         console.log(response)
+        this.closeForm(null);
       }
 
       this.createFormService.saveClothes(this.newCardForm.value, getResponse);
@@ -97,8 +116,6 @@ export class CreateFormComponent implements OnInit {
 
     if (this.newCardForm.valid) {
       this.createFormService.postImage(formData, getImagePath);
-    } else {
-      alert('not valid')
     }
   }
 

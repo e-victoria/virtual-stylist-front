@@ -50,6 +50,7 @@ export class WardrobeComponent implements AfterViewInit, OnInit {
   }
 
   closePopUp(event) {
+    console.log(event)
     if (event === 'close') {
       this.form.nativeElement.classList.remove('show-flex');
     }

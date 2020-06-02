@@ -3,7 +3,10 @@
   <ul class="select-list" #selectList>
     <li (click)="getSelectedValue($event)" *ngFor="let option of options" [attr.data-name]="inputName" class="select-option">{{option}}</li>
   </ul>
-  <label (click)="toggleOptions($event)" #selectLabel [for]="inputId" class="form-select-label form-label">{{inputName | titlecase}}
+  <label (click)="toggleOptions($event)"
+         #selectLabel [for]="inputId"
+         class="form-select-label form-label {{labelClass}}">
+    {{inputName | titlecase}}
     <span class="arrow-down" #arrowDown>
       <fa-icon [icon]="faSortDown"></fa-icon>
     </span>
