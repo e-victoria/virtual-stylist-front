@@ -74,3 +74,17 @@
   margin: 2.5em auto 0 auto;
 }
 
+.new-clothes__errors {
+  margin-bottom: 1em;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.new-form__error-border {
+}
+
+.new-clothes__select {
+  box-shadow: inset 0 0 1px $red;
+  border-radius: 0.37em;
+}
+

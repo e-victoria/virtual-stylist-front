@@ -16,6 +16,8 @@ export class SelectInputComponent implements OnInit {
   private arrowDown: ElementRef;
   @ViewChild('selectLabel')
   private selectLabel: ElementRef;
+  @ViewChild('selectOption')
+  private selectOption: ElementRef;
   faSortDown = faSortDown;
   @Input()
   inputName: string;
@@ -23,13 +25,14 @@ export class SelectInputComponent implements OnInit {
   options: string[];
   @Input()
   inputId: string;
+  @Input()
+  labelClass: string;
   @Output()
-  selectedValue: EventEmitter<string> = new EventEmitter<string>();
+  selectedValue: EventEmitter<[string, HTMLElement]> = new EventEmitter<[string, HTMLElement]>();
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   toggleOptions(event){
     event.stopPropagation();
@@ -50,7 +53,11 @@ export class SelectInputComponent implements OnInit {
   }
 
   getSelectedValue(event) {
-    this.selectedValue.emit(event.target.textContent)
+    event.stopPropagation();
+    this.selectLabel.nativeElement.textContent = event.target.textContent;
+    this.selectedValue.emit([event.target.textContent, event.target.dataset.name]);
+    this.selectList.nativeElement.classList.remove('show-flex');
+    this.arrowDown.nativeElement.classList.remove('rotate');
   }
 
 }
