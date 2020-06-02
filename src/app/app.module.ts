@@ -12,6 +12,7 @@ import { CreateFormComponent } from './create-form/create-form.component';
 import { WardrobeModule } from './wardrobe/wardrobe.module';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { ItemSliderComponent } from './item-slider/item-slider.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     WardrobeComponent,
     HeaderComponent,
     CreateFormComponent,
-    SelectInputComponent
+    SelectInputComponent,
+    ItemSliderComponent
   ],
   imports: [
     BrowserModule,
