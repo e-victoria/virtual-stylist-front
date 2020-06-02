@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild, ElementRef, EventEmitter, Output} from '@angular/core';
 import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 import { faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
-import {CreateFormService} from "./create-form.service";
+import {CreateFormService} from './create-form.service';
 
 @Component({
   selector: 'app-create-form',
@@ -29,21 +29,21 @@ export class CreateFormComponent implements OnInit {
   });
 
   newCardForm: FormGroup = new FormGroup({
-    'clothType': new FormControl('', [
+    clothType: new FormControl('', [
       Validators.required
     ]),
-    'size': new FormControl(''),
-    'color': new FormControl('',[
+    size: new FormControl(''),
+    color: new FormControl('', [
       Validators.required
     ]),
-    'brand': new FormControl(''),
-    'shopLink': new FormControl(''),
-    'tag': new FormControl(''),
-    'style': new FormControl('',[
+    brand: new FormControl(''),
+    shopLink: new FormControl(''),
+    tag: new FormControl(''),
+    style: new FormControl('', [
       Validators.required
     ]),
-    'code': new FormControl(''),
-    'imagePath': new FormControl('',[
+    code: new FormControl(''),
+    imagePath: new FormControl('', [
       Validators.required
     ])
   });
@@ -52,14 +52,14 @@ export class CreateFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.isSubmitted = false;
-    this.options = ['BLOUSE', 'T-SHIRT', 'TOP', 'TROUSERS', 'DRESS', 'JEANS'];
-    this.colorOptions = ['WHITE', 'BLACK', 'RED'];
+    this.options = ['blouse', 't-shirt', 'top', 'trousers', 'dress', 'jeans'];
+    this.colorOptions = ['white', 'black', 'red'];
     this.sizeOptions = ['S', 'M', 'L', 'XL'];
-    this.styleOptions = ['CASUAL', 'CLASSIC'];
+    this.styleOptions = ['casual', 'classic'];
   }
 
   get clothType() {
-    if(this.newCardForm.get('clothType')) {
+    if (this.newCardForm.get('clothType')) {
 
     }
     return this.newCardForm.get('clothType');
@@ -79,13 +79,14 @@ export class CreateFormComponent implements OnInit {
   getSelectValue(event) {
     const selectedValue = event[0];
     const inputName = event[1];
-    this.newCardForm.get(inputName).setValue(selectedValue);
+    console.log(this.newCardForm.get(inputName).setValue(selectedValue.toString().toUpperCase()));
+    console.log(typeof(selectedValue));
   }
 
   closeForm(event) {
-    console.log('ds')
+    console.log('ds');
     event.preventDefault();
-    this.closeEvent.emit('close')
+    this.closeEvent.emit('close');
   }
 
   saveImage(event) {
@@ -105,12 +106,12 @@ export class CreateFormComponent implements OnInit {
       this.newCardForm.value.imagePath = path;
 
       const getResponse = (response) => {
-        console.log(response)
+        console.log(response);
         this.closeForm(null);
-      }
+      };
 
       this.createFormService.saveClothes(this.newCardForm.value, getResponse);
-    }
+    };
     const formData = new FormData();
     formData.append('file', this.imageToSend.get('image').value);
 

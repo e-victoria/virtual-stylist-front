@@ -16,7 +16,7 @@ export class ItemSliderComponent implements AfterViewInit {
   private carousel: ElementRef;
   @ViewChild('image')
   private content: ElementRef;
-  private imageWrappers: HTMLCollectionOf<HTMLElement>;
+  private imageWrappers: NodeListOf<HTMLElement>;
 
   faChevronRight = faChevronRight;
   faChevronLeft = faChevronLeft;
