@@ -43,7 +43,7 @@ export class CreateFormComponent implements OnInit {
       Validators.required
     ]),
     'code': new FormControl(''),
-    'imagePath': new FormControl('',[
+    'imageName': new FormControl('',[
       Validators.required
     ])
   });
@@ -72,8 +72,8 @@ export class CreateFormComponent implements OnInit {
     return this.newCardForm.get('style');
   }
 
-  get imagePath(){
-    return this.newCardForm.get('imagePath');
+  get imageName(){
+    return this.newCardForm.get('imageName');
   }
 
   getSelectValue(event) {
@@ -93,7 +93,7 @@ export class CreateFormComponent implements OnInit {
 
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      this.newCardForm.get('imagePath').setValue('smth');
+      this.newCardForm.get('imageName').setValue('smth');
       this.imageToSend.get('image').setValue(file);
     }
   }
@@ -101,8 +101,8 @@ export class CreateFormComponent implements OnInit {
   saveItem(event) {
     event.preventDefault();
     this.isSubmitted = true;
-    const getImagePath = (path) => {
-      this.newCardForm.value.imagePath = path;
+    const getImageName = (path) => {
+      this.newCardForm.value.imageName = path.fileName;
 
       const getResponse = (response) => {
         console.log(response)
@@ -115,7 +115,7 @@ export class CreateFormComponent implements OnInit {
     formData.append('file', this.imageToSend.get('image').value);
 
     if (this.newCardForm.valid) {
-      this.createFormService.postImage(formData, getImagePath);
+      this.createFormService.postImage(formData, getImageName);
     }
   }
 
