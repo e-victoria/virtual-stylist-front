@@ -1,7 +1,7 @@
 <div class="carousel-wrapper">
   <div class="carousel" #carousel>
-    <div class="content" #content>
-      <div class="image-wrapper" *ngFor="let item of items">
+    <div class="content">
+      <div #image class="image-wrapper" *ngFor="let item of items">
         <img class="clothes__img" src="../../assets/img/{{item}}">
       </div>
     </div>

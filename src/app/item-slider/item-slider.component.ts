@@ -14,8 +14,9 @@ export class ItemSliderComponent implements AfterViewInit {
   private next: ElementRef;
   @ViewChild('carousel')
   private carousel: ElementRef;
-  @ViewChild('content')
+  @ViewChild('image')
   private content: ElementRef;
+  private imageWrappers: HTMLCollectionOf<HTMLElement>;
 
   faChevronRight = faChevronRight;
   faChevronLeft = faChevronLeft;
@@ -25,28 +26,31 @@ export class ItemSliderComponent implements AfterViewInit {
   totalItems;
 
   ngAfterViewInit(): void {
-    this.totalItems = document.querySelectorAll('.clothes__img').length - 1;
+    this.imageWrappers = document.querySelectorAll('.image-wrapper');
+    this.imageWrappers[this.activeItem].classList.add('show-flex');
+    this.totalItems = document.querySelectorAll('.image-wrapper').length - 1;
   }
 
 
   previousBtn() {
+    this.imageWrappers[this.activeItem].classList.remove('show-flex');
     if (this.activeItem === 0) {
       this.activeItem = this.totalItems;
-      this.content.nativeElement.style.transform = `translateX(-${this.totalItems * 100}%)`;
+      this.imageWrappers[this.activeItem].classList.add('show-flex');
     } else {
       this.activeItem--;
-      this.content.nativeElement.style.transform = `translateX(-${this.activeItem * 100}%)`;
+      this.imageWrappers[this.activeItem].classList.add('show-flex');
     }
   }
 
   nextBtn() {
-    console.log(this.activeItem);
-    console.log(this.totalItems);
+    this.imageWrappers[this.activeItem].classList.remove('show-flex');
     if (this.activeItem < this.totalItems) {
       this.activeItem++;
-      this.content.nativeElement.style.transform = `translateX(-${this.activeItem * 100}%)`;
+      this.imageWrappers[this.activeItem].classList.add('show-flex');
     } else {
       this.activeItem = 0;
+      this.imageWrappers[this.activeItem].classList.add('show-flex');
       this.content.nativeElement.style.transform = `none`;
     }
   }
