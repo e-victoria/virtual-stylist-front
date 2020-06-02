@@ -25,6 +25,8 @@ export class SelectInputComponent implements OnInit {
   options: string[];
   @Input()
   inputId: string;
+  @Input()
+  labelClass: string;
   @Output()
   selectedValue: EventEmitter<[string, HTMLElement]> = new EventEmitter<[string, HTMLElement]>();
 
