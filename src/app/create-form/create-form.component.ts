@@ -18,7 +18,7 @@ export class CreateFormComponent implements OnInit {
   private selectLabel: ElementRef;
   faCloudUploadAlt = faCloudUploadAlt;
   isSubmitted: boolean;
-  options: string[];
+  clothTypeOptions: string[];
   colorOptions: string[];
   sizeOptions: string[];
   styleOptions: string[];
@@ -52,18 +52,13 @@ export class CreateFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.isSubmitted = false;
-    this.options = ['blouse', 'tshirt', 'top', 'trousers', 'dress', 'jeans'];
-    this.colorOptions = ['white', 'black', 'red'];
-    this.sizeOptions = ['S', 'M', 'L', 'XL'];
-    this.styleOptions = ['casual', 'classic'];
+    this.getSelectOptions();
   }
 
   get clothType() {
-    if (this.newCardForm.get('clothType')) {
-
-    }
     return this.newCardForm.get('clothType');
   }
+
   get color(){
     return this.newCardForm.get('color');
   }
@@ -74,6 +69,17 @@ export class CreateFormComponent implements OnInit {
 
   get imageName(){
     return this.newCardForm.get('imageName');
+  }
+
+  getSelectOptions() {
+    this.createFormService.getSelectOptions().subscribe({
+      next: options => {
+        this.sizeOptions = options['Size'];
+        this.styleOptions = options['Style']
+        this.colorOptions = options['Color'];
+        this.clothTypeOptions = options['ClothType'];
+      }
+    });
   }
 
   getSelectValue(event) {
