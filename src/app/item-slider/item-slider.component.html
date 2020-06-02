@@ -1,0 +1,13 @@
+<div class="carousel-wrapper">
+  <div class="carousel" #carousel>
+    <div class="content" #content>
+      <div class="image-wrapper" *ngFor="let item of items">
+        <img class="clothes__img" src="../../assets/img/{{item}}">
+      </div>
+    </div>
+    <div class="navigation">
+      <div class="previous" #previous (click)="previousBtn()"> <fa-icon [icon]="faChevronLeft"></fa-icon></div>
+      <div class="next" #next (click)="nextBtn()"> <fa-icon [icon]="faChevronRight"></fa-icon></div>
+    </div>
+  </div>
+</div>
