@@ -17,7 +17,7 @@
                       labelClass="{{clothType.errors && isSubmitted ? 'error-border new-form__error-border' : ''}}"
                       inputId="new-clothes-category"
                       inputName="clothType"
-                      [options]="options"></app-select-input>
+                      [options]="options" ></app-select-input>
     <app-select-input (selectedValue)="getSelectValue($event)"
                       class="new-clothes__select new-clothes__select--color"
                       labelClass="{{clothType.errors && isSubmitted ? 'error-border new-form__error-border' : ''}}"

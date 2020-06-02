@@ -1,11 +1,10 @@
-import { Injectable } from "@angular/core";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import { environment } from "../../environments/environment";
-import NewClothes from "../wardrobe/newClothes.model";
-import {FormGroup} from "@angular/forms";
+import { Injectable } from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { environment } from '../../environments/environment';
+import NewClothes from '../wardrobe/newClothes.model';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 
 export class CreateFormService {
