@@ -3,7 +3,6 @@ import {HttpClient} from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import NewClothes from '../wardrobe/newClothes.model';
 import {Observable} from "rxjs";
-import {tap} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +14,7 @@ export class CreateFormService {
 
   getSelectOptions(): Observable<string[]> {
     return this.http.get<string[]>(`${environment.serverLocalHost}wardrobe/options`)
-      .pipe(
-        tap(data => console.log('All: ' + JSON.stringify(data)))
-      );
+      .pipe();
   }
 
   saveClothes(newClothes: NewClothes, callback) {
