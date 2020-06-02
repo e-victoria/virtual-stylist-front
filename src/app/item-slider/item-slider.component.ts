@@ -1,5 +1,4 @@
-import {AfterViewInit, Component, ContentChildren, ElementRef, OnInit, QueryList, ViewChild} from '@angular/core';
-import IClothes from '../wardrobe/item-detail.model';
+import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 
@@ -8,7 +7,7 @@ import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons
   templateUrl: './item-slider.component.html',
   styleUrls: [ './item-slider.component.scss' ]
 })
-export class ItemSliderComponent implements OnInit {
+export class ItemSliderComponent implements AfterViewInit {
   @ViewChild('previous')
   previous: ElementRef;
   @ViewChild('next')
@@ -23,63 +22,33 @@ export class ItemSliderComponent implements OnInit {
 
   items = ['slide-1.jpg', 'slide-2.jpg', 'slide-3.jpg'];
   activeItem = 0;
-  totalItems = document.querySelectorAll('.carousel .content >*').length - 1;
+  totalItems;
 
-  // ngOnInit(): void {
-  //   }
-  //
-  // previousBtn() {
-  //   console.log('test1');
-  //   if (this.activeItem === 0) {
-  //     console.log('test');
-  //     this.activeItem = this.totalItems;
-  //     this.content.nativeElement.style.transform = `translateX(-${this.totalItems * 100}%)`;
-  //   } else {
-  //     this.activeItem--;
-  //     this.content.nativeElement.style.transform = `translateX(-${this.activeItem * 100}%)`;
-  //   }
-  // }
-  // nextBtn(){
-  //   if (this.activeItem < this.totalItems) {
-  //     this.activeItem++;
-  //     this.content.nativeElement.style.transform = `translateX(-${this.activeItem * 100}%)`;
-  //   } else {
-  //     this.activeItem = 0;
-  //     this.content.nativeElement.style.transform = `none`;
-  //   }
-  // }
-  ngOnInit(): void {
-    document.addEventListener('DOMContentLoaded', () => {
+  ngAfterViewInit(): void {
+    this.totalItems = document.querySelectorAll('.clothes__img').length - 1;
+  }
 
-      const previousButton = document.querySelector('.previous') as HTMLElement;
-      const nextButton = document.querySelector('.next');
-      const content = document.querySelector('.carousel .content') as HTMLElement;
-      const totalItems = document.querySelectorAll('.carousel .content >*').length - 1;
-      let activeItem = 0;
 
-      previousButton.addEventListener('click', () => {
-        if (activeItem === 0) {
-          activeItem = totalItems;
-          content.style.transform = `translateX(-${totalItems * 100}%)`;
-        } else {
-          activeItem--;
-          content.style.transform = `translateX(-${activeItem * 100}%)`;
-        }
-      });
+  previousBtn() {
+    if (this.activeItem === 0) {
+      this.activeItem = this.totalItems;
+      this.content.nativeElement.style.transform = `translateX(-${this.totalItems * 100}%)`;
+    } else {
+      this.activeItem--;
+      this.content.nativeElement.style.transform = `translateX(-${this.activeItem * 100}%)`;
+    }
+  }
 
-      nextButton.addEventListener('click', () => {
-        if (activeItem < totalItems) {
-          activeItem++;
-          content.style.transform = `translateX(-${activeItem * 100}%)`;
-        } else {
-          activeItem = 0;
-          content.style.transform = `none`;
-        }
-      });
-    });
+  nextBtn() {
+    console.log(this.activeItem);
+    console.log(this.totalItems);
+    if (this.activeItem < this.totalItems) {
+      this.activeItem++;
+      this.content.nativeElement.style.transform = `translateX(-${this.activeItem * 100}%)`;
+    } else {
+      this.activeItem = 0;
+      this.content.nativeElement.style.transform = `none`;
+    }
   }
 }
-  // ngOnInit(): void {
-
-  // }
 
