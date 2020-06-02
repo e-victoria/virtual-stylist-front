@@ -8,7 +8,7 @@
       <p class="form-errors__message" *ngIf="clothType.errors?.required && isSubmitted">Cloth type is required</p>
       <p class="form-errors__message" *ngIf="color.errors?.required && isSubmitted">Color is required</p>
       <p class="form-errors__message" *ngIf="style.errors?.required && isSubmitted">Style is required</p>
-      <p class="form-errors__message" *ngIf="imagePath.errors?.required && isSubmitted">Image is required</p>
+      <p class="form-errors__message" *ngIf="imageName.errors?.required && isSubmitted">Image is required</p>
     </div>
     <label for="new-clothes-tag" class="visually-hidden"></label>
     <input id="new-clothes-tag" class="form-input add-card__input" type="text" formControlName="tag" placeholder="Tag #MyFavouriteDress">
@@ -17,7 +17,7 @@
                       labelClass="{{clothType.errors && isSubmitted ? 'error-border new-form__error-border' : ''}}"
                       inputId="new-clothes-category"
                       inputName="clothType"
-                      [options]="options"></app-select-input>
+                      [options]="options" ></app-select-input>
     <app-select-input (selectedValue)="getSelectValue($event)"
                       class="new-clothes__select new-clothes__select--color"
                       labelClass="{{clothType.errors && isSubmitted ? 'error-border new-form__error-border' : ''}}"

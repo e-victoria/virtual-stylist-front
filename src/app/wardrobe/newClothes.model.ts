@@ -7,5 +7,5 @@ export default interface NewClothes {
   tag: string;
   size: string;
   shopLink: string;
-  imagePath: string;
+  imageName: string;
 }

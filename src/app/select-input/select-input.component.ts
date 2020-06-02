@@ -47,7 +47,7 @@ export class SelectInputComponent implements OnInit {
         this.arrowDown.nativeElement.classList.remove('rotate');
         document.removeEventListener('click', closeOptions);
       }
-    }
+    };
 
     document.addEventListener('click', closeOptions);
   }
