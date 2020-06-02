@@ -83,8 +83,9 @@ export class CreateFormComponent implements OnInit {
   }
 
   closeForm(event) {
-    console.log('ds')
-    event.preventDefault();
+    if (event) {
+      event.preventDefault();
+    }
     this.closeEvent.emit('close')
   }
 
