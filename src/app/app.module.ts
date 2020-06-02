@@ -10,6 +10,9 @@ import { WardrobeComponent } from './wardrobe/wardrobe.component';
 import { SelectInputComponent } from './select-input/select-input.component';
 import { CreateFormComponent } from './create-form/create-form.component';
 import { WardrobeModule } from './wardrobe/wardrobe.module';
+import { ItemSliderComponent } from './item-slider/item-slider.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -18,13 +21,15 @@ import { WardrobeModule } from './wardrobe/wardrobe.module';
     WardrobeComponent,
     HeaderComponent,
     CreateFormComponent,
-    SelectInputComponent
+    SelectInputComponent,
+    ItemSliderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    WardrobeModule
+    WardrobeModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
