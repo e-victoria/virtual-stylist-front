@@ -13,14 +13,14 @@ export class CreateFormService {
 
   saveClothes(newClothes: NewClothes, callback) {
     console.log(newClothes);
-    this.http.post((`${environment.serverLocalHost}wardrobe`), newClothes, {responseType: 'text'}).subscribe(
+    this.http.post((`${environment.serverLocalHost}wardrobe`), newClothes, ).subscribe(
       (res) => {
         callback(res);
       });
   }
 
   postImage(image: FormData, callback) {
-    this.http.post((`${environment.serverLocalHost}img`), image, {responseType: 'text'}).subscribe(
+    this.http.post((`${environment.serverLocalHost}img`), image).subscribe(
       (res) => {
         callback(res);
       });

@@ -52,7 +52,7 @@ export class CreateFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.isSubmitted = false;
-    this.options = ['blouse', 't-shirt', 'top', 'trousers', 'dress', 'jeans'];
+    this.options = ['blouse', 'tshirt', 'top', 'trousers', 'dress', 'jeans'];
     this.colorOptions = ['white', 'black', 'red'];
     this.sizeOptions = ['S', 'M', 'L', 'XL'];
     this.styleOptions = ['casual', 'classic'];
@@ -72,21 +72,21 @@ export class CreateFormComponent implements OnInit {
     return this.newCardForm.get('style');
   }
 
-  get imagePath(){
-    return this.newCardForm.get('imagePath');
+  get imageName(){
+    return this.newCardForm.get('imageName');
   }
 
   getSelectValue(event) {
     const selectedValue = event[0];
     const inputName = event[1];
-    console.log(this.newCardForm.get(inputName).setValue(selectedValue.toString().toUpperCase()));
-    console.log(typeof(selectedValue));
+    this.newCardForm.get(inputName).setValue(selectedValue.toString().toUpperCase());
   }
 
   closeForm(event) {
-    console.log('ds');
-    event.preventDefault();
-    this.closeEvent.emit('close');
+    if (event) {
+      event.preventDefault();
+    }
+    this.closeEvent.emit('close')
   }
 
   saveImage(event) {
@@ -94,7 +94,7 @@ export class CreateFormComponent implements OnInit {
 
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      this.newCardForm.get('imagePath').setValue('smth');
+      this.newCardForm.get('imageName').setValue('smth');
       this.imageToSend.get('image').setValue(file);
     }
   }
@@ -102,8 +102,8 @@ export class CreateFormComponent implements OnInit {
   saveItem(event) {
     event.preventDefault();
     this.isSubmitted = true;
-    const getImagePath = (path) => {
-      this.newCardForm.value.imagePath = path;
+    const getImageName = (path) => {
+      this.newCardForm.value.imageName = path.fileName;
 
       const getResponse = (response) => {
         console.log(response);
@@ -116,7 +116,7 @@ export class CreateFormComponent implements OnInit {
     formData.append('file', this.imageToSend.get('image').value);
 
     if (this.newCardForm.valid) {
-      this.createFormService.postImage(formData, getImagePath);
+      this.createFormService.postImage(formData, getImageName);
     }
   }
 
