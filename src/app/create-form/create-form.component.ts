@@ -43,7 +43,7 @@ export class CreateFormComponent implements OnInit {
       Validators.required
     ]),
     code: new FormControl(''),
-    imagePath: new FormControl('', [
+    imageName: new FormControl('', [
       Validators.required
     ])
   });
@@ -107,7 +107,7 @@ export class CreateFormComponent implements OnInit {
 
       const getResponse = (response) => {
         console.log(response);
-        this.closeForm(null);
+        this.closeForm('');
       };
 
       this.createFormService.saveClothes(this.newCardForm.value, getResponse);
