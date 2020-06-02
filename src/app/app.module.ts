@@ -10,9 +10,9 @@ import { WardrobeComponent } from './wardrobe/wardrobe.component';
 import { SelectInputComponent } from './select-input/select-input.component';
 import { CreateFormComponent } from './create-form/create-form.component';
 import { WardrobeModule } from './wardrobe/wardrobe.module';
-import { ItemSliderComponent } from './item-slider/item-slider.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { ItemSliderComponent } from './item-slider/item-slider.component';
 
 @NgModule({
   declarations: [
