@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import IClothes from './item-detail.model';
+import { faPen } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-item-details',
@@ -9,6 +10,7 @@ import IClothes from './item-detail.model';
 export class ItemDetailsComponent implements OnInit {
 
   item: IClothes;
+  faPen = faPen;
   constructor() { }
 
   ngOnInit(): void {

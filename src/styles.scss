@@ -50,6 +50,21 @@ body {
   background-color: transparent;
 }
 
+.btn-pen{
+  box-shadow: $btn-shadow;
+  width: 3.4em;
+  height: 3.4em;
+  display: inline-block;
+  background-color: $pink;
+  border-radius: 0.7em;
+  margin-left: auto;
+
+  & fa-icon{
+    color: #ffffff;
+    font-size: 1.5em;
+  }
+}
+
 .logo {
   font-family: Lato;
   font-size: 2em;

@@ -1,3 +1,5 @@
+@import "../../assets/scss/variables";
+
 .item{
   display: flex;
   flex-direction: column;
@@ -16,7 +18,15 @@
 
 .item__details {
   padding-left: 5em;
-  width: 30%;
+  width: 50%;
+
+  & label {
+    display: flex;
+    align-items: baseline;
+    font-weight: 500;
+    font-size: 1.1em;
+    letter-spacing: 0.1em;
+  }
 }
 
 .item__link {
@@ -38,11 +48,17 @@
   padding: 0;
   margin-bottom: 2em;
   font-size: 1em;
-
-
-  & span{
-    font-weight: 500;
-    font-size: 1.1em;
-    letter-spacing: 0.1em;
-  }
+  border: none;
+  margin-left: 1em;
+  font-weight: 400;
+  font-family: Roboto, serif;
+  color: $default-font-color;
+  width: 40%;
 }
+
+.item-details__wrapper{
+  display: flex;
+  align-items: baseline;
+}
+
+
