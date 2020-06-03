@@ -56,8 +56,9 @@
 }
 
 .item__details-content--active{
-  border: 0.08em solid $light-grey;
+  border: 0.09em solid $light-grey;
   padding: 0.5em;
+  border-radius: 0.3em;
 }
 
 .item-details__wrapper{
