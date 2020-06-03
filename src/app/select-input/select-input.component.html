@@ -1,7 +1,7 @@
 <ng-container>
 <div #selectWrapper class="select-wrapper">
   <ul class="select-list" #selectList>
-    <li (click)="getSelectedValue($event)" *ngFor="let option of options" [attr.data-name]="inputName" class="select-option">{{option}}</li>
+    <li (click)="getSelectedValue($event)" *ngFor="let option of options" [attr.data-name]="inputName" class="select-option">{{option | lowercase}}</li>
   </ul>
   <label (click)="toggleOptions($event)"
          #selectLabel [for]="inputId"
