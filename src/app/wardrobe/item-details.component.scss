@@ -62,20 +62,27 @@
 }
 
 .item-details__wrapper{
+  position: relative;
   display: flex;
   align-items: baseline;
   border-bottom: 1px solid $light-beige;
   padding: 1em 0;
 }
 
-.item-details__save-btn-wrapper{
+.item-details__save-btn-wrapper {
   width: 100%;
   display: flex;
 }
 
-.item-details__save-btn{
+.item-details__save-btn {
   margin: 3em auto;
   width: 28%;
   font-size: 1.3em;
+}
+
+.item-details__select {
+  display: none;
+  width: 57%;
+  text-align: left;
 }
 

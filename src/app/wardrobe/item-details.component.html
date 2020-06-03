@@ -4,38 +4,55 @@
     <a class="item__link">
       <img class="clothes__img item__img" src="../../assets/img/{{item?.imageName}}" alt="clothes">
     </a>
-    <div class="item__details">
+    <form class="item__details" [formGroup]="editForm">
       <div class="item-details__wrapper">
-        <label for="itemDetailsTag">Tag: <input id="itemDetailsTag" class="item__details-content" value="{{item.tag}}" disabled></label>
+        <label for="itemDetailsTag">Tag: <input id="itemDetailsTag" class="item__details-content" value="{{item?.tag}}" disabled></label>
         <button type="button" class="item-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
       </div>
       <div class="item-details__wrapper">
-      <label for="itemDetailCategory">Category: <input id="itemDetailCategory" class="item__details-content" value="{{item.clothType}}" disabled></label>
+        <label class="item-details__label" for="itemDetailCategory">Category: <input id="itemDetailCategory" class="item__details-content" value="{{item?.clothType | titlecase}}" disabled></label>
+        <app-select-input (selectedValue)="getSelectValue($event)"
+                          class="item-details__select"
+                          labelClass="{{clothType.errors && isSubmitted ? 'error-border new-form__error-border' : ''}}"
+                          inputId="new-clothes-category"
+                          inputName="category"
+                          [options]="clothTypeOptions" ></app-select-input>
         <button type="button" class="item-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
       </div>
       <div class="item-details__wrapper">
-      <label for="itemDetailColor">Color: <input id="itemDetailColor" class="item__details-content" value="{{item.color}}" disabled></label>
+      <label class="item-details__label" for="itemDetailColor">Color: <input id="itemDetailColor" class="item__details-content" value="{{item?.color | titlecase}}" disabled></label>
+        <app-select-input (selectedValue)="getSelectValue($event)"
+                          class="item-details__select"
+                          labelClass="{{color.errors && isSubmitted ? 'error-border new-form__error-border' : ''}}"
+                          inputId="new-clothes-color"
+                          inputName="color"
+                          [options]="colorOptions" ></app-select-input>
         <button type="button" class="item-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
       </div>
       <div class="item-details__wrapper">
-      <label for="itemDetailBrand">Brand: <input id="itemDetailBrand" class="item__details-content" value="{{item?.brand}}" disabled></label>
+      <label for="itemDetailBrand">Brand: <input id="itemDetailBrand" class="item__details-content" value="{{item?.brand | titlecase}}" disabled></label>
         <button type="button" class="item-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
       </div>
       <div class="item-details__wrapper">
-      <label for="itemDetailSize">Size: <input id="itemDetailSize" class="item__details-content" value="{{item?.size}}" disabled></label>
+      <label class="item-details__label" for="itemDetailSize">Size: <input id="itemDetailSize" class="item__details-content" value="{{item?.size | titlecase}}" disabled></label>
+        <app-select-input (selectedValue)="getSelectValue($event)"
+                          class="item-details__select"
+                          inputId="new-clothes-size"
+                          inputName="size"
+                          [options]="sizeOptions"></app-select-input>
         <button type="button" class="item-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
       </div>
       <div class="item-details__wrapper">
-      <label for="itemDetailCode">Product Code: <input id="itemDetailCode" class="item__details-content" value="{{item?.code }}" disabled></label>
+      <label for="itemDetailCode">Product Code: <input id="itemDetailCode" class="item__details-content" value="{{item?.code | titlecase}}" disabled></label>
         <button type="button" class="item-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
       </div>
       <div class="item-details__wrapper">
-      <label for="itemDetailLink">Link: <input id="itemDetailLink" class="item__details-content" value="{{item.shopLink ? item.shopLink : 'no link'}}" disabled></label>
+      <label for="itemDetailLink">Link: <input id="itemDetailLink" class="item__details-content" value="{{item?.shopLink ? item.shopLink : 'no link'}}" disabled></label>
         <button type="button" class="item-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
       </div>
-    </div>
+    </form>
   </div>
   <div class="item-details__save-btn-wrapper">
-    <button class="btn btn-pen item-details__save-btn">SAVE</button>
+    <button (click)="saveChanges($event)" type="submit" class="btn btn-pen item-details__save-btn">SAVE</button>
   </div>
 </section>
