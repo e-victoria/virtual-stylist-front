@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import NewClothes from '../wardrobe/newClothes.model';
-import {Observable} from "rxjs";
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class CreateFormService {
 
   saveClothes(newClothes: NewClothes, callback) {
     console.log(newClothes);
-    this.http.post((`${environment.serverLocalHost}wardrobe`), newClothes,).subscribe(
+    this.http.post((`${environment.serverLocalHost}wardrobe`), newClothes).subscribe(
       (res) => {
         callback(res);
       });
@@ -29,6 +29,6 @@ export class CreateFormService {
     this.http.post((`${environment.serverLocalHost}img`), image).subscribe(
       (res) => {
         callback(res);
-      })
+      });
   }
 }

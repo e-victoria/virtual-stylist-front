@@ -6,7 +6,7 @@ export default interface IClothes {
   brand: string;
   style: string;
   size: string;
-  tag: string[];
+  tag: string;
   shopLink: string;
   imageName: string;
   stylizations: string[]; //list of stylisations id

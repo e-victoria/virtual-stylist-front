@@ -1,3 +1,5 @@
+@import "../../assets/scss/variables";
+
 .item{
   display: flex;
   flex-direction: column;
@@ -16,10 +18,19 @@
 
 .item__details {
   padding-left: 5em;
-  width: 30%;
+  width: 50%;
+
+  & label {
+    display: flex;
+    align-items: baseline;
+    font-weight: 500;
+    font-size: 1.1em;
+    letter-spacing: 0.1em;
+  }
 }
 
 .item__link {
+  display: inline-block;
   display: flex;
   width: 30%;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -35,14 +46,44 @@
 }
 
 .item__details-content{
-  padding: 0;
-  margin-bottom: 2em;
+  padding: 0.5em;
   font-size: 1em;
-
-
-  & span{
-    font-weight: 500;
-    font-size: 1.1em;
-    letter-spacing: 0.1em;
-  }
+  border: none;
+  margin-left: 1em;
+  font-weight: 400;
+  font-family: Roboto, serif;
+  color: $default-font-color;
+  width: 40%;
 }
+
+.item__details-content--active{
+  border: 0.09em solid $light-grey;
+  padding: 0.5em;
+  border-radius: 0.3em;
+}
+
+.item-details__wrapper{
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  border-bottom: 1px solid $light-beige;
+  padding: 1em 0;
+}
+
+.item-details__save-btn-wrapper {
+  width: 100%;
+  display: flex;
+}
+
+.item-details__save-btn {
+  margin: 3em auto;
+  width: 28%;
+  font-size: 1.3em;
+}
+
+.item-details__select {
+  display: none;
+  width: 57%;
+  text-align: left;
+}
+

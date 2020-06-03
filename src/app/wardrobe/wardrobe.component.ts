@@ -26,12 +26,12 @@ export class WardrobeComponent implements AfterViewInit, OnInit {
       color: 'red',
       clothType: 'shirt',
       size: 'M',
-      imageName: 'shirt.jpg',
+      imageName: 'path.jpg',
       code: null,
-      tag: ['white'],
+      tag: 'white',
       brand: 'not known',
       shopLink: null,
-      id: 1,
+      id: 2,
       style: 'casual',
       stylizations: null
     };
