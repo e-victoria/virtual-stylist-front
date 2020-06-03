@@ -28,10 +28,10 @@ export class WardrobeComponent implements AfterViewInit, OnInit {
       size: 'M',
       imageName: 'path.jpg',
       code: null,
-      tag: ['white'],
+      tag: 'white',
       brand: 'not known',
       shopLink: null,
-      id: 1,
+      id: 2,
       style: 'casual',
       stylizations: null
     };
