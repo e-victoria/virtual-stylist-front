@@ -11,6 +11,7 @@ export class ItemDetailsComponent implements OnInit {
 
   item: IClothes;
   faPen = faPen;
+  disabled: any;
   constructor() { }
 
   ngOnInit(): void {
@@ -29,6 +30,11 @@ export class ItemDetailsComponent implements OnInit {
     };
   }
 
-
-
+  activateEditMode(event){
+    event.stopPropagation();
+    event.preventDefault();
+    const input = event.currentTarget.parentNode.querySelector('.item__details-content');
+    input.removeAttribute('disabled');
+    input.classList.add('.item__details-content--active');
+  }
 }

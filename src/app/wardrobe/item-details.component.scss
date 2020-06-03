@@ -45,8 +45,7 @@
 }
 
 .item__details-content{
-  padding: 0;
-  margin-bottom: 2em;
+  padding: 0.5em;
   font-size: 1em;
   border: none;
   margin-left: 1em;
@@ -56,9 +55,26 @@
   width: 40%;
 }
 
+.item__details-content--active{
+  border: 0.08em solid $light-grey;
+  padding: 0.5em;
+}
+
 .item-details__wrapper{
   display: flex;
   align-items: baseline;
+  border-bottom: 1px solid $light-beige;
+  padding: 1em 0;
 }
 
+.item-details__save-btn-wrapper{
+  width: 100%;
+  display: flex;
+}
+
+.item-details__save-btn{
+  margin: 3em auto;
+  width: 28%;
+  font-size: 1.3em;
+}
 

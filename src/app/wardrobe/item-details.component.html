@@ -7,32 +7,35 @@
     <div class="item__details">
       <div class="item-details__wrapper">
       <label for="itemDetailsTag">Tag: <input id="itemDetailsTag" class="item__details-content" value="{{item.tag}}" disabled></label>
-        <button type="button" class="item-details__change-btn btn btn-pen"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
+        <button type="button" class="item-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
       </div>
       <div class="item-details__wrapper">
       <label for="itemDetailCategory">Category: <input id="itemDetailCategory" class="item__details-content" value="{{item.clothType}}" disabled></label>
-        <button type="button" class="item-details__change-btn btn btn-pen"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
+        <button type="button" class="item-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
       </div>
       <div class="item-details__wrapper">
       <label for="itemDetailColor">Color: <input id="itemDetailColor" class="item__details-content" value="{{item.color}}" disabled></label>
-        <button type="button" class="item-details__change-btn btn btn-pen"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
+        <button type="button" class="item-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
       </div>
       <div class="item-details__wrapper">
       <label for="itemDetailBrand">Brand: <input id="itemDetailBrand" class="item__details-content" value="{{item?.brand}}" disabled></label>
-        <button type="button" class="item-details__change-btn btn btn-pen"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
+        <button type="button" class="item-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
       </div>
       <div class="item-details__wrapper">
       <label for="itemDetailSize">Size: <input id="itemDetailSize" class="item__details-content" value="{{item?.size}}" disabled></label>
-        <button type="button" class="item-details__change-btn btn btn-pen"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
+        <button type="button" class="item-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
       </div>
       <div class="item-details__wrapper">
       <label for="itemDetailCode">Product Code: <input id="itemDetailCode" class="item__details-content" value="{{item?.code }}" disabled></label>
-        <button type="button" class="item-details__change-btn btn btn-pen"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
+        <button type="button" class="item-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
       </div>
       <div class="item-details__wrapper">
       <label for="itemDetailLink">Link: <input id="itemDetailLink" class="item__details-content" value="{{item.shopLink ? item.shopLink : 'no link'}}" disabled></label>
-        <button type="button" class="item-details__change-btn btn btn-pen"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
+        <button type="button" class="item-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
       </div>
     </div>
+  </div>
+  <div class="item-details__save-btn-wrapper">
+    <button class="btn btn-pen item-details__save-btn">SAVE</button>
   </div>
 </section>
