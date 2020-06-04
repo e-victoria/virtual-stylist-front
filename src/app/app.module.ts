@@ -13,6 +13,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ItemSliderComponent } from './item-slider/item-slider.component';
 import {ItemDetailsComponent} from "./wardrobe/item-details.component";
+import {InfiniteScrollModule} from "ngx-infinite-scroll";
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {ItemDetailsComponent} from "./wardrobe/item-details.component";
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    InfiniteScrollModule
   ],
   providers: [],
   exports: [
