@@ -50,15 +50,19 @@
   }
 }
 
+.active{
+  text-decoration: underline !important;
+}
+
 .site-list__link {
   color: $default-font-color;
   text-decoration: none;
   font-size: 1.1em;
 }
 
-.site-list__link--active {
-  text-decoration: underline;
-}
+//.site-list__link--active {
+//  text-decoration: underline;
+//}
 
 .page-header__logo {
   display: inline-block;
