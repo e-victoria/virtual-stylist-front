@@ -3,16 +3,16 @@
   <nav class="main-nav">
     <ul class="main-nav__list site-list">
       <li class="site-list__item">
-        <a id="menuHome" routerLink="/" class="site-list__link">Home</a>
+        <a id="menuHome" routerLink="/" class="site-list__link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
       </li>
       <li class="site-list__item">
-        <a id="menuWardrobe" routerLink="wardrobe" class="site-list__link">Your wardrobe</a>
+        <a id="menuWardrobe" routerLink="wardrobe" class="site-list__link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Your wardrobe</a>
       </li>
       <li class="site-list__item">
-        <a id="menuStylisations" class="site-list__link">Your stylisations</a>
+        <a id="menuStylisations" routerLink="#" class="site-list__link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Your stylisations</a>
       </li>
       <li class="site-list__item">
-        <a id="menuCreateStyle" class="site-list__link">New stylisation</a>
+        <a id="menuCreateStyle" routerLink="#" class="site-list__link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">New stylisation</a>
       </li>
     </ul>
     <div class="site-list__profile">
