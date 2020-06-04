@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import IClothes from '../wardrobe/item-detail.model';
+import {WardrobeService} from "./wardrobe.service";
 
 @Component({
   selector: 'app-wardrobe',
@@ -9,39 +10,48 @@ import IClothes from '../wardrobe/item-detail.model';
 
 export class WardrobeComponent implements AfterViewInit, OnInit {
 
-  exampleClothesList: IClothes[];
+  private pageNumber: number = 0;
+  private itemsAmountOnPage: number;
+  clothesList: IClothes[];
   @ViewChild('form')
   private form: ElementRef;
+  private isMore: boolean;
 
-  constructor() { }
+  constructor(private wardrobeService: WardrobeService) { }
 
   ngAfterViewInit(): void {
     document.getElementById('menuWardrobe').classList.add('site-list__link--active');
   }
 
   ngOnInit(): void {
-    this.exampleClothesList = [];
-    // Example clothes list below:
-    let item: IClothes = {
-      color: 'red',
-      clothType: 'shirt',
-      size: 'M',
-      imageName: 'path.jpg',
-      code: null,
-      tag: 'white',
-      brand: 'not known',
-      shopLink: null,
-      id: 2,
-      style: 'casual',
-      stylizations: null
-    };
+    this.itemsAmountOnPage = 8;
+    this.clothesList = [];
 
-    for (let i = 0; i < 8; i++) {
-      this.exampleClothesList.push(item);
+    this.wardrobeService.getItems(this.itemsAmountOnPage, this.pageNumber).subscribe({
+      next: data => {
+        this.clothesList = data['content'];
+        this.isMore = data['last'];
+        console.log(data)
+      }
+    })
+
+  }
+
+  onScroll() {
+    this.pageNumber++;
+
+    if (!this.isMore) {
+      this.wardrobeService.getItems(this.itemsAmountOnPage, this.pageNumber).subscribe({
+        next: data => {
+          for (let item of data['content']) {
+            this.clothesList.push(item);
+            this.isMore = data['last'];
+          }
+        }
+      })
     }
 
-    console.log(item.imageName);
-
+    console.log('scrolled!!');
   }
 
   openForm(event) {
