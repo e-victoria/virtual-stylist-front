@@ -17,7 +17,6 @@ export class WardrobeComponent implements AfterViewInit, OnInit {
   @ViewChild('form')
   private form: ElementRef;
   private isMore: boolean;
-  emptyImageName: string = 'empty.png';
   localHost: string = environment.serverLocalHost;
 
   constructor(private wardrobeService: WardrobeService) { }

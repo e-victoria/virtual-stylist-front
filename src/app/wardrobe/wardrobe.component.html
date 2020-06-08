@@ -12,7 +12,7 @@
     <ul class="clothes__list">
       <li class="clothes__item" *ngFor="let clothes of clothesList">
         <a class="clothes__link" [routerLink]="['/wardrobe', clothes.id]">
-          <img class="clothes__img" src="{{localHost}}{{clothes?.imageName ? clothes.imageName : emptyImageName}}" alt="clothes">
+          <img class="clothes__img" src="{{localHost}}{{clothes?.imageName}}" default="../../assets/img/empty.png"  alt="clothes">
         </a>
       </li>
     </ul>
