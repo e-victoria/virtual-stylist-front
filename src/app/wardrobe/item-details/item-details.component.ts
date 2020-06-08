@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import IClothes from './item-detail.model';
+import IClothes from '../models/item-detail.model';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import {ItemDetailService} from "./item-details.service";
 import {Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {CreateFormService} from "../create-form/create-form.service";
+import {CreateFormService} from "../../create-form/create-form.service";
 
 @Component({
   selector: 'app-item-details',
   templateUrl: './item-details.component.html',
-  styleUrls: ['./item-details.component.scss', './wardrobe.component.scss']
+  styleUrls: ['./item-details.component.scss', '../wardrobe.component.scss']
 })
 export class ItemDetailsComponent implements OnInit {
 

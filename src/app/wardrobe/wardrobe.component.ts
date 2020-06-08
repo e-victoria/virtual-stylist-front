@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
-import IClothes from '../wardrobe/item-detail.model';
-import {WardrobeService} from "./wardrobe.service";
+import IClothes from './models/item-detail.model';
+import {WardrobeService} from './wardrobe.service';
+import {environment} from '../../environments/environment';
 
 @Component({
   selector: 'app-wardrobe',
@@ -16,6 +17,8 @@ export class WardrobeComponent implements AfterViewInit, OnInit {
   @ViewChild('form')
   private form: ElementRef;
   private isMore: boolean;
+  emptyImageName: string = 'empty.png';
+  localHost: string = environment.serverLocalHost;
 
   constructor(private wardrobeService: WardrobeService) { }
 
@@ -31,9 +34,9 @@ export class WardrobeComponent implements AfterViewInit, OnInit {
       next: data => {
         this.clothesList = data['content'];
         this.isMore = data['last'];
-        console.log(data)
+        console.log(data);
       }
-    })
+    });
 
   }
 
@@ -48,7 +51,7 @@ export class WardrobeComponent implements AfterViewInit, OnInit {
             this.isMore = data['last'];
           }
         }
-      })
+      });
     }
 
     console.log('scrolled!!');
@@ -60,7 +63,7 @@ export class WardrobeComponent implements AfterViewInit, OnInit {
   }
 
   closePopUp(event) {
-    console.log(event)
+    console.log(event);
     if (event === 'close') {
       this.form.nativeElement.classList.remove('show-flex');
     }
