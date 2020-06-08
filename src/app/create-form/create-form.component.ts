@@ -22,8 +22,8 @@ export class CreateFormComponent implements OnInit {
   colorOptions: string[];
   sizeOptions: string[];
   styleOptions: string[];
-  @Output()
-  closeEvent: EventEmitter<string> = new EventEmitter<string>();
+  @Output() closeEvent: EventEmitter<string> = new EventEmitter<string>();
+  isImageRight: boolean = false;
   private imageToSend: FormGroup = this.formBuilder.group({
     image: ['']
   });
@@ -75,7 +75,7 @@ export class CreateFormComponent implements OnInit {
     this.createFormService.getSelectOptions().subscribe({
       next: options => {
         this.sizeOptions = options['Size'];
-        this.styleOptions = options['Style']
+        this.styleOptions = options['Style'];
         this.colorOptions = options['Color'];
         this.clothTypeOptions = options['ClothType'];
       }
@@ -92,7 +92,7 @@ export class CreateFormComponent implements OnInit {
     if (event) {
       event.preventDefault();
     }
-    this.closeEvent.emit('close')
+    this.closeEvent.emit('close');
   }
 
   saveImage(event) {
@@ -100,8 +100,11 @@ export class CreateFormComponent implements OnInit {
 
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      this.newCardForm.get('imageName').setValue('smth');
-      this.imageToSend.get('image').setValue(file);
+      if (file.size <= 500000){
+        this.newCardForm.get('imageName').setValue('smth');
+        this.imageToSend.get('image').setValue(file);
+        this.isImageRight = true;
+      }
     }
   }
 
