@@ -12,8 +12,9 @@ import { CreateFormComponent } from './create-form/create-form.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ItemSliderComponent } from './item-slider/item-slider.component';
-import {ItemDetailsComponent} from "./wardrobe/item-details.component";
+import {ItemDetailsComponent} from "./wardrobe/item-details/item-details.component";
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
+import { ImagePreloadDirective } from './image-preload.directive';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {InfiniteScrollModule} from "ngx-infinite-scroll";
     CreateFormComponent,
     SelectInputComponent,
     ItemSliderComponent,
-    ItemDetailsComponent
+    ItemDetailsComponent,
+    ImagePreloadDirective
   ],
   imports: [
     BrowserModule,

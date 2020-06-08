@@ -2,7 +2,7 @@
   <h2 class="section-title">Clothes Detail</h2>
   <div class="item__wrapper">
     <a class="item__link">
-      <img class="clothes__img item__img" src="../../assets/img/{{item?.imageName}}" alt="clothes">
+      <img class="clothes__img item__img" src="../../assets/img/{{localHost}}{{item?.imageName}}"  default="../../assets/img/empty.png" alt="clothes">
     </a>
     <form class="item__details" [formGroup]="editForm">
       <div class="item-details__wrapper">

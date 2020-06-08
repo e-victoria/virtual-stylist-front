@@ -9,6 +9,7 @@
       <p class="form-errors__message" *ngIf="color.errors?.required && isSubmitted">Color is required</p>
       <p class="form-errors__message" *ngIf="style.errors?.required && isSubmitted">Style is required</p>
       <p class="form-errors__message" *ngIf="imageName.errors?.required && isSubmitted">Image is required</p>
+      <p class="form-errors__message" *ngIf="isSubmitted && !isImageRight">Image should be under 5MB</p>
     </div>
     <label for="new-clothes-tag" class="visually-hidden"></label>
     <input id="new-clothes-tag" class="form-input add-card__input" type="text" formControlName="tag" placeholder="Tag #MyFavouriteDress">
@@ -48,7 +49,7 @@
     <button class="btn upload-photo__btn" type="button" (click)="filePicker.click()"><fa-icon [icon]="faCloudUploadAlt"></fa-icon> Upload photo*
       <input #filePicker
              (change)="saveImage($event)"
-             class="new-clothes__photo-input"
+             class="new-clothes__photo-input {{ isSubmitted && !isImageRight ? 'error-border new-form__error-border' : ''}}"
              type="file"
              accept="image/*" hidden>
     </button>

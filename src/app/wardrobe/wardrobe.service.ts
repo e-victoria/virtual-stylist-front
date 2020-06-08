@@ -12,7 +12,7 @@ export class WardrobeService {
   constructor(private http: HttpClient) {}
 
   getItems(itemsAmount: number, pageNumber: number): Observable<object[]> {
-    return this.http.get<object[]>(`${environment.serverLocalHost}wardrobe?pageSize=${itemsAmount}&pageNo=${pageNumber}`)
+    return this.http.get<object[]>(`${environment.serverLocalHost}/wardrobe?pageSize=${itemsAmount}&pageNo=${pageNumber}`)
       .pipe();
   }
 
