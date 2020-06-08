@@ -5,6 +5,7 @@ import {ItemDetailService} from "./item-details.service";
 import {Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CreateFormService} from "../../create-form/create-form.service";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-item-details',
@@ -21,6 +22,7 @@ export class ItemDetailsComponent implements OnInit {
   clothTypeOptions: string[];
   styleOptions: string[];
   newInfo: IClothes;
+  localHost: string = environment.serverLocalHost;
   private itemId: number;
 
   editForm: FormGroup = new FormGroup({
