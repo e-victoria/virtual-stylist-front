@@ -15,6 +15,9 @@ import { ItemSliderComponent } from './item-slider/item-slider.component';
 import {ItemDetailsComponent} from "./wardrobe/item-details/item-details.component";
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
 import { ImagePreloadDirective } from './image-preload.directive';
+import { RegisterComponent } from './auth/register/register.component';
+import { AuthComponent } from './auth/auth.component';
+import { LoginComponent } from './auth/login/login.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { ImagePreloadDirective } from './image-preload.directive';
     SelectInputComponent,
     ItemSliderComponent,
     ItemDetailsComponent,
-    ImagePreloadDirective
+    ImagePreloadDirective,
+    RegisterComponent,
+    AuthComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

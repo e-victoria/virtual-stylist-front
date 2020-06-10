@@ -1,0 +1,18 @@
+#register-password-confirmation{
+  margin-bottom: 0.9em;
+}
+
+.register__form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register__input,
+.register__select {
+  width: 100%;
+}
+
+.register__btn{
+  margin-top: 2.7em;
+}
