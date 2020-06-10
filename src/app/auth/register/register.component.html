@@ -1,5 +1,5 @@
 <h2 class="section-title">Register</h2>
-<form enctype="multipart/form-data" class="register__form" [formGroup]="newRegisterForm">
+<form enctype="multipart/form-data" class="login__form" [formGroup]="newRegisterForm">
   <div *ngIf="isSubmitted && !newRegisterForm.valid" class="new-clothes__errors form-errors">
     <p class="form-errors__message" *ngIf="email.errors?.required && isSubmitted">Email is required</p>
     <p class="form-errors__message" *ngIf="name.errors?.required && isSubmitted">Name is required</p>
