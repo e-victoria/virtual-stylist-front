@@ -32,5 +32,6 @@ export class LoginComponent {
 
   checkUser(event): void {
     event.preventDefault();
+    this.isSubmitted = true;
   }
 }

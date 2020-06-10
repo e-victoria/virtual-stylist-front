@@ -1,13 +1,13 @@
 <h2 class="section-title">Sign In</h2>
 <form enctype="multipart/form-data" class="login__form" [formGroup]="loginForm">
-  <div *ngIf="isSubmitted && !loginForm.valid" class="new-clothes__errors form-errors">
+  <div *ngIf="isSubmitted && !loginForm.valid" class="login__errors form-errors">
     <p class="form-errors__message" *ngIf="email.errors?.required && isSubmitted">Email is required</p>
     <p class="form-errors__message" *ngIf="password.errors?.required && isSubmitted">Password is required</p>
   </div>
   <label for="login-email" class="visually-hidden"></label>
-  <input id="login-email" class="form-input login__input" type="text" formControlName="email" placeholder="Email">
+  <input id="login-email" class="{{email.errors && isSubmitted ? 'error-border new-form__error-border' : ''}} form-input login__input" type="text" formControlName="email" placeholder="Email">
   <label for="login-password" class="visually-hidden"></label>
-  <input id="login-password" class="form-input login__input" type="password" formControlName="password" placeholder="Password">
+  <input id="login-password" class="{{password.errors && isSubmitted ? 'error-border new-form__error-border' : ''}} form-input login__input" type="password" formControlName="password" placeholder="Password">
   <a href="#" class="login__reminder">Forgot your password?</a>
   <button (click)="checkUser($event)" class="btn login__btn form-button" type="submit">Login</button>
 

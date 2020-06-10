@@ -1,21 +1,23 @@
 <h2 class="section-title">Register</h2>
 <form enctype="multipart/form-data" class="login__form" [formGroup]="newRegisterForm">
-  <div *ngIf="isSubmitted && !newRegisterForm.valid" class="new-clothes__errors form-errors">
+  <div *ngIf="isSubmitted && !newRegisterForm.valid" class="register__errors form-errors">
     <p class="form-errors__message" *ngIf="email.errors?.required && isSubmitted">Email is required</p>
     <p class="form-errors__message" *ngIf="name.errors?.required && isSubmitted">Name is required</p>
     <p class="form-errors__message" *ngIf="password.errors?.required && isSubmitted">Password is required</p>
     <p class="form-errors__message" *ngIf="passwordConfirmation.errors?.required && isSubmitted">Password confirmation is required</p>
+    <p class="form-errors__message" *ngIf="password.errors?.minlength && isSubmitted">Password should be longer than 6 characters</p>
+    <p class="form-errors__message" *ngIf="passwordConfirmation.errors?.passwordNotMatch && isSubmitted">Passwords do not match</p>
     <p class="form-errors__message" *ngIf="gender.errors?.required && isSubmitted">Gender is required</p>
 
   </div>
   <label for="register-email" class="visually-hidden"></label>
-  <input id="register-email" class="form-input register__input" type="text" formControlName="email" placeholder="Email">
+  <input id="register-email" class="{{email.errors && isSubmitted ? 'error-border new-form__error-border' : ''}} form-input register__input" type="text" formControlName="email" placeholder="Email">
   <label for="register-name" class="visually-hidden"></label>
-  <input id="register-name" class="form-input register__input" type="text" formControlName="name" placeholder="Name">
+  <input id="register-name" class="{{name.errors && isSubmitted ? 'error-border new-form__error-border' : ''}} form-input register__input" type="text" formControlName="name" placeholder="Name">
   <label for="register-password" class="visually-hidden"></label>
-  <input id="register-password" class="form-input register__input" type="password" formControlName="password" placeholder="Password">
+  <input id="register-password" class="{{password.errors && isSubmitted ? 'error-border new-form__error-border' : ''}} form-input register__input" type="password" formControlName="password" placeholder="Password">
   <label for="register-password-confirmation" class="visually-hidden"></label>
-  <input id="register-password-confirmation" class="form-input register__input" type="password" formControlName="passwordConfirmation" placeholder="Confirm Password">
+  <input id="register-password-confirmation" class="{{passwordConfirmation.errors && isSubmitted ? 'error-border new-form__error-border' : ''}} form-input register__input" type="password" formControlName="passwordConfirmation" placeholder="Confirm Password">
   <app-select-input (selectedValue)="getSelectValue($event)"
                     class="register__select register__select--gender"
                     labelClass="{{gender.errors && isSubmitted ? 'error-border new-form__error-border' : ''}}"
