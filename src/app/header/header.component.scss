@@ -58,6 +58,10 @@
   color: $default-font-color;
   text-decoration: none;
   font-size: 1.1em;
+
+  &:hover {
+    color: $darker-font-color;
+  }
 }
 
 //.site-list__link--active {
@@ -126,11 +130,15 @@
 
 .auth-icon{
   position: absolute;
-  top: 0.7em;
-  right:3.4em;
+  top: 0.5em;
+  right: 2em;
+
+  &:hover fa-icon {
+    color: $darker-font-color;
+  }
 
   & fa-icon{
-    font-size: 1.5em;
+    font-size: 1.7em;
     color: $default-font-color;
   }
 }
