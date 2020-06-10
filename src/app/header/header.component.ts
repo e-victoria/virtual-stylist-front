@@ -1,5 +1,7 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-header',
@@ -9,6 +11,7 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 export class HeaderComponent implements AfterViewInit, OnInit {
 
   faUser = faUser;
+  faSignInAlt = faSignInAlt;
   @ViewChild('profileMenu')
   private profileMenu: ElementRef;
   @ViewChild('logo')

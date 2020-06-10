@@ -124,3 +124,13 @@
   font-size: 1.1em;
 }
 
+.auth-icon{
+  position: absolute;
+  top: 0.7em;
+  right:3.4em;
+
+  & fa-icon{
+    font-size: 1.5em;
+    color: $default-font-color;
+  }
+}
