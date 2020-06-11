@@ -1,23 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {RegisterService} from "./register.service";
+import User from "../../user/user.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
 
+  hasResponse: boolean = false;
   genderOptions: string[];
   isSubmitted: boolean = false;
+  emailExists: boolean = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private registerService: RegisterService, private router: Router) {
     this.genderOptions = [
       'male', 'female', 'other'
     ];
-  }
-
-  ngOnInit(): void {
   }
 
   newRegisterForm: FormGroup = new FormGroup({
@@ -65,13 +67,23 @@ export class RegisterComponent implements OnInit {
   saveUser(event){
     event.preventDefault();
 
+    const getResponse = (response) => {
+      this.hasResponse = true;
+      if(response.error === 'The email is already registered') {
+        this.emailExists = true;
+      } else {
+        this.router.navigate(['/']);
+      }
+    }
+
+    if (this.newRegisterForm.valid) {
+      this.registerService.registerNewUser(<User>this.newRegisterForm.value, getResponse)
+    }
+
     this.isSubmitted = true;
   }
 
   checkPasswords(formGroup: FormGroup) {
-    const { value: password } = formGroup.get('password');
-    const { value: confirmPassword } = formGroup.get('passwordConfirmation');
-
-    return password === confirmPassword ? null : formGroup.get('passwordConfirmation').setErrors({'passwordNotMatch': true});
+    this.registerService.checkPasswords(formGroup);
   }
 }
