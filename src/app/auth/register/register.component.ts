@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +10,8 @@ export class RegisterComponent implements OnInit {
 
   genderOptions: string[];
   isSubmitted: boolean = false;
-  constructor() {
+
+  constructor(private fb: FormBuilder) {
     this.genderOptions = [
       'male', 'female', 'other'
     ];
@@ -28,7 +29,8 @@ export class RegisterComponent implements OnInit {
       Validators.required
     ]),
     password: new FormControl('', [
-      Validators.required
+      Validators.required,
+      Validators.minLength(6)
     ]),
     passwordConfirmation: new FormControl('', [
       Validators.required
@@ -36,7 +38,7 @@ export class RegisterComponent implements OnInit {
     gender: new FormControl('', [
       Validators.required
     ])
-  });
+  }, {validators: this.checkPasswords.bind(this)});
 
   get email(){
     return this.newRegisterForm.get('email');
@@ -62,5 +64,14 @@ export class RegisterComponent implements OnInit {
 
   saveUser(event){
     event.preventDefault();
+
+    this.isSubmitted = true;
+  }
+
+  checkPasswords(formGroup: FormGroup) {
+    const { value: password } = formGroup.get('password');
+    const { value: confirmPassword } = formGroup.get('passwordConfirmation');
+
+    return password === confirmPassword ? null : formGroup.get('passwordConfirmation').setErrors({'passwordNotMatch': true});
   }
 }
