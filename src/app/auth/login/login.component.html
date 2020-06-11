@@ -5,11 +5,13 @@
     <p class="form-errors__message" *ngIf="email.errors?.email && isSubmitted">Email is invalid</p>
     <p class="form-errors__message" *ngIf="password.errors?.required && isSubmitted">Password is required</p>
   </div>
+  <div *ngIf="hasResponse" class="register__errors form-errors">
+    <p class="form-errors__message" *ngIf="isUserDataIncorrect">Wrong login or password</p>
+  </div>
   <label for="login-email" class="visually-hidden"></label>
   <input id="login-email" class="{{email.errors && isSubmitted ? 'error-border new-form__error-border' : ''}} form-input login__input" type="text" formControlName="email" placeholder="Email">
   <label for="login-password" class="visually-hidden"></label>
   <input id="login-password" class="{{password.errors && isSubmitted ? 'error-border new-form__error-border' : ''}} form-input login__input" type="password" formControlName="password" placeholder="Password">
   <a href="#" class="login__reminder">Forgot your password?</a>
   <button (click)="checkUser($event)" class="btn login__btn form-button" type="submit">Login</button>
-
 </form>
