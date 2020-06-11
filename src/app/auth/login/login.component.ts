@@ -10,8 +10,8 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent {
 
-  private hasResponse: boolean = false;
-  private isUserDataIncorrect: boolean = false;
+  hasResponse: boolean = false;
+  isUserDataIncorrect: boolean = false;
   isSubmitted: boolean = false;
 
   loginForm: FormGroup = new FormGroup({
@@ -27,6 +27,7 @@ export class LoginComponent {
   constructor(private loginService: LoginService, private router: Router) { }
 
   get email(){
+    this.loginForm.get('email').setValue(this.loginForm.get('email').value.trim())
     return this.loginForm.get('email');
   }
 
@@ -43,6 +44,8 @@ export class LoginComponent {
       'password': this.loginForm.value.password
     }
 
+    console.log(userData)
+
     const getResponse = (response) => {
       this.hasResponse = true;
       if(response.error === 'User not found!') {
@@ -52,6 +55,8 @@ export class LoginComponent {
       }
     }
 
-    this.loginService.checkUser(userData, getResponse);
+    if (this.loginForm.valid) {
+      this.loginService.checkUser(userData, getResponse);
+    }
   }
 }
