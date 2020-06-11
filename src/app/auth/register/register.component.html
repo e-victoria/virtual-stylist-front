@@ -9,7 +9,9 @@
     <p class="form-errors__message" *ngIf="password.errors?.minlength && isSubmitted">Password should be longer than 6 characters</p>
     <p class="form-errors__message" *ngIf="passwordConfirmation.errors?.passwordNotMatch && isSubmitted">Passwords do not match</p>
     <p class="form-errors__message" *ngIf="gender.errors?.required && isSubmitted">Gender is required</p>
-
+  </div>
+  <div *ngIf="hasResponse" class="register__errors form-errors">
+    <p class="form-errors__message" *ngIf="emailExists">User already exists</p>
   </div>
   <label for="register-email" class="visually-hidden"></label>
   <input id="register-email" class="{{email.errors && isSubmitted ? 'error-border new-form__error-border' : ''}} form-input register__input" type="text" formControlName="email" placeholder="Email">
