@@ -6,6 +6,7 @@ import {Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CreateFormService} from "../../create-form/create-form.service";
 import {environment} from "../../../environments/environment";
+import {WardrobeService} from "../wardrobe.service";
 
 @Component({
   selector: 'app-item-details',
@@ -14,6 +15,7 @@ import {environment} from "../../../environments/environment";
 })
 export class ItemDetailsComponent implements OnInit {
 
+  image: string;
   item: IClothes;
   faPen = faPen;
   isSubmitted: boolean = false;
@@ -42,7 +44,7 @@ export class ItemDetailsComponent implements OnInit {
     code: new FormControl('')
   });
 
-  constructor(private itemDetailService: ItemDetailService, private router: Router, private createFormService: CreateFormService) { }
+  constructor(private itemDetailService: ItemDetailService, private router: Router, private createFormService: CreateFormService, private wardrobeService: WardrobeService) { }
 
   ngOnInit(): void {
     this.itemId = Number.parseInt(this.router.url.split('/').pop());
@@ -68,6 +70,13 @@ export class ItemDetailsComponent implements OnInit {
     this.editForm.get(inputName).setValue(selectedValue.toString().toUpperCase());
   }
 
+  getImage(imageName) {
+    const getImage = (image) => {
+      this.image = image;
+    }
+    this.wardrobeService.getImage(imageName, getImage)
+  }
+
   getItemData(id: number) {
     this.itemDetailService.getItemData(id).subscribe({
       next: data => {
@@ -77,6 +86,7 @@ export class ItemDetailsComponent implements OnInit {
             this.editForm.get(Object.keys(data)[i]).setValue(data[Object.keys(data)[i]]);
           }
         }
+        this.getImage(data.imageName);
       }
     });
   }
