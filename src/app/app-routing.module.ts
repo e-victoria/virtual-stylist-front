@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {WardrobeComponent} from './wardrobe/wardrobe.component';
 import { ItemDetailsComponent } from './wardrobe/item-details/item-details.component';
-import {RegisterComponent} from './auth/register/register.component';
 import {AuthComponent} from './auth/auth.component';
+import {UserGuard} from "./user.guard";
 
 
 const routes: Routes = [
-  { path: 'wardrobe', component: WardrobeComponent },
-  { path: 'wardrobe/:id', component: ItemDetailsComponent},
+  { path: 'wardrobe', component: WardrobeComponent, canActivate: [UserGuard] },
+  { path: 'wardrobe/:id', component: ItemDetailsComponent, canActivate: [UserGuard]},
   { path: 'auth', component: AuthComponent }
 ];
 

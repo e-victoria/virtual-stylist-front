@@ -48,6 +48,7 @@ export class LoginComponent {
 
     const getResponse = (response) => {
       this.hasResponse = true;
+      this.loginService.saveToken(response.token);
       if(response.error) {
         this.isUserDataIncorrect = true;
       } else {
