@@ -9,7 +9,7 @@ import { WardrobeComponent } from './wardrobe/wardrobe.component';
 
 import { SelectInputComponent } from './select-input/select-input.component';
 import { CreateFormComponent } from './create-form/create-form.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ItemSliderComponent } from './item-slider/item-slider.component';
 import {ItemDetailsComponent} from "./wardrobe/item-details/item-details.component";
@@ -19,6 +19,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './auth/login/login.component';
 import { UserComponent } from './user/user.component';
+import {TokenInterceptor} from "./token.interceptor";
 
 @NgModule({
   declarations: [
@@ -45,7 +46,13 @@ import { UserComponent } from './user/user.component';
     FontAwesomeModule,
     InfiniteScrollModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   exports: [
     SelectInputComponent
   ],
