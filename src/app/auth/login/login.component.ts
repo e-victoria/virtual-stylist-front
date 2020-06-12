@@ -48,7 +48,7 @@ export class LoginComponent {
 
     const getResponse = (response) => {
       this.hasResponse = true;
-      if(response.error === 'User not found!') {
+      if(response.error) {
         this.isUserDataIncorrect = true;
       } else {
         this.router.navigate(['/']);
