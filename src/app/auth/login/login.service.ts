@@ -1,16 +1,20 @@
 import { Injectable } from '@angular/core';
 import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   saveToken(token: string): void {
     localStorage.setItem('token', token);
+    window.setTimeout(() => {
+      localStorage.removeItem('token');
+    }, 900000)
   }
 
   checkUser(userData: object, callback): void {
@@ -21,5 +25,15 @@ export class LoginService {
       (error) => {
         callback(error)
       });
+  }
+
+  logOut() {
+    localStorage.removeItem('token');
+    console.log(this.router.url)
+    if (this.router.url !== '/') {
+      this.router.navigate(['']);
+    } else {
+      window.location.reload();
+    }
   }
 }
