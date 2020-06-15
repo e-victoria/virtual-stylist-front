@@ -29,7 +29,6 @@ export class LoginService {
 
   logOut() {
     localStorage.removeItem('token');
-    console.log(this.router.url)
     if (this.router.url !== '/') {
       this.router.navigate(['']);
     } else {

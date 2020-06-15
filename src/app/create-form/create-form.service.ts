@@ -18,7 +18,6 @@ export class CreateFormService {
   }
 
   saveClothes(newClothes: NewClothes, callback) {
-    console.log(newClothes);
     this.http.post((`${environment.serverLocalHost}/wardrobe`), newClothes).subscribe(
       (res) => {
         callback(res);
