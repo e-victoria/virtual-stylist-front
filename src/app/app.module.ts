@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { WardrobeComponent } from './wardrobe/wardrobe.component';
+import { ProfileComponent } from './profile/profile.component';
 
 import { SelectInputComponent } from './select-input/select-input.component';
 import { CreateFormComponent } from './create-form/create-form.component';
@@ -20,7 +21,6 @@ import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './auth/login/login.component';
 import { UserComponent } from './user/user.component';
 import {TokenInterceptor} from "./token.interceptor";
-import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [

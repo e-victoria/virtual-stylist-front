@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import {Observable} from 'rxjs';
 import IProfile from '../profile/profile.model';
@@ -12,15 +12,15 @@ export class ProfileService {
 
   constructor(private http: HttpClient) {}
 
-  getUserData(id: number): Observable<IProfile> {
-    return this.http.get<IProfile>(`${environment.serverLocalHost}/user/${id}`)
+  getUserData(): Observable<IProfile> {
+    return this.http.get<IProfile>(`${environment.serverLocalHost}/user/details`)
       .pipe();
   }
 
 
-  saveChanges(newProfile: IProfile, id: number, callback) {
+  saveChanges(newProfile: IProfile, callback) {
     console.log(newProfile);
-    this.http.put((`${environment.serverLocalHost}/user/${id}`), newProfile).subscribe(
+    this.http.put((`${environment.serverLocalHost}/user`), newProfile).subscribe(
       (res) => {
         callback(res);
       });
