@@ -1,0 +1,48 @@
+<section class="profile">
+  <h2 class="section-title">Profile</h2>
+  <div class="profile__wrapper">
+    <form class="profile__details" [formGroup]="editForm">
+
+      <div class="profile-details__wrapper">
+        <label for="profileName">
+          <input id="profileName"
+                 class="profile__details-content profile__details-content--disabled" value="{{profile?.name | titlecase }}" disabled></label>
+        <button type="button" class="profile-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
+      </div>
+
+      <div class="profile-details__wrapper">
+        <label class="profile-details__label" for="profileGender">
+          <input id="profileGender" class="profile__details-content" value="{{profile?.gender | titlecase}}" disabled></label>
+        <app-select-input (selectedValue)="getSelectValue($event)"
+                          class="profile-details__select"
+                          labelClass="{{gender.errors && isSubmitted ? 'error-border new-form__error-border' : ''}}"
+                          inputId="new-clothes-category"
+                          inputName="Gender"
+                          [options]="genderOption"></app-select-input>
+        <button type="button" class="item-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
+      </div>
+      <div class="profile-details__wrapper">
+        <label for="profileEmail">
+          <input id="profileEmail"
+                 class="profile__details-content profile__details-content--disabled" value="{{profile?.email}}" disabled></label>
+        <button type="button" class="profile-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
+      </div>
+      <div class="profile-details__wrapper">
+        <label for="profilePassword">
+          <input id="profilePassword"
+                 class="profile__details-content profile__details-content--disabled" value="{{profile?.password}}" disabled></label>
+        <button type="button" class="profile-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
+      </div>
+      <div class="profile-details__wrapper">
+        <label for="profilePasswordConfirmation">
+          <input id="profilePasswordConfirmation"
+                 class="profile__details-content profile__details-content--disabled"
+                 value="{{profile?.password}}" disabled></label>
+      </div>
+
+    </form>
+  </div>
+  <div class="profile-details__save-btn-wrapper">
+    <button (click)="saveChanges($event)" type="submit" class="btn btn-pen profile-details__save-btn">SAVE</button>
+  </div>
+</section>
