@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {RegisterService} from '../auth/register/register.service';
+import IProfile from './profile.model';
+import { faPen } from '@fortawesome/free-solid-svg-icons';
 import {Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import User from '../user/user.model';
-import { faPen } from '@fortawesome/free-solid-svg-icons';
+import {CreateFormService} from '../create-form/create-form.service';
+import {environment} from '../../environments/environment';
+import {ProfileService} from './profile.service';
+import {ItemDetailService} from '../wardrobe/item-details/item-details.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,81 +15,72 @@ import { faPen } from '@fortawesome/free-solid-svg-icons';
 })
 export class ProfileComponent implements OnInit {
 
-  hasResponse: boolean = false;
-  genderOptions: string[];
-  isSubmitted: boolean = false;
-  emailExists: boolean = false;
+  profile: IProfile;
   faPen = faPen;
+  isSubmitted: boolean = false;
+  genderOption: string[];
+  newInfo: IProfile;
+  localHost: string = environment.serverLocalHost;
+  private userId: number;
 
-  constructor(private registerService: RegisterService, private router: Router) {
-    this.genderOptions = [
-      'male', 'female', 'other'
-    ];
-  }
-
-  newRegisterForm: FormGroup = new FormGroup({
-    email: new FormControl('', [
-      Validators.required,
-      Validators.email
+  editForm: FormGroup = new FormGroup({
+    gender: new FormControl('', [
+      Validators.required
     ]),
-    name: new FormControl('', [
+    name: new FormControl(''),
+    email: new FormControl('', [
       Validators.required
     ]),
     password: new FormControl('', [
-      Validators.required,
-      Validators.minLength(6)
+      Validators.required
     ]),
     passwordConfirmation: new FormControl('', [
       Validators.required
-    ]),
-    gender: new FormControl('', [
-      Validators.required
     ])
-  }, {validators: this.checkPasswords.bind(this)});
+  });
+
+  constructor(private profileService: ProfileService, private router: Router) { }
+
+  ngOnInit(): void {
+    this.userId = Number.parseInt(this.router.url.split('/').pop());
+    this.getItemData(this.userId);
+    this.getSelectOptions();
+  }
+
+  get name() {
+    return this.editForm.get('name');
+  }
+
+  get gender(){
+    return this.editForm.get('gender');
+  }
 
   get email(){
-    return this.newRegisterForm.get('email');
-  }
-  get name(){
-    return this.newRegisterForm.get('name');
+    return this.editForm.get('email');
   }
   get password(){
-    return this.newRegisterForm.get('password');
-  }
-  get passwordConfirmation(){
-    return this.newRegisterForm.get('passwordConfirmation');
-  }
-  get gender(){
-    return this.newRegisterForm.get('gender');
+    console.log(this.editForm.get('password'));
+    return this.editForm.get('password');
   }
 
   getSelectValue(event) {
     const selectedValue = event[0];
     const inputName = event[1];
-    this.newRegisterForm.get(inputName).setValue(selectedValue.toString().toUpperCase());
+    this.editForm.get(inputName).setValue(selectedValue.toString().toUpperCase());
   }
 
-  saveUser(event){
-    event.preventDefault();
 
-    const getResponse = (response) => {
-      this.hasResponse = true;
-      if(response.error === 'The email is already registered') {
-        this.emailExists = true;
-      } else {
-        this.router.navigate(['/']);
+  getItemData(id: number) {
+    this.profileService.getUserData(id).subscribe({
+      next: data => {
+        this.profile = data;
+        for (let i = 0; i < Object.keys(data).length; i++) {
+          if (this.editForm.get(Object.keys(data)[i])) {
+            this.editForm.get(Object.keys(data)[i]).setValue(data[Object.keys(data)[i]]);
+          }
+        }
       }
-    }
-
-    if (this.newRegisterForm.valid) {
-      this.registerService.registerNewUser(<User>this.newRegisterForm.value, getResponse)
-    }
-
-    this.isSubmitted = true;
-  }
-
-  checkPasswords(formGroup: FormGroup) {
-    this.registerService.checkPasswords(formGroup);
+    });
   }
 
   activateEditMode(event){
@@ -102,10 +96,29 @@ export class ProfileComponent implements OnInit {
 
     if(input) {
       input.removeAttribute('disabled');
-      input.classList.add('item__details-content--active');
+      input.classList.add('profile__details-content--active');
     }
   }
 
-  ngOnInit(): void {
+  getSelectOptions() {
+    this.profileService.getSelectOptions().subscribe({
+      next: options => {
+        this.genderOption = options['Gender'];
+      }
+    });
+  }
+
+  saveChanges(event) {
+    event.preventDefault();
+
+    console.log(this.editForm.value);
+
+    const getResponse = (response) => {
+      console.log(response);
+    }
+    this.newInfo = this.editForm.value;
+    this.newInfo.id = this.userId;
+    this.profileService.saveChanges(this.newInfo, this.userId, getResponse);
+    this.isSubmitted = true;
   }
 }
