@@ -44,8 +44,6 @@ export class LoginComponent {
       'password': this.loginForm.value.password
     }
 
-    console.log(userData)
-
     const getResponse = (response) => {
       this.hasResponse = true;
       this.loginService.saveToken(response.token);
