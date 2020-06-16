@@ -3,10 +3,8 @@ import IProfile from './profile.model';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import {Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {CreateFormService} from '../create-form/create-form.service';
 import {environment} from '../../environments/environment';
 import {ProfileService} from './profile.service';
-import {ItemDetailService} from '../wardrobe/item-details/item-details.service';
 
 @Component({
   selector: 'app-profile',
@@ -18,10 +16,8 @@ export class ProfileComponent implements OnInit {
   profile: IProfile;
   faPen = faPen;
   isSubmitted: boolean = false;
-  genderOption: string[];
+  genderOptions: string[];
   newInfo: IProfile;
-  localHost: string = environment.serverLocalHost;
-  private userId: number;
 
   editForm: FormGroup = new FormGroup({
     gender: new FormControl('', [
@@ -39,11 +35,10 @@ export class ProfileComponent implements OnInit {
     ])
   });
 
-  constructor(private profileService: ProfileService, private router: Router) { }
+  constructor(private profileService: ProfileService) { }
 
   ngOnInit(): void {
-    this.userId = Number.parseInt(this.router.url.split('/').pop());
-    this.getItemData(this.userId);
+    this.getUserData();
     this.getSelectOptions();
   }
 
@@ -70,8 +65,8 @@ export class ProfileComponent implements OnInit {
   }
 
 
-  getItemData(id: number) {
-    this.profileService.getUserData(id).subscribe({
+  getUserData() {
+    this.profileService.getUserData().subscribe({
       next: data => {
         this.profile = data;
         for (let i = 0; i < Object.keys(data).length; i++) {
@@ -103,7 +98,7 @@ export class ProfileComponent implements OnInit {
   getSelectOptions() {
     this.profileService.getSelectOptions().subscribe({
       next: options => {
-        this.genderOption = options['Gender'];
+        this.genderOptions = options['Gender'];
       }
     });
   }
@@ -117,8 +112,7 @@ export class ProfileComponent implements OnInit {
       console.log(response);
     }
     this.newInfo = this.editForm.value;
-    this.newInfo.id = this.userId;
-    this.profileService.saveChanges(this.newInfo, this.userId, getResponse);
+    this.profileService.saveChanges(this.newInfo, getResponse);
     this.isSubmitted = true;
   }
 }
