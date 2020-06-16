@@ -1,0 +1,64 @@
+<h2 class="section-title">Profile</h2>
+<form enctype="multipart/form-data" class="login__form" [formGroup]="newRegisterForm">
+  <div *ngIf="isSubmitted && !newRegisterForm.valid" class="register__errors form-errors">
+    <p class="form-errors__message" *ngIf="email.errors?.required && isSubmitted">Email is required</p>
+    <p class="form-errors__message" *ngIf="email.errors?.email && isSubmitted">Email is invalid</p>
+    <p class="form-errors__message" *ngIf="name.errors?.required && isSubmitted">Name is required</p>
+    <p class="form-errors__message" *ngIf="password.errors?.required && isSubmitted">Password is required</p>
+    <p class="form-errors__message" *ngIf="passwordConfirmation.errors?.required && isSubmitted">Password confirmation is required</p>
+    <p class="form-errors__message" *ngIf="password.errors?.minlength && isSubmitted">Password should be longer than 6 characters</p>
+    <p class="form-errors__message" *ngIf="passwordConfirmation.errors?.passwordNotMatch && isSubmitted">Passwords do not match</p>
+    <p class="form-errors__message" *ngIf="gender.errors?.required && isSubmitted">Gender is required</p>
+  </div>
+
+
+  <div class="profile__wrapper">
+  <label for="profile-name" class="visually-hidden"></label>
+  <input id="profile-name"
+         class="{{email.errors && isSubmitted ? 'error-border new-form__error-border' : ''}}
+         form-input register__input profile__details-content"
+         type="text"
+         formControlName="name"
+         placeholder="Joanna Smith">
+  <button
+    type="button"
+    class="profile__change-btn btn btn-pen"
+    (click)="activateEditMode($event)">
+    <span class="visually-hidden">Change</span>
+    <fa-icon [icon]="faPen"></fa-icon>
+  </button>
+  </div>
+
+  <div class="profile__wrapper">
+  <app-select-input (selectedValue)="getSelectValue($event)"
+                    class="profile__select"
+                    labelClass="{{gender.errors && isSubmitted ? 'error-border new-form__error-border' : ''}}"
+                    inputId="profile-gender"
+                    inputName="gender"
+                    [options]="genderOptions">
+  </app-select-input>
+  <button type="button" class="profile__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
+  </div>
+
+  <div class="profile__wrapper">
+  <label for="profile-email" class="visually-hidden"></label>
+  <input id="profile-email" class="{{name.errors && isSubmitted ? 'error-border new-form__error-border' : ''}} form-input profile__input" type="email" formControlName="name" placeholder="Joanna.Smith@gmail.com">
+  <button type="button" class="profile__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
+  </div>
+
+  <div class="profile__wrapper">
+  <label for="profile-password" class="visually-hidden"></label>
+  <input id="profile-password" class="{{password.errors && isSubmitted ? 'error-border new-form__error-border' : ''}} form-input register__input" type="password" formControlName="password" placeholder="Password">
+  <button type="button" class="profile__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
+  </div>
+
+  <div class="profile__wrapper">
+  <label for="profile-password-confirmation" class="visually-hidden"></label>
+  <input id="profile-password-confirmation" class="{{passwordConfirmation.errors && isSubmitted ? 'error-border new-form__error-border' : ''}} form-input profile__input" type="password" formControlName="passwordConfirmation" placeholder="Confirm Password">
+  <button type="button" class="profile__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
+  </div>
+
+  <div class="profile-btn-wrapper">
+  <button (click)="saveUser($event)" class="btn profile__btn form-button" type="submit">SAVE CHANGES</button>
+  </div>
+</form>
