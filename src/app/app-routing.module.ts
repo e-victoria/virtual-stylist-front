@@ -12,8 +12,8 @@ const routes: Routes = [
   { path: 'wardrobe', component: WardrobeComponent, canActivate: [UserGuard] },
   { path: 'wardrobe/:id', component: ItemDetailsComponent, canActivate: [UserGuard]},
   { path: 'auth', component: AuthComponent },
-  { path: 'profile', component: ProfileComponent},
-  { path: 'stylisations', component: StylisationsComponent }
+  { path: 'profile', component: ProfileComponent, canActivate: [UserGuard]},
+  { path: 'stylisations', component: StylisationsComponent, canActivate: [UserGuard] }
 ];
 
 @NgModule({
