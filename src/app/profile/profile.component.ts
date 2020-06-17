@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import IProfile from './profile.model';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import {Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {environment} from '../../environments/environment';
 import {ProfileService} from './profile.service';
+import {RegisterService} from '../auth/register/register.service';
+import User from '../user/user.model';
 
 @Component({
   selector: 'app-profile',
@@ -18,24 +20,29 @@ export class ProfileComponent implements OnInit {
   isSubmitted: boolean = false;
   genderOptions: string[];
   newInfo: IProfile;
+  @ViewChild('passwordConfirm') private passwordConfirm: ElementRef;
 
   editForm: FormGroup = new FormGroup({
     gender: new FormControl('', [
       Validators.required
     ]),
-    name: new FormControl(''),
+    name: new FormControl('', [
+      Validators.required
+    ]),
     email: new FormControl('', [
-      Validators.required
+      Validators.required,
+      Validators.email
     ]),
-    password: new FormControl('', [
-      Validators.required
+    password: new FormControl('******', [
+      Validators.required,
+      Validators.minLength(6)
     ]),
-    passwordConfirmation: new FormControl('', [
+    passwordConfirmation: new FormControl('******', [
       Validators.required
     ])
-  });
+  }, {validators: this.checkPasswords.bind(this)});
 
-  constructor(private profileService: ProfileService) { }
+  constructor(private profileService: ProfileService, private registerService: RegisterService) { }
 
   ngOnInit(): void {
     this.getUserData();
@@ -57,11 +64,17 @@ export class ProfileComponent implements OnInit {
     console.log(this.editForm.get('password'));
     return this.editForm.get('password');
   }
+  get passwordConfirmation(){
+    return this.editForm.get('passwordConfirmation');
+  }
 
   getSelectValue(event) {
+    console.log(event);
     const selectedValue = event[0];
     const inputName = event[1];
+    console.log(inputName);
     this.editForm.get(inputName).setValue(selectedValue.toString().toUpperCase());
+
   }
 
 
@@ -92,6 +105,12 @@ export class ProfileComponent implements OnInit {
     if(input) {
       input.removeAttribute('disabled');
       input.classList.add('profile__details-content--active');
+      if (input.getAttribute('id') === 'profilePassword'){
+        this.passwordConfirm.nativeElement.removeAttribute('disabled');
+        this.passwordConfirm.nativeElement.classList.add('profile__details-content--active');
+      }
+      input.removeAttribute('disabled');
+      input.classList.add('profile__details-content--active');
     }
   }
 
@@ -110,9 +129,20 @@ export class ProfileComponent implements OnInit {
 
     const getResponse = (response) => {
       console.log(response);
-    }
+    };
+
     this.newInfo = this.editForm.value;
-    this.profileService.saveChanges(this.newInfo, getResponse);
+    if (this.editForm.valid) {
+      if (this.editForm.get('password').value === '******'){
+        this.newInfo['password'] = '';
+        this.newInfo['passwordConfirmation'] = '';
+      }
+      this.profileService.saveChanges(this.newInfo, getResponse);
+    }
     this.isSubmitted = true;
+  }
+
+  checkPasswords(formGroup: FormGroup) {
+    this.registerService.checkPasswords(formGroup);
   }
 }
