@@ -7,12 +7,13 @@
   justify-content: center;
 
 }
-.profile__details, .proofile__link{
+.profile__details, .profile__link{
   box-sizing: border-box;
 }
 
 .profile__details {
-  padding-left: 5em;
+  padding-left: 8em;
+  //padding-right: 5em;
   width: 50%;
 
   & label {
@@ -44,7 +45,6 @@
   padding: 0.5em;
   font-size: 1em;
   border: none;
-  margin-left: 1em;
   font-weight: 400;
   font-family: Roboto, serif;
   color: $default-font-color;
@@ -82,3 +82,15 @@
   text-align: left;
 }
 
+.form-label, .form-input{
+  width: 90%;
+  padding: 0.5em;
+  text-align: center;
+}
+
+.form-button{
+  width: 50%;
+  margin-top: 4em;
+  margin-left: 8em;
+  margin-right: 8em;
+}

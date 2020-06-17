@@ -126,6 +126,11 @@
 
 .profile-menu__link {
   font-size: 1.1em;
+  color: $default-font-color;
+  text-decoration: none;
+  &:hover{
+    color: $darker-font-color;
+  }
 }
 
 .auth-icon{
