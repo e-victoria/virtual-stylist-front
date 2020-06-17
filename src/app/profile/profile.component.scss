@@ -1,96 +1,61 @@
 @import "../../assets/scss/variables";
 
-
-
-.profile__wrapper{
+.profile {
+  width: 100%;
   display: flex;
-  justify-content: center;
-
+  flex-direction: column;
+  align-items: center;
 }
-.profile__details, .profile__link{
-  box-sizing: border-box;
+
+.profile__wrapper {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .profile__details {
-  padding-left: 8em;
-  //padding-right: 5em;
-  width: 50%;
-
-  & label {
-    display: flex;
-    align-items: baseline;
-    font-weight: 500;
-    font-size: 1.1em;
-    letter-spacing: 0.1em;
-  }
-}
-
-.profile__link {
+  width: 100%;
+  padding-left: 4em;
   display: flex;
-  width: 30%;
-  height: max-content;
-  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.25);
-  border-radius: 1.15em;
-
-  &::before {
-    display: none;
-  }
-
-  &:hover::before {
-    display: none;
-  }
+  flex-direction: column;
+  align-items: center;
 }
 
-.profile__details-content{
-  padding: 0.5em;
-  font-size: 1em;
-  border: none;
-  font-weight: 400;
-  font-family: Roboto, serif;
-  color: $default-font-color;
-  width: 1000%;
-}
-
-.profile__details-content--active{
-  border: 0.09em solid $light-grey;
-  padding: 0.5em;
-  border-radius: 0.3em;
-}
-
-.profile-details__wrapper{
-  position: relative;
-  display: flex;
-  align-items: baseline;
-  border-bottom: 1px solid $light-beige;
-  padding: 1em 0;
-}
-
-.profile-details__save-btn-wrapper {
+.profile-details__wrapper {
   width: 100%;
   display: flex;
-}
-
-.profile-details__save-btn {
-  margin: 3em auto;
-  width: 28%;
-  font-size: 1.3em;
+  align-items: center;
 }
 
 .profile-details__select {
   display: none;
-  width: 57%;
-  text-align: left;
-}
-
-.form-label, .form-input{
   width: 90%;
-  padding: 0.5em;
-  text-align: center;
+  padding: 0;
 }
 
-.form-button{
-  width: 50%;
-  margin-top: 4em;
-  margin-left: 8em;
-  margin-right: 8em;
+.profile-details__label {
+  width: 90%;
+  text-align: center;
+  letter-spacing: 0.08em;
+}
+
+.profile__details-content {
+  width: 90%;
+  text-align: center;
+  letter-spacing: 0.08em;
+  border: 1px solid #E0D1C0;
+}
+
+#profilePasswordConfirmation {
+  margin-right: 2.8em;
+}
+
+.profile-details__change-btn {
+  margin-bottom: 0.35em;
+}
+
+.profile-details__save-btn-wrapper {
+  margin-top: 2em;
+  margin-right: 4em;
 }

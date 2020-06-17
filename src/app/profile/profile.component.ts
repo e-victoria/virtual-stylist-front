@@ -95,10 +95,11 @@ export class ProfileComponent implements OnInit {
     event.stopPropagation();
     event.preventDefault();
     const input = event.currentTarget.parentNode.querySelector('.profile__details-content--disabled');
-    const label = event.currentTarget.parentNode.querySelector('.profile-details__label');
     const select = event.currentTarget.parentNode.querySelector('.profile-details__select');
-    if(label && select) {
-      label.classList.toggle('hide');
+    const selectDescription = event.currentTarget.parentNode.querySelector('.profile-details__label');
+
+    if(select) {
+      selectDescription.classList.toggle('hide');
       select.classList.toggle('show-flex');
     }
 
