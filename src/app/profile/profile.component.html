@@ -17,9 +17,9 @@
 <!--      </div>-->
 
       <div class="profile-details__wrapper">
-        <label for="profileName">
+        <label for="profileName" class="form-label">
           <input id="profileName"
-                 class="profile__details-content profile__details-content--disabled"
+                 class="profile__details-content profile__details-content--disabled form-input"
                  value="{{profile?.name | titlecase }}"
                  formControlName="name"
                  disabled></label>
@@ -27,15 +27,15 @@
       </div>
 
       <div class="profile-details__wrapper">
-        <label class="profile-details__label" for="profileGender">
-          <input id="profileGender" class="profile__details-content"
+        <label class="profile-details__label form-label" for="profileGender">
+          <input id="profileGender" class="profile__details-content  form-input"
                  value="{{profile?.gender | titlecase}}"
                  formControlName="gender"
                  disabled></label>
 
 
         <app-select-input (selectedValue)="getSelectValue($event)"
-                          class="profile-details__select"
+                          class="profile-details__select form-input"
                           labelClass="{{gender.errors && isSubmitted ? 'error-border new-form__error-border' : ''}}"
                           inputId="new-clothes-category"
                           inputName="gender"
@@ -44,9 +44,9 @@
       </div>
 
       <div class="profile-details__wrapper">
-        <label for="profileEmail">
+        <label for="profileEmail" class="form-input">
           <input id="profileEmail"
-                 class="profile__details-content profile__details-content--disabled"
+                 class="profile__details-content profile__details-content--disabled form-input"
                  value="{{profile?.email}}"
                  formControlName="email"
                  disabled></label>
@@ -57,9 +57,9 @@
       </div>
 
       <div class="profile-details__wrapper">
-        <label for="profilePassword">
+        <label for="profilePassword" class="form-input">
           <input id="profilePassword"
-                 class="profile__details-content profile__details-content--disabled"
+                 class="profile__details-content profile__details-content--disabled form-input"
                  placeholder="******"
                  type="password"
                  formControlName="password"
@@ -69,9 +69,9 @@
       </div>
 
       <div class="profile-details__wrapper">
-        <label for="profilePasswordConfirmation">
+        <label for="profilePasswordConfirmation" class="form-input">
           <input id="profilePasswordConfirmation"
-                 class="profile__details-content profile__details-content--disabled"
+                 class="profile__details-content profile__details-content--disabled form-input"
                  placeholder="******"
                  type="password"
                  formControlName="passwordConfirmation"
@@ -81,7 +81,7 @@
       </div>
 
       <div class="profile-details__save-btn-wrapper">
-        <button (click)="saveChanges($event)" type="submit" class="btn btn-pen profile-details__save-btn">SAVE</button>
+        <button (click)="saveChanges($event)" type="submit" class="btn btn-pen form-button profile-details__save-btn">SAVE</button>
       </div>
 
     </form>
