@@ -5,13 +5,15 @@ import { ItemDetailsComponent } from './wardrobe/item-details/item-details.compo
 import {AuthComponent} from './auth/auth.component';
 import {UserGuard} from "./user.guard";
 import {ProfileComponent} from './profile/profile.component';
+import {StylisationsComponent} from "./stylisations/stylisations.component";
 
 
 const routes: Routes = [
   { path: 'wardrobe', component: WardrobeComponent, canActivate: [UserGuard] },
   { path: 'wardrobe/:id', component: ItemDetailsComponent, canActivate: [UserGuard]},
   { path: 'auth', component: AuthComponent },
-  { path: 'profile', component: ProfileComponent}
+  { path: 'profile', component: ProfileComponent},
+  { path: 'stylisations', component: StylisationsComponent }
 ];
 
 @NgModule({

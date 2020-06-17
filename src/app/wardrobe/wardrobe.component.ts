@@ -1,7 +1,6 @@
-import {AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import IClothes from './models/item-detail.model';
 import {WardrobeService} from './wardrobe.service';
-import {environment} from '../../environments/environment';
 import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
@@ -20,7 +19,7 @@ export class WardrobeComponent implements AfterViewInit, OnInit {
   private form: ElementRef;
   private isMore: boolean;
 
-  constructor(private wardrobeService: WardrobeService, private sanitization: DomSanitizer) { }
+  constructor(private wardrobeService: WardrobeService) { }
 
   ngAfterViewInit(): void {
     document.getElementById('menuWardrobe').classList.add('site-list__link--active');
