@@ -18,9 +18,15 @@
   <label for="register-name" class="visually-hidden"></label>
   <input id="register-name" class="{{name.errors && isSubmitted ? 'error-border new-form__error-border' : ''}} form-input register__input" type="text" formControlName="name" placeholder="Name">
   <label for="register-password" class="visually-hidden"></label>
-  <input id="register-password" class="{{password.errors && isSubmitted ? 'error-border new-form__error-border' : ''}} form-input register__input" type="password" formControlName="password" placeholder="Password">
+  <input id="register-password"
+         class="{{password.errors && isSubmitted ? 'error-border new-form__error-border' : ''}}
+         form-input register__input"
+         type="password"
+         formControlName="password"
+         placeholder="Password">
   <label for="register-password-confirmation" class="visually-hidden"></label>
-  <input id="register-password-confirmation" class="{{passwordConfirmation.errors && isSubmitted ? 'error-border new-form__error-border' : ''}} form-input register__input" type="password" formControlName="passwordConfirmation" placeholder="Confirm Password">
+  <input id="register-password-confirmation"
+         class="{{passwordConfirmation.errors && isSubmitted ? 'error-border new-form__error-border' : ''}} form-input register__input" type="password" formControlName="passwordConfirmation" placeholder="Confirm Password">
   <app-select-input (selectedValue)="getSelectValue($event)"
                     class="register__select register__select--gender"
                     labelClass="{{gender.errors && isSubmitted ? 'error-border new-form__error-border' : ''}}"

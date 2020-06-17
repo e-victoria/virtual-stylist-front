@@ -1,0 +1,80 @@
+<section class="profile">
+  <h2 class="section-title">Profile</h2>
+  <div class="profile__wrapper">
+    <form class="profile__details" [formGroup]="editForm">
+      <div *ngIf="isSubmitted && !editForm.valid" class="register__errors form-errors">
+        <p class="form-errors__message" *ngIf="email.errors?.required && isSubmitted">Email is required</p>
+        <p class="form-errors__message" *ngIf="email.errors?.email && isSubmitted">Email is invalid</p>
+        <p class="form-errors__message" *ngIf="name.errors?.required && isSubmitted">Name is required</p>
+        <p class="form-errors__message" *ngIf="password.errors?.required && isSubmitted">Password is required</p>
+        <p class="form-errors__message" *ngIf="passwordConfirmation.errors?.required && isSubmitted">Password confirmation is required</p>
+        <p class="form-errors__message" *ngIf="password.errors?.minlength && isSubmitted">Password should be longer than 6 characters</p>
+        <p class="form-errors__message" *ngIf="passwordConfirmation.errors?.passwordNotMatch && isSubmitted">Passwords do not match</p>
+        <p class="form-errors__message" *ngIf="gender.errors?.required && isSubmitted">Gender is required</p>
+      </div>
+
+      <div class="profile-details__wrapper">
+        <label for="profileName" class="visually-hidden">Name</label>
+        <input id="profileName"
+               class="profile__details-content profile__details-content--disabled form-input"
+               value="{{profile?.name | titlecase }}"
+               formControlName="name"
+               disabled>
+        <button type="button" class="profile-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
+      </div>
+
+      <div class="profile-details__wrapper">
+        <p class="form-input profile-details__label">Gender</p>
+        <app-select-input (selectedValue)="getSelectValue($event)"
+                          class="profile-details__select form-input"
+                          labelClass="{{gender.errors && isSubmitted ? 'error-border new-form__error-border' : ''}}"
+                          inputId="profile-gender"
+                          inputName="gender"
+                          [options]="genderOptions"></app-select-input>
+        <button type="button" class="item-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
+      </div>
+
+      <div class="profile-details__wrapper">
+        <label for="profileEmail" class="visually-hidden">Email</label>
+        <input id="profileEmail"
+               class="profile__details-content profile__details-content--disabled form-input"
+               value="{{profile?.email}}"
+               formControlName="email"
+               disabled>
+        <button type="button" class="profile-details__change-btn btn btn-pen"
+                (click)="activateEditMode($event)">
+          <span class="visually-hidden">Change</span>
+          <fa-icon [icon]="faPen"></fa-icon></button>
+      </div>
+
+      <div class="profile-details__wrapper">
+        <label for="profilePassword" class="visually-hidden">Password</label>
+        <input id="profilePassword"
+               class="profile__details-content profile__details-content--disabled form-input"
+               placeholder="******"
+               type="password"
+               formControlName="password"
+               disabled>
+        <button type="button" class="profile-details__change-btn btn btn-pen" (click)="activateEditMode($event)">
+          <span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
+      </div>
+
+      <div class="profile-details__wrapper">
+        <label for="profilePasswordConfirmation" class="visually-hidden">Confirm password</label>
+        <input id="profilePasswordConfirmation"
+               class="profile__details-content profile__details-content--disabled form-input"
+               placeholder="******"
+               type="password"
+               formControlName="passwordConfirmation"
+               disabled
+               #passwordConfirm>
+      </div>
+
+      <div class="profile-details__save-btn-wrapper">
+        <button (click)="saveChanges($event)" type="submit" class="btn btn-pen form-button profile-details__save-btn">SAVE</button>
+      </div>
+
+    </form>
+  </div>
+
+</section>
