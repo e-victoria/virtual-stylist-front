@@ -2,47 +2,89 @@
   <h2 class="section-title">Profile</h2>
   <div class="profile__wrapper">
     <form class="profile__details" [formGroup]="editForm">
+      <div *ngIf="isSubmitted && !editForm.valid" class="register__errors form-errors">
+        <p class="form-errors__message" *ngIf="email.errors?.required && isSubmitted">Email is required</p>
+        <p class="form-errors__message" *ngIf="email.errors?.email && isSubmitted">Email is invalid</p>
+        <p class="form-errors__message" *ngIf="name.errors?.required && isSubmitted">Name is required</p>
+        <p class="form-errors__message" *ngIf="password.errors?.required && isSubmitted">Password is required</p>
+        <p class="form-errors__message" *ngIf="passwordConfirmation.errors?.required && isSubmitted">Password confirmation is required</p>
+        <p class="form-errors__message" *ngIf="password.errors?.minlength && isSubmitted">Password should be longer than 6 characters</p>
+        <p class="form-errors__message" *ngIf="passwordConfirmation.errors?.passwordNotMatch && isSubmitted">Passwords do not match</p>
+        <p class="form-errors__message" *ngIf="gender.errors?.required && isSubmitted">Gender is required</p>
+      </div>
+<!--      <div *ngIf="hasResponse" class="register__errors form-errors">-->
+<!--        <p class="form-errors__message" *ngIf="emailExists">User already exists</p>-->
+<!--      </div>-->
 
       <div class="profile-details__wrapper">
         <label for="profileName">
           <input id="profileName"
-                 class="profile__details-content profile__details-content--disabled" value="{{profile?.name | titlecase }}" disabled></label>
+                 class="profile__details-content profile__details-content--disabled"
+                 value="{{profile?.name | titlecase }}"
+                 formControlName="name"
+                 disabled></label>
         <button type="button" class="profile-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
       </div>
 
       <div class="profile-details__wrapper">
         <label class="profile-details__label" for="profileGender">
-          <input id="profileGender" class="profile__details-content" value="{{profile?.gender | titlecase}}" disabled></label>
+          <input id="profileGender" class="profile__details-content"
+                 value="{{profile?.gender | titlecase}}"
+                 formControlName="gender"
+                 disabled></label>
+
+
         <app-select-input (selectedValue)="getSelectValue($event)"
                           class="profile-details__select"
                           labelClass="{{gender.errors && isSubmitted ? 'error-border new-form__error-border' : ''}}"
                           inputId="new-clothes-category"
-                          inputName="Gender"
+                          inputName="gender"
                           [options]="genderOptions"></app-select-input>
         <button type="button" class="item-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
       </div>
+
       <div class="profile-details__wrapper">
         <label for="profileEmail">
           <input id="profileEmail"
-                 class="profile__details-content profile__details-content--disabled" value="{{profile?.email}}" disabled></label>
-        <button type="button" class="profile-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
+                 class="profile__details-content profile__details-content--disabled"
+                 value="{{profile?.email}}"
+                 formControlName="email"
+                 disabled></label>
+        <button type="button" class="profile-details__change-btn btn btn-pen"
+                (click)="activateEditMode($event)">
+          <span class="visually-hidden">Change</span>
+          <fa-icon [icon]="faPen"></fa-icon></button>
       </div>
+
       <div class="profile-details__wrapper">
         <label for="profilePassword">
           <input id="profilePassword"
-                 class="profile__details-content profile__details-content--disabled" value="***" disabled></label>
-        <button type="button" class="profile-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
+                 class="profile__details-content profile__details-content--disabled"
+                 placeholder="******"
+                 type="password"
+                 formControlName="password"
+                 disabled></label>
+        <button type="button" class="profile-details__change-btn btn btn-pen" (click)="activateEditMode($event)">
+          <span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
       </div>
+
       <div class="profile-details__wrapper">
         <label for="profilePasswordConfirmation">
           <input id="profilePasswordConfirmation"
                  class="profile__details-content profile__details-content--disabled"
-                 value="***" disabled></label>
+                 placeholder="******"
+                 type="password"
+                 formControlName="passwordConfirmation"
+                 disabled
+                 #passwordConfirmation>
+        </label>
+      </div>
+
+      <div class="profile-details__save-btn-wrapper">
+        <button (click)="saveChanges($event)" type="submit" class="btn btn-pen profile-details__save-btn">SAVE</button>
       </div>
 
     </form>
   </div>
-  <div class="profile-details__save-btn-wrapper">
-    <button (click)="saveChanges($event)" type="submit" class="btn btn-pen profile-details__save-btn">SAVE</button>
-  </div>
+
 </section>
