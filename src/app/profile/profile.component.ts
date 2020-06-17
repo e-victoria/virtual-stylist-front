@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit {
   isSubmitted: boolean = false;
   genderOptions: string[];
   newInfo: IProfile;
-  @ViewChild('passwordConfirmation') private passwordConfirm: ElementRef;
+  @ViewChild('passwordConfirm') private passwordConfirm: ElementRef;
 
   editForm: FormGroup = new FormGroup({
     gender: new FormControl('', [
