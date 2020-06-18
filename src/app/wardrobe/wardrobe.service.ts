@@ -44,4 +44,7 @@ export class WardrobeService {
       );
   }
 
+  getClothes(itemsAmount: number, pageNumber: number): Observable<ClothData> {
+    return this.http.get<ClothData>(`${environment.serverLocalHost}/wardrobe?size=${itemsAmount}&page=${pageNumber}`);
+  }
 }
