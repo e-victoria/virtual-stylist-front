@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import IClothes from './models/item-detail.model';
 import {WardrobeService} from './wardrobe.service';
 import {environment} from '../../environments/environment';
