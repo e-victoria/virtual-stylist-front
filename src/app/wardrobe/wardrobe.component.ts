@@ -14,13 +14,13 @@ import {map, mergeMap, take, tap} from 'rxjs/operators';
 
 export class WardrobeComponent implements AfterViewInit, OnInit {
 
-  images: Map<number, string> = new Map<number, string>();
-  private pageNumber: number = 0;
-  private itemsAmountOnPage: number;
-  clothesList: IClothes[];
+  private pageNumber = 0;
+  private itemsAmountOnPage = 8;
+  clothesData$: Observable<ClothData>;
   @ViewChild('form')
   private form: ElementRef;
-  private isMore: boolean;
+  private isLastPage = false;
+  env = environment;
 
   constructor(private wardrobeService: WardrobeService) { }
 
@@ -29,42 +29,31 @@ export class WardrobeComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit(): void {
-    this.itemsAmountOnPage = 8;
-    this.clothesList = [];
-
-    const getData = (data) => {
-      this.clothesList = data['content'];
-      this.isMore = data['last'];
-      this.getImages();
-    }
-
-    this.wardrobeService.getItems(this.itemsAmountOnPage, this.pageNumber, getData);
-  }
-
-  getImages() {
-    for (let item of this.clothesList) {
-
-      const getImage = (image) => {
-        this.images.set(item.id, image);
-      }
-      this.wardrobeService.getImage(item.imageName, getImage)
-    }
+    this.clothesData$ = this.wardrobeService.getClothes(this.itemsAmountOnPage, this.pageNumber++)
+      .pipe(
+        tap((clothData: ClothData) => {
+          this.isLastPage = clothData.last;
+        })
+      );
   }
 
   onScroll() {
-    this.pageNumber++;
-
-    if (!this.isMore) {
-
-      const getMoreData = (data) => {
-        for (let item of data['content']) {
-          this.clothesList.push(item);
-          this.isMore = data['last'];
-        }
-      }
-
-      this.wardrobeService.getItems(this.itemsAmountOnPage, this.pageNumber, getMoreData);
-      console.log('scrolled!!');
+    console.log(!this.isLastPage);
+    if (!this.isLastPage) {
+      this.clothesData$ = this.clothesData$
+        .pipe(
+          mergeMap((clothData: ClothData) => this.wardrobeService.getClothes(this.itemsAmountOnPage, ++this.pageNumber)
+            .pipe(
+              map((newClothData: ClothData) => {
+                console.log(newClothData);
+                clothData.last = newClothData.last;
+                newClothData.content.forEach((content: IClothes) => clothData.content.push(content));
+                return clothData;
+              })
+            )
+          ),
+          take(1)
+        );
     }
   }
 
