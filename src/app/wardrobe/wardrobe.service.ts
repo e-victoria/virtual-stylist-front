@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import {Observable} from 'rxjs';
-import {strict} from "assert";
+import {ClothData} from './models/clothData';
 
 @Injectable({
   providedIn: 'root'
@@ -12,30 +12,21 @@ export class WardrobeService {
 
   constructor(private http: HttpClient) {}
 
-  getItems(itemsAmount: number, pageNumber: number, callback): void {
-    this.http.get<object[]>(`${environment.serverLocalHost}/wardrobe?pageSize=${itemsAmount}&pageNo=${pageNumber}`)
-      .subscribe(
-        (res) => {
-          callback(res);
-        },
-      );
-  }
-
   getImage(imageName, callback) {
 
     const getImage = (image) => {
       const reader = new FileReader();
       reader.readAsDataURL(image);
 
-      reader.onloadend = function() {
+      reader.onloadend = () => {
         callback(reader.result);
-      }
-    }
+      };
+    };
 
     this.requestImage(imageName, getImage);
   }
 
-  requestImage(imageName: string, callback):void {
+  requestImage(imageName: string, callback): void {
     this.http.get(`${environment.serverLocalHost}/img/${imageName}`,{responseType: 'blob'})
       .subscribe(
         (res) => {
@@ -44,4 +35,7 @@ export class WardrobeService {
       );
   }
 
+  getClothes(itemsAmount: number, pageNumber: number): Observable<ClothData> {
+    return this.http.get<ClothData>(`${environment.serverLocalHost}/wardrobe?size=${itemsAmount}&page=${pageNumber}`);
+  }
 }
