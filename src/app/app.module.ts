@@ -23,6 +23,7 @@ import { UserComponent } from './user/user.component';
 import {TokenInterceptor} from "./token.interceptor";
 import { StylisationsComponent } from './stylisations/stylisations.component';
 import { ImgSecurePipe } from './img-secure.pipe';
+import { StylisationCreatorComponent } from './stylisations/stylisation-creator/stylisation-creator.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ImgSecurePipe } from './img-secure.pipe';
     UserComponent,
     ProfileComponent,
     StylisationsComponent,
-    ImgSecurePipe
+    ImgSecurePipe,
+    StylisationCreatorComponent
   ],
   imports: [
     BrowserModule,

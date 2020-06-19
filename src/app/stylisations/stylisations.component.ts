@@ -20,9 +20,9 @@ export class StylisationsComponent implements OnInit {
 
   ngOnInit(): void {
     const getData = (data) => {
-      console.log(data)
-      this.stylisationsList = data['content'];
-      this.isMore = data['last'];
+      console.log(data);
+      this.stylisationsList = data.content;
+      this.isMore = data.last;
       this.getImages();
     }
 

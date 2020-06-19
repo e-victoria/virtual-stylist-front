@@ -1,8 +1,8 @@
 <div class="carousel-wrapper">
   <div class="carousel" #carousel>
     <div class="content">
-      <div #image class="image-wrapper" *ngFor="let item of items">
-        <img class="clothes__img" src="../../assets/img/{{item}}">
+      <div #image class="image-wrapper" *ngFor="let cloth of clothesList">
+        <img class="clothes__img" [attr.src]="(env.serverLocalHost + '/img/' + cloth.imageName) | imgSecure | async" default="../../assets/img/empty.png"  alt="clothes">
       </div>
     </div>
     <div class="navigation">

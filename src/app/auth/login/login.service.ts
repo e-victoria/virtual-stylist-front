@@ -14,7 +14,7 @@ export class LoginService {
     localStorage.setItem('token', token);
     window.setTimeout(() => {
       localStorage.removeItem('token');
-    }, 900000)
+    }, 900000000)
   }
 
   checkUser(userData: object, callback): void {
