@@ -21,6 +21,7 @@ import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './auth/login/login.component';
 import { UserComponent } from './user/user.component';
 import {TokenInterceptor} from "./token.interceptor";
+import {FeaturedStylizationsComponent} from './featured-stylizations/featured-stylizations.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {TokenInterceptor} from "./token.interceptor";
     AuthComponent,
     LoginComponent,
     UserComponent,
-    ProfileComponent
+    ProfileComponent,
+    FeaturedStylizationsComponent
   ],
   imports: [
     BrowserModule,
