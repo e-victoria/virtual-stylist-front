@@ -53,23 +53,26 @@ export class FeaturedStylizationsComponent implements OnInit{
         const previousButton = document.querySelector('.previous') as HTMLElement;
         const nextButton = document.querySelector('.next');
         const content = document.querySelector('.carousel .content') as HTMLElement;
-        const totalItems = document.querySelectorAll('.carousel .content >*').length - 1;
+        const totalItems = document.querySelectorAll('.carousel .content >*');
         let activeItem = 0;
 
         previousButton.addEventListener('click', () => {
           if (activeItem === 0) {
-            activeItem = totalItems;
-            content.style.transform = `translateX(-${totalItems * 100}%)`;
+            activeItem = totalItems.length - 1;
+            totalItems[activeItem].classList.add('transform-active');
+            content.classList.add('transform-content');
           } else {
+            console.log(totalItems);
             activeItem--;
-            content.style.transform = `translateX(-${activeItem * 100}%)`;
+            content.style.transform = `translateX(-33.3333%)`;
           }
         });
 
         nextButton.addEventListener('click', () => {
-          if (activeItem < totalItems) {
+          if (activeItem < totalItems.length - 1) {
             activeItem++;
-            content.style.transform = `translateX(-${activeItem * 100}%)`;
+            totalItems[activeItem].classList.add('transform-active');
+            content.classList.add('transform-content');
           } else {
             activeItem = 0;
             content.style.transform = `none`;

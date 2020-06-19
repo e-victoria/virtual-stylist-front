@@ -50,3 +50,11 @@
   margin: 0;
   padding: 1em 0;
 }
+
+.transform-active {
+  transform: scale(1.2);
+}
+
+.transform-content {
+  transform: translateX(-33.333%);
+}
