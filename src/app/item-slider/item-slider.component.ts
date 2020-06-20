@@ -35,9 +35,9 @@ export class ItemSliderComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     console.log(this.clothesList);
-    this.imageWrappers = document.querySelectorAll('.image-wrapper');
+    this.imageWrappers = this.carousel.nativeElement.querySelectorAll('.image-wrapper');
     this.imageWrappers[this.activeItem]?.classList.add('show-flex');
-    this.totalItems = document.querySelectorAll('.image-wrapper').length - 1;
+    this.totalItems = this.carousel.nativeElement.querySelectorAll('.image-wrapper').length - 1;
   }
 
 
