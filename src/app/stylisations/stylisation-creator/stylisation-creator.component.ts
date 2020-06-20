@@ -10,6 +10,7 @@ import {WardrobeService} from '../../wardrobe/wardrobe.service';
 export class StylisationCreatorComponent implements OnInit {
 
   topClothesList: IClothesImage[];
+  bottomClothesList: IClothesImage[];
 
   constructor(private wardrobeService: WardrobeService) { }
 
@@ -19,9 +20,12 @@ export class StylisationCreatorComponent implements OnInit {
       this.topClothesList = data;
     };
 
+    const getBottomClothes = (data) => {
+      this.bottomClothesList = data;
+    };
+
     this.wardrobeService.getClothesByBodyPart('CHEST', getTopClothes);
+    this.wardrobeService.getClothesByBodyPart('LEGS', getBottomClothes);
+
   }
-
-
-
 }
