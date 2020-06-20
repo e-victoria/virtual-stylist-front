@@ -1,5 +1,7 @@
+import IClothesBodyPart from './IClothesBodyPart';
+
 export default interface IStylisation {
-  bodyPart: string;
+  clothesForDisplayStylization: IClothesBodyPart[];
   id: number;
   imageName: string;
 }

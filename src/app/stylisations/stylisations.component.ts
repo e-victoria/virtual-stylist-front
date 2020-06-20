@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import IStylisation from "./stylisation.model";
 import {StylisationService} from "./stylisation.service";
 import {WardrobeService} from "../wardrobe/wardrobe.service";
+import {environment} from '../../environments/environment';
 
 @Component({
   selector: 'app-stylisations',
@@ -11,10 +12,11 @@ import {WardrobeService} from "../wardrobe/wardrobe.service";
 export class StylisationsComponent implements OnInit {
 
   images: Map<number, string> = new Map<number, string>();
-  private itemsAmountOnPage: number = 4;
+  private itemsAmountOnPage: number = 6;
   private pageNumber: number = 0;
   stylisationsList: IStylisation[];
   private isMore: boolean;
+  env = environment;
 
   constructor(private stylisationService: StylisationService, private wardrobeService: WardrobeService) { }
 

@@ -2,19 +2,28 @@
   <h2 class="visually-hidden">Create your stylisation</h2>
   <div class="create-style__sliders">
     <div class="create-style__top">
-      <app-item-slider *ngIf="topClothesList" [clothesList]="topClothesList"></app-item-slider>
+      <app-item-slider (selectedItem)="getSelectedTop($event)"
+                       *ngIf="topClothesList"
+                       [clothesList]="topClothesList">
+      </app-item-slider>
     </div>
     <div class="create-style__bottom">
-      <app-item-slider *ngIf="bottomClothesList" [clothesList]="bottomClothesList"></app-item-slider>
+      <app-item-slider (selectedItem)="getSelectedBottom($event)"
+                       *ngIf="bottomClothesList"
+                       [clothesList]="bottomClothesList">
+      </app-item-slider>
     </div>
   </div>
   <div class="create-style__form-wrapper">
-    <form class="create-style__form new-style-form">
+    <form [formGroup]="newStyleForm" class="create-style__form new-style-form">
       <h3 class="new-style-form__header">Create new stylisation</h3>
       <div class="new-style-form__input-wrapper">
         <label for="newStyleTag" class="visually-hidden">tag</label>
-        <input class="new-style-form__input form-input" id="newStyleTag" placeholder="Tag #MyFavouriteDress">
-        <button class="new-clothes-form__btn btn form-button">SAVE</button>
+        <input class="new-style-form__input form-input"
+               id="newStyleTag"
+               formControlName="tag"
+               placeholder="Tag #MyFavouriteDress">
+        <button (click)="saveStyle($event)" class="new-clothes-form__btn btn form-button">SAVE</button>
       </div>
     </form>
   </div>

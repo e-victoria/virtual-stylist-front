@@ -6,23 +6,13 @@
          [scrollWindow]="true">
   <h2 class="section-title">Your stylisations</h2>
   <div class="stylisations__wrapper">
-    <div class="stysations__item stylisation"
-         *ngFor="let stylisation of stylisationsList">
-      <img *ngIf="stylisation.bodyPart === 'BODY'"
-           src="{{images.get(stylisation.id)}}"
-           default="../../assets/img/empty.png"
-           alt="clothes image"
-           class="stylisation__whole">
-      <img *ngIf="stylisation.bodyPart === 'CHEST'"
-           src="{{images.get(stylisation.id)}}"
-           alt="top"
-           default="../../assets/img/empty.png"
-           class="stylisation__top">
-      <img *ngIf="stylisation.bodyPart === 'LEGS'"
-           src="{{images.get(stylisation.id)}}"
-           alt="bottom"
-           default="../../assets/img/empty.png"
-           class="stylisation__bottom">
+    <div class="stysations__item stylisation" *ngFor="let stylisation of stylisationsList">
+      <div class="stylisations__part" *ngFor="let item of stylisation.clothesForDisplayStylization">
+        <img [attr.src]="(env.serverLocalHost + '/img/' + item.imageName) | imgSecure | async" default="../../assets/img/empty.png"
+             default="../../assets/img/empty.png"
+             alt="clothes image"
+             class="stylisation__img">
+      </div>
     </div>
   </div>
 </section>

@@ -1,0 +1,31 @@
+@import "../../assets/scss/variables";
+
+.stylisations {
+  padding: 1em 5vw;
+}
+
+.stylisation {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 45em;
+  overflow: hidden;
+  border-radius: 1.12em;
+  box-shadow: $btn-shadow;
+  background-color: $light-grey;
+}
+
+.stylisations__wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2em 3em;
+}
+
+.stylisations__part {
+  height: 50%;
+}
+
+.stylisation__img {
+  width: auto !important;
+  height: 100% !important;
+}

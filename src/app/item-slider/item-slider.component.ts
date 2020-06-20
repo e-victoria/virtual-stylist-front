@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, Input, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import IClothesImage from '../wardrobe/models/clothesImage.model';
 import {environment} from '../../environments/environment';
@@ -25,6 +25,8 @@ export class ItemSliderComponent implements AfterViewInit {
   private imageWrappers: NodeListOf<HTMLElement>;
   @Input()
   clothesList: IClothesImage[];
+  @Output()
+  selectedItem: EventEmitter<IClothesImage> = new EventEmitter<IClothesImage>();
 
   env = environment;
   faChevronRight = faChevronRight;
@@ -38,6 +40,7 @@ export class ItemSliderComponent implements AfterViewInit {
     this.imageWrappers = this.carousel.nativeElement.querySelectorAll('.image-wrapper');
     this.imageWrappers[this.activeItem]?.classList.add('show-flex');
     this.totalItems = this.carousel.nativeElement.querySelectorAll('.image-wrapper').length - 1;
+    this.selectedItem.emit(this.clothesList[this.activeItem]);
   }
 
 
