@@ -4,10 +4,10 @@
       <div #image class="image-wrapper" *ngFor="let cloth of clothesList">
         <img class="clothes__img" [attr.src]="(env.serverLocalHost + '/img/' + cloth.imageName) | imgSecure | async" default="../../assets/img/empty.png"  alt="clothes">
       </div>
-    </div>
-    <div class="navigation">
-      <div class="previous" #previous (click)="previousBtn()"> <fa-icon [icon]="faChevronLeft"></fa-icon></div>
-      <div class="next" #next (click)="nextBtn()"> <fa-icon [icon]="faChevronRight"></fa-icon></div>
+      <div class="carousel-wrapper__navigation">
+        <div class="carousel-wrapper__previous carousel-wrapper__btn" #previous (click)="previousBtn()"> <fa-icon [icon]="faChevronLeft"></fa-icon></div>
+        <div class="carousel-wrapper__next carousel-wrapper__btn" #next (click)="nextBtn()"> <fa-icon [icon]="faChevronRight"></fa-icon></div>
+      </div>
     </div>
   </div>
 </div>
