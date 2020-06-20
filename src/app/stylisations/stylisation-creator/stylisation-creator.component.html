@@ -8,5 +8,14 @@
       <app-item-slider *ngIf="bottomClothesList" [clothesList]="bottomClothesList"></app-item-slider>
     </div>
   </div>
-  <div class="create-style__form"></div>
+  <div class="create-style__form-wrapper">
+    <form class="create-style__form new-style-form">
+      <h3 class="new-style-form__header">Create new stylisation</h3>
+      <div class="new-style-form__input-wrapper">
+        <label for="newStyleTag" class="visually-hidden">tag</label>
+        <input class="new-style-form__input form-input" id="newStyleTag" placeholder="Tag #MyFavouriteDress">
+        <button class="new-clothes-form__btn btn form-button">SAVE</button>
+      </div>
+    </form>
+  </div>
 </section>
