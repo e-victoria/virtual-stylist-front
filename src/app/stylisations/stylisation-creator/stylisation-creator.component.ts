@@ -73,8 +73,14 @@ export class StylisationCreatorComponent implements OnInit {
 
   saveStyle(event) {
     event.preventDefault();
+    let selectedClothes: IClothesImage[];
+    if (this.bodySlider.nativeElement.classList.contains('show-flex')) {
+      selectedClothes = [this.selectedBody];
+    } else {
+      selectedClothes = [this.selectedTop, this.selectedBottom];
+    }
     const newStylisation = {
-      clothes: this.bodySlider.nativeElement.classList.contains('show-flex') ? [this.selectedTop, this.selectedBottom] : [this.selectedBody],
+      clothes: selectedClothes,
       tag: this.newStyleForm.get('tag').value
     };
     this.stylisationService.saveNewStylisation(newStylisation);
