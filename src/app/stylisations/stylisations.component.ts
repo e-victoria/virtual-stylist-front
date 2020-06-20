@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import IStylisation from "./stylisation.model";
+import IStylisation from "./models/stylisation.model";
 import {StylisationService} from "./stylisation.service";
 import {WardrobeService} from "../wardrobe/wardrobe.service";
 import {environment} from '../../environments/environment';
@@ -26,18 +26,18 @@ export class StylisationsComponent implements OnInit {
       this.stylisationsList = data.content;
       this.isMore = data.last;
       this.getImages();
-    }
+    };
 
     this.stylisationService.getStylisations(this.itemsAmountOnPage, this.pageNumber, getData);
   }
 
   getImages() {
-    for (let item of this.stylisationsList) {
+    for (const item of this.stylisationsList) {
 
       const getImage = (image) => {
         this.images.set(item.id, image);
-      }
-      this.wardrobeService.getImage(item.imageName, getImage)
+      };
+      this.wardrobeService.getImage(item.imageName, getImage);
     }
   }
 
@@ -47,11 +47,11 @@ export class StylisationsComponent implements OnInit {
     if (!this.isMore) {
 
       const getMoreData = (data) => {
-        for (let item of data['content']) {
+        for (const item of data.content) {
           this.stylisationsList.push(item);
-          this.isMore = data['last'];
+          this.isMore = data.last;
         }
-      }
+      };
 
       this.stylisationService.getStylisations(this.itemsAmountOnPage, this.pageNumber, getMoreData);
     }

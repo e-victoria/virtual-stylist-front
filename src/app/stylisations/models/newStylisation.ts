@@ -1,4 +1,4 @@
-import IClothesImage from '../wardrobe/models/clothesImage.model';
+import IClothesImage from '../../wardrobe/models/clothesImage.model';
 
 export default interface NewStylisation {
   clothes: IClothesImage[];
