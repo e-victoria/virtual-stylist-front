@@ -7,12 +7,7 @@
   <h2 class="section-title">Your stylisations</h2>
   <div *ngIf="!stylisations" class="stylisations__wrapper">
     <div class="stysations__item stylisation {{stylisation.clothesForDisplayStylization.length === 1 ? 'stylisation__dress' : ''}}" *ngFor="let stylisation of stylisationsList">
-      <div class="stylisations__part" *ngFor="let item of stylisation.clothesForDisplayStylization">
-        <img [attr.src]="(env.serverLocalHost + '/img/' + item.imageName) | imgSecure | async" default="../../assets/img/empty.png"
-             default="../../assets/img/empty.png"
-             alt="clothes image"
-             class="stylisation__img">
-      </div>
+      <app-stylisation-item class="stylisations__part" [stylisation]="stylisation.clothesForDisplayStylization"></app-stylisation-item>
     </div>
   </div>
   <div *ngIf="stylisations" class="stylisations__wrapper">
