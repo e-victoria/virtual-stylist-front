@@ -117,10 +117,10 @@ export class ItemDetailsComponent implements OnInit {
   getSelectOptions() {
     this.createFormService.getSelectOptions().subscribe({
       next: options => {
-        this.styleOptions = options.Style;
-        this.sizeOptions = options.Size;
-        this.colorOptions = options.Color;
-        this.clothTypeOptions = options.ClothType;
+        this.styleOptions = options['Style'];
+        this.sizeOptions = options['Size'];
+        this.colorOptions = options['Color'];
+        this.clothTypeOptions = options['ClothType'];
       }
     });
   }
@@ -141,13 +141,14 @@ export class ItemDetailsComponent implements OnInit {
 
   getStylisations(): void {
     const getResponse = (data) => {
+      console.log(data);
       for (const item of data) {
         const stylisation: IStylisation = {
           id: undefined,
           clothesForDisplayStylization: [item, {
-            bodyPart: this.item.bodyPart,
+            bodyPart: this.item?.bodyPart,
             id: this.itemId,
-            imageName: this.item.imageName
+            imageName: this.item?.imageName
           }]
         };
         console.log(data);
