@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import IStylisation from "./models/stylisation.model";
 import {StylisationService} from "./stylisation.service";
 import {WardrobeService} from "../wardrobe/wardrobe.service";
 import {environment} from '../../environments/environment';
+import IClothesBodyPart from './models/IClothesBodyPart';
 
 @Component({
   selector: 'app-stylisations',
@@ -17,27 +18,19 @@ export class StylisationsComponent implements OnInit {
   stylisationsList: IStylisation[];
   private isMore: boolean;
   env = environment;
+  @Input()
+  stylisations: IStylisation[];
 
   constructor(private stylisationService: StylisationService, private wardrobeService: WardrobeService) { }
 
   ngOnInit(): void {
     const getData = (data) => {
-      console.log(data);
       this.stylisationsList = data.content;
       this.isMore = data.last;
-      this.getImages();
     };
 
-    this.stylisationService.getStylisations(this.itemsAmountOnPage, this.pageNumber, getData);
-  }
-
-  getImages() {
-    for (const item of this.stylisationsList) {
-
-      const getImage = (image) => {
-        this.images.set(item.id, image);
-      };
-      this.wardrobeService.getImage(item.imageName, getImage);
+    if (!this.stylisations) {
+      this.stylisationService.getStylisations(this.itemsAmountOnPage, this.pageNumber, getData);
     }
   }
 

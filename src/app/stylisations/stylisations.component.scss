@@ -31,9 +31,5 @@
 }
 
 .stylisation__dress {
-  height: 22.5em;
-
-  & .stylisations__part {
-    height: 100%;
-  }
+  justify-content: center;
 }
