@@ -1,0 +1,8 @@
+<img *ngFor="let item of sortedStylisation" [attr.src]="(env.serverLocalHost + '/img/' + item.imageName) | imgSecure | async" default="../../assets/img/empty.png"
+     default="../../assets/img/empty.png"
+     alt="clothes image"
+     class="stylisation__img">
+<img *ngIf="dressStylisation" [attr.src]="(env.serverLocalHost + '/img/' + dressStylisation.imageName) | imgSecure | async" default="../../assets/img/empty.png"
+     default="../../assets/img/empty.png"
+     alt="clothes image"
+     class="stylisation__img">

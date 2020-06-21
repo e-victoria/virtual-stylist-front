@@ -1,0 +1,18 @@
+<section class="stylisations"
+         infiniteScroll
+         [infiniteScrollDistance]="2"
+         [infiniteScrollThrottle]="50"
+         (scrolled)="onScroll()"
+         [scrollWindow]="true">
+  <h2 class="section-title">Your stylisations</h2>
+  <div *ngIf="!stylisations" class="stylisations__wrapper">
+    <div class="stysations__item stylisation {{stylisation.clothesForDisplayStylization.length === 1 ? 'stylisation__dress' : ''}}" *ngFor="let stylisation of stylisationsList">
+      <app-stylisation-item class="stylisations__part" [stylisation]="stylisation.clothesForDisplayStylization"></app-stylisation-item>
+    </div>
+  </div>
+  <div *ngIf="stylisations" class="stylisations__wrapper">
+    <div class="stysations__item stylisation" *ngFor="let stylisation of stylisations">
+      <app-stylisation-item class="stylisations__part" [stylisation]="stylisation.clothesForDisplayStylization"></app-stylisation-item>
+    </div>
+    </div>
+</section>

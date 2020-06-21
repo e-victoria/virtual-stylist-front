@@ -1,0 +1,50 @@
+<section class="create-style">
+  <h2 class="visually-hidden">Create your stylisation</h2>
+  <div class="create-style__sliders">
+    <div class="create-style__choice">
+      <span #firstBtn
+            (click)="changeSlider($event, secondBtn)"
+            class="btn form-button create-style__choice-btn create-style__choice-btn--active">
+        Top+Bottom
+      </span>
+      <span #secondBtn
+            (click)="changeSlider($event, firstBtn)"
+            class="btn form-button create-style__choice-btn">
+        Dress/jumpsuits
+      </span>
+    </div>
+    <div #bodySlider class="create-style__body">
+      <app-item-slider class="body-slider" (selectedItem)="getSelectedBody($event)"
+                       *ngIf="bodyClothesList"
+                       [clothesList]="bodyClothesList">
+      </app-item-slider>
+    </div>
+    <div #topBottomSlider class="sliders__wrapper">
+      <div class="create-style__top">
+        <app-item-slider (selectedItem)="getSelectedTop($event)"
+                         *ngIf="topClothesList"
+                         [clothesList]="topClothesList">
+        </app-item-slider>
+      </div>
+      <div class="create-style__bottom">
+        <app-item-slider (selectedItem)="getSelectedBottom($event)"
+                         *ngIf="bottomClothesList"
+                         [clothesList]="bottomClothesList">
+        </app-item-slider>
+      </div>
+    </div>
+  </div>
+  <div class="create-style__form-wrapper">
+    <form [formGroup]="newStyleForm" class="create-style__form new-style-form">
+      <h3 class="new-style-form__header">Create new stylisation</h3>
+      <div class="new-style-form__input-wrapper">
+        <label for="newStyleTag" class="visually-hidden">tag</label>
+        <input class="new-style-form__input form-input"
+               id="newStyleTag"
+               formControlName="tag"
+               placeholder="Tag #MyFavouriteDress">
+        <button (click)="saveStyle($event)" class="new-clothes-form__btn btn form-button">SAVE</button>
+      </div>
+    </form>
+  </div>
+</section>

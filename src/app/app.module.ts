@@ -21,6 +21,10 @@ import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './auth/login/login.component';
 import { UserComponent } from './user/user.component';
 import {TokenInterceptor} from "./token.interceptor";
+import { StylisationsComponent } from './stylisations/stylisations.component';
+import { ImgSecurePipe } from './img-secure.pipe';
+import { StylisationCreatorComponent } from './stylisations/stylisation-creator/stylisation-creator.component';
+import { StylisationItemComponent } from './stylisations/stylisation-item/stylisation-item.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +41,11 @@ import {TokenInterceptor} from "./token.interceptor";
     AuthComponent,
     LoginComponent,
     UserComponent,
-    ProfileComponent
+    ProfileComponent,
+    StylisationsComponent,
+    ImgSecurePipe,
+    StylisationCreatorComponent,
+    StylisationItemComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 export default interface IClothes {
   id: number;
+  bodyPart: string;
   clothType: string;
   color: string;
   code: string;
@@ -9,5 +10,4 @@ export default interface IClothes {
   tag: string;
   shopLink: string;
   imageName: string;
-  stylizations: string[]; //list of stylisations id
 }
