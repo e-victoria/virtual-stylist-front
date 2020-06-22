@@ -26,6 +26,8 @@ import { ImgSecurePipe } from './img-secure.pipe';
 import { StylisationCreatorComponent } from './stylisations/stylisation-creator/stylisation-creator.component';
 import { StylisationItemComponent } from './stylisations/stylisation-item/stylisation-item.component';
 import {FeaturedStylizationsComponent} from './featured-stylizations/featured-stylizations.component';
+import {CarouselModule} from 'ngx-owl-carousel-o';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -43,16 +45,17 @@ import {FeaturedStylizationsComponent} from './featured-stylizations/featured-st
     LoginComponent,
     UserComponent,
     ProfileComponent,
-    FeaturedStylizationsComponent
-    ProfileComponent,
+    FeaturedStylizationsComponent,
     StylisationsComponent,
     ImgSecurePipe,
     StylisationCreatorComponent,
     StylisationItemComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
+    CarouselModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,

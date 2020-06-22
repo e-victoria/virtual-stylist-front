@@ -1,84 +1,48 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {OwlOptions} from 'ngx-owl-carousel-o';
+import {StylisationService} from '../stylisations/stylisation.service';
+import IStylisation from '../stylisations/models/stylisation.model';
 
 @Component({
   selector: 'app-featured-stylizations',
   templateUrl: './featured-stylizations.component.html',
   styleUrls: ['./featured-stylizations.component.scss']
 })
-export class FeaturedStylizationsComponent implements OnInit{
+export class FeaturedStylizationsComponent implements OnInit {
 
-  @ViewChild('previous')
-  previous: ElementRef;
-  @ViewChild('next')
-  private next: ElementRef;
+  items: IStylisation[];
   @ViewChild('carousel')
-  private carousel: ElementRef;
-  @ViewChild('image')
-  private content: ElementRef;
-  private imageWrappers: NodeListOf<HTMLElement>;
+  private contentWrapper: ElementRef;
 
-  faChevronRight = faChevronRight;
-  faChevronLeft = faChevronLeft;
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: false,
+    center: true,
+    autoplay: true,
+    lazyLoad: true,
+    autoplayTimeout: 2000,
+    navSpeed: 700,
+    navText: ['', ''],
+    responsive: {
+      940: {
+        items: 3
+      }
+    },
+    nav: false
+  };
 
-  items = ['path3.jpg', 'path10.jpg', 'path8.jpg', 'path9.jpg'];
-  activeItem = 0;
-  totalItems = document.querySelectorAll('.carousel .content >*').length - 1;
+  constructor(private stylisationService: StylisationService) {}
 
-    // ngOnInit(): void {
-    //   }
-    //
-    // previousBtn() {
-    //   console.log('test1');
-    //   if (this.activeItem === 0) {
-    //     console.log('test');
-    //     this.activeItem = this.totalItems;
-    //     this.content.nativeElement.style.transform = `translateX(-${this.totalItems * 100}%)`;
-    //   } else {
-    //     this.activeItem--;
-    //     this.content.nativeElement.style.transform = `translateX(-${this.activeItem * 100}%)`;
-    //   }
-    // }
-    // nextBtn(){
-    //   if (this.activeItem < this.totalItems) {
-    //     this.activeItem++;
-    //     this.content.nativeElement.style.transform = `translateX(-${this.activeItem * 100}%)`;
-    //   } else {
-    //     this.activeItem = 0;
-    //     this.content.nativeElement.style.transform = `none`;
-    //   }
-    // }
-    ngOnInit(): void {
-      document.addEventListener('DOMContentLoaded', () => {
-        const previousButton = document.querySelector('.previous') as HTMLElement;
-        const nextButton = document.querySelector('.next');
-        const content = document.querySelector('.carousel .content') as HTMLElement;
-        const totalItems = document.querySelectorAll('.carousel .content >*');
-        let activeItem = 0;
+  ngOnInit(): void {
 
-        previousButton.addEventListener('click', () => {
-          if (activeItem === 0) {
-            activeItem = totalItems.length - 1;
-            totalItems[activeItem].classList.add('transform-active');
-            content.classList.add('transform-content');
-          } else {
-            console.log(totalItems);
-            activeItem--;
-            content.style.transform = `translateX(-33.3333%)`;
-          }
-        });
+    const getData = (data) => {
+      this.items = data.content;
+    };
 
-        nextButton.addEventListener('click', () => {
-          if (activeItem < totalItems.length - 1) {
-            activeItem++;
-            totalItems[activeItem].classList.add('transform-active');
-            content.classList.add('transform-content');
-          } else {
-            activeItem = 0;
-            content.style.transform = `none`;
-          }
-        });
-      });
+    this.stylisationService.getStylisations(6, 0, getData);
   }
 
 }

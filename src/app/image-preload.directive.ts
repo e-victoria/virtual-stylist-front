@@ -12,7 +12,7 @@ export class ImagePreloadDirective {
 
   @Input() src:string;
   @Input() default:string;
-  @HostBinding('class') className
+  @HostBinding('class') className;
 
   constructor() { }
 

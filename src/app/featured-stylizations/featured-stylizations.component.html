@@ -1,13 +1,15 @@
-<div class="carousel-wrapper">
+<section class="carousel-wrapper">
+  <h2 class="section-title">Your featured stylisations</h2>
   <div class="carousel" #carousel>
-    <div class="content" #content>
-      <div class="image-wrapper" *ngFor="let item of items">
-        <img class="clothes__img" src="../../assets/img/{{item}}">
-      </div>
-    </div>
-    <div class="navigation">
-      <div class="previous" #previous> <fa-icon [icon]="faChevronLeft"></fa-icon></div>
-      <div class="next" #next> <fa-icon [icon]="faChevronRight"></fa-icon></div>
-    </div>
+    <owl-carousel-o class="content" [options]="customOptions">
+      <ng-container *ngFor="let item of items">
+        <ng-template carouselSlide>
+          <div  href="#" class="image-wrapper item stylisation">
+            <app-stylisation-item class="stylisations__part" [stylisation]="item.clothesForDisplayStylization"></app-stylisation-item>
+<!--            <img class="clothes__img" src="assets/img/{{ item }}">-->
+          </div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
   </div>
-</div>
+</section>
