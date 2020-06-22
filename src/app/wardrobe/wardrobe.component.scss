@@ -17,7 +17,7 @@
 
 .clothes__list {
   display: grid;
-  grid-template-columns: repeat(4, 20.5%);
+  grid-template-columns: repeat(4, 1fr);
   gap: 2.5em 6%;
 }
 

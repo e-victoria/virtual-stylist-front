@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import IClothes from '../models/item-detail.model';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
-import {ItemDetailService} from "./item-details.service";
-import {Router} from "@angular/router";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {CreateFormService} from "../../create-form/create-form.service";
-import {environment} from "../../../environments/environment";
-import {WardrobeService} from "../wardrobe.service";
+import {ItemDetailService} from './item-details.service';
+import {Router} from '@angular/router';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {CreateFormService} from '../../create-form/create-form.service';
+import {WardrobeService} from '../wardrobe.service';
+import {StylisationService} from '../../stylisations/stylisation.service';
+import IStylisation from '../../stylisations/models/stylisation.model';
 
 @Component({
   selector: 'app-item-details',
@@ -15,16 +16,16 @@ import {WardrobeService} from "../wardrobe.service";
 })
 export class ItemDetailsComponent implements OnInit {
 
+  stylisations: IStylisation[] = [];
   image: string;
   item: IClothes;
   faPen = faPen;
-  isSubmitted: boolean = false;
+  isSubmitted = false;
   sizeOptions: string[];
   colorOptions: string[];
   clothTypeOptions: string[];
   styleOptions: string[];
   newInfo: IClothes;
-  localHost: string = environment.serverLocalHost;
   private itemId: number;
 
   editForm: FormGroup = new FormGroup({
@@ -44,12 +45,17 @@ export class ItemDetailsComponent implements OnInit {
     code: new FormControl('')
   });
 
-  constructor(private itemDetailService: ItemDetailService, private router: Router, private createFormService: CreateFormService, private wardrobeService: WardrobeService) { }
+  constructor(private itemDetailService: ItemDetailService,
+              private router: Router,
+              private createFormService: CreateFormService,
+              private wardrobeService: WardrobeService,
+              private stylisationService: StylisationService) { }
 
   ngOnInit(): void {
     this.itemId = Number.parseInt(this.router.url.split('/').pop());
     this.getItemData(this.itemId);
     this.getSelectOptions();
+    this.getStylisations();
   }
 
   get clothType() {
@@ -73,8 +79,8 @@ export class ItemDetailsComponent implements OnInit {
   getImage(imageName) {
     const getImage = (image) => {
       this.image = image;
-    }
-    this.wardrobeService.getImage(imageName, getImage)
+    };
+    this.wardrobeService.getImage(imageName, getImage);
   }
 
   getItemData(id: number) {
@@ -82,7 +88,7 @@ export class ItemDetailsComponent implements OnInit {
       next: data => {
         this.item = data;
         for (let i = 0; i < Object.keys(data).length; i++) {
-          if(this.editForm.get(Object.keys(data)[i])) {
+          if (this.editForm.get(Object.keys(data)[i])) {
             this.editForm.get(Object.keys(data)[i]).setValue(data[Object.keys(data)[i]]);
           }
         }
@@ -97,12 +103,12 @@ export class ItemDetailsComponent implements OnInit {
     const input = event.currentTarget.parentNode.querySelector('.item__details-content--disabled');
     const label = event.currentTarget.parentNode.querySelector('.item-details__label');
     const select = event.currentTarget.parentNode.querySelector('.item-details__select');
-    if(label && select) {
+    if (label && select) {
       label.classList.toggle('hide');
       select.classList.toggle('show-flex');
     }
 
-    if(input) {
+    if (input) {
       input.removeAttribute('disabled');
       input.classList.add('item__details-content--active');
     }
@@ -122,14 +128,34 @@ export class ItemDetailsComponent implements OnInit {
   saveChanges(event) {
     event.preventDefault();
 
-    console.log(this.editForm.value)
+    console.log(this.editForm.value);
 
     const getResponse = (response) => {
       console.log(response);
-    }
+    };
     this.newInfo = this.editForm.value;
     this.newInfo.id = this.itemId;
     this.itemDetailService.saveChanges(this.newInfo, getResponse);
     this.isSubmitted = true;
+  }
+
+  getStylisations(): void {
+    const getResponse = (data) => {
+      console.log(data);
+      for (const item of data) {
+        const stylisation: IStylisation = {
+          id: undefined,
+          clothesForDisplayStylization: [item, {
+            bodyPart: this.item?.bodyPart,
+            id: this.itemId,
+            imageName: this.item?.imageName
+          }]
+        };
+        console.log(data);
+        this.stylisations.push(stylisation);
+      }
+    };
+
+    this.stylisationService.getStylisationsByItemId(this.itemId, getResponse);
   }
 }
