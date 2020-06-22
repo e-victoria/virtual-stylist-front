@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'wardrobe/:id', component: ItemDetailsComponent, canActivate: [UserGuard]},
   { path: 'auth', component: AuthComponent },
   { path: 'profile', component: ProfileComponent},
-  { path: 'main-page', component: FeaturedStylizationsComponent}
+  { path: 'main-page', component: FeaturedStylizationsComponent},
   { path: 'stylisations', component: StylisationsComponent, canActivate: [UserGuard] },
   { path: 'create-stylisation', component: StylisationCreatorComponent, canActivate: [UserGuard] }
 ];
