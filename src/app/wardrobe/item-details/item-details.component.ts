@@ -136,7 +136,7 @@ export class ItemDetailsComponent implements OnInit {
     };
     this.newInfo = this.editForm.value;
     this.newInfo.id = this.itemId;
-    console.log(this.editForm.value)
+    console.log(this.editForm.value);
     this.itemDetailService.saveChanges(this.newInfo, getResponse);
     this.isSubmitted = true;
   }
