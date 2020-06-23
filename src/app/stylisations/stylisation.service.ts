@@ -38,4 +38,14 @@ export class StylisationService {
         },
       );
   }
+
+  deleteStylisation(stylisationId: number, callback) {
+    this.http.delete((`${environment.serverLocalHost}/stylization/${stylisationId}`)).subscribe(
+      (res) => {
+        callback(res);
+      },
+      (error) => {
+        callback(error);
+      });
+  }
 }

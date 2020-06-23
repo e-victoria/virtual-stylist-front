@@ -49,4 +49,13 @@ export class StylisationsComponent implements OnInit {
     }
   }
 
+  deleteStylisation(stylisationId) {
+
+    const getResponse = (response) => {
+      console.log(response);
+    }
+
+    this.stylisationService.deleteStylisation(stylisationId, getResponse);
+  }
+
 }
