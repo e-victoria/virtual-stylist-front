@@ -36,9 +36,9 @@
   </div>
   <div class="create-style__form-wrapper">
     <form [formGroup]="newStyleForm" class="create-style__form new-style-form">
-      <p class="form-success__message" *ngIf="newStyleForm.valid && isSuccess">Stylisation created!!</p>
       <h3 class="new-style-form__header">Create new stylisation</h3>
       <div class="new-style-form__input-wrapper">
+        <p class="form-success__message" *ngIf="newStyleForm.valid && isSuccess">New stylisation created!</p>
         <label for="newStyleTag" class="visually-hidden">tag</label>
         <input class="new-style-form__input form-input"
                id="newStyleTag"

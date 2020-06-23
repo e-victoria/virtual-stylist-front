@@ -22,7 +22,7 @@ export class StylisationCreatorComponent implements OnInit {
   private bodySlider: ElementRef;
   @ViewChild('topBottomSlider')
   private topBottomSlider: ElementRef;
-  isSuccess: boolean = true;
+  isSuccess: boolean = false;
 
   newStyleForm: FormGroup = new FormGroup({
     tag: new FormControl('')
