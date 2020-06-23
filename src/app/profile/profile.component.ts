@@ -4,6 +4,7 @@ import { faPen } from '@fortawesome/free-solid-svg-icons';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ProfileService} from './profile.service';
 import {RegisterService} from '../auth/register/register.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-profile',
