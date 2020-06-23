@@ -12,7 +12,6 @@ import IClothesBodyPart from './models/IClothesBodyPart';
 })
 export class StylisationsComponent implements OnInit {
 
-  images: Map<number, string> = new Map<number, string>();
   private itemsAmountOnPage: number = 6;
   private pageNumber: number = 0;
   stylisationsList: IStylisation[];
@@ -41,7 +40,7 @@ export class StylisationsComponent implements OnInit {
 
       const getMoreData = (data) => {
         for (const item of data.content) {
-          this.stylisationsList.push(item);
+          this.stylisationsList?.push(item);
           this.isMore = data.last;
         }
       };

@@ -10,20 +10,24 @@ import { ProfileComponent } from './profile/profile.component';
 
 import { SelectInputComponent } from './select-input/select-input.component';
 import { CreateFormComponent } from './create-form/create-form.component';
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ItemSliderComponent } from './item-slider/item-slider.component';
-import {ItemDetailsComponent} from "./wardrobe/item-details/item-details.component";
-import {InfiniteScrollModule} from "ngx-infinite-scroll";
+import {ItemDetailsComponent} from './wardrobe/item-details/item-details.component';
+import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import { ImagePreloadDirective } from './image-preload.directive';
 import { RegisterComponent } from './auth/register/register.component';
 import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './auth/login/login.component';
-import {TokenInterceptor} from "./token.interceptor";
+import { UserComponent } from './user/user.component';
+import {TokenInterceptor} from './token.interceptor';
 import { StylisationsComponent } from './stylisations/stylisations.component';
 import { ImgSecurePipe } from './img-secure.pipe';
 import { StylisationCreatorComponent } from './stylisations/stylisation-creator/stylisation-creator.component';
 import { StylisationItemComponent } from './stylisations/stylisation-item/stylisation-item.component';
+import {FeaturedStylizationsComponent} from './featured-stylizations/featured-stylizations.component';
+import {CarouselModule} from 'ngx-owl-carousel-o';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -40,14 +44,17 @@ import { StylisationItemComponent } from './stylisations/stylisation-item/stylis
     AuthComponent,
     LoginComponent,
     ProfileComponent,
+    FeaturedStylizationsComponent,
     StylisationsComponent,
     ImgSecurePipe,
     StylisationCreatorComponent,
     StylisationItemComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
+    CarouselModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,

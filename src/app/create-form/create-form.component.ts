@@ -104,7 +104,7 @@ export class CreateFormComponent implements OnInit {
 
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      if (file.size <= 500000){
+      if (file.size <= 5242880){
         this.newCardForm.get('imageName').setValue('smth');
         this.imageToSend.get('image').setValue(file);
         this.isImageRight = true;
