@@ -73,6 +73,7 @@ export class ItemDetailsComponent implements OnInit {
   getSelectValue(event) {
     const selectedValue = event[0];
     const inputName = event[1];
+    console.log(inputName);
     this.editForm.get(inputName).setValue(selectedValue.toString().toUpperCase());
   }
 
@@ -135,6 +136,7 @@ export class ItemDetailsComponent implements OnInit {
     };
     this.newInfo = this.editForm.value;
     this.newInfo.id = this.itemId;
+    console.log(this.editForm.value);
     this.itemDetailService.saveChanges(this.newInfo, getResponse);
     this.isSubmitted = true;
   }

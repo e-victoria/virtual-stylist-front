@@ -6,7 +6,7 @@
     </a>
     <form class="item__details" [formGroup]="editForm">
       <div class="item-details__wrapper">
-        <label for="itemDetailsTag">Tag: <input id="itemDetailsTag" class="item__details-content item__details-content--disabled" value="{{item?.tag}}" disabled></label>
+        <label for="itemDetailsTag">Tag: <input id="itemDetailsTag" formControlName="tag" class="item__details-content item__details-content--disabled" value="{{item?.tag}}" disabled></label>
         <button type="button" class="item-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
       </div>
       <div class="item-details__wrapper">
@@ -15,7 +15,7 @@
                           class="item-details__select"
                           labelClass="{{clothType.errors && isSubmitted ? 'error-border new-form__error-border' : ''}}"
                           inputId="new-clothes-category"
-                          inputName="category"
+                          inputName="clothType"
                           [options]="clothTypeOptions" ></app-select-input>
         <button type="button" class="item-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
       </div>
@@ -40,7 +40,7 @@
         <button type="button" class="item-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
       </div>
       <div class="item-details__wrapper">
-      <label for="itemDetailBrand">Brand: <input id="itemDetailBrand" class="item__details-content item__details-content--disabled" value="{{item?.brand | titlecase}}" disabled></label>
+      <label for="itemDetailBrand">Brand: <input id="itemDetailBrand" formControlName="brand" class="item__details-content item__details-content--disabled" value="{{item?.brand | titlecase}}" disabled></label>
         <button type="button" class="item-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
       </div>
       <div class="item-details__wrapper">
@@ -53,11 +53,11 @@
         <button type="button" class="item-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
       </div>
       <div class="item-details__wrapper">
-      <label for="itemDetailCode">Product Code: <input id="itemDetailCode" class="item__details-content item__details-content--disabled" value="{{item?.code | titlecase}}" disabled></label>
+      <label for="itemDetailCode">Product Code: <input id="itemDetailCode" formControlName="code" class="item__details-content item__details-content--disabled" value="{{item?.code | titlecase}}" disabled></label>
         <button type="button" class="item-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
       </div>
       <div class="item-details__wrapper">
-      <label for="itemDetailLink">Link: <input id="itemDetailLink" class="item__details-content item__details-content--disabled" value="{{item?.shopLink ? item.shopLink : 'no link'}}" disabled></label>
+      <label for="itemDetailLink">Link: <input id="itemDetailLink" formControlName="shopLink" class="item__details-content item__details-content--disabled" value="{{item?.shopLink ? item.shopLink : 'no link'}}" disabled></label>
         <button type="button" class="item-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
       </div>
     </form>
