@@ -1,7 +1,8 @@
-import {Component, OnInit, ViewChild, ElementRef, EventEmitter, Output} from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef, EventEmitter, Output, Input} from '@angular/core';
 import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 import { faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
 import {CreateFormService} from './create-form.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-create-form',
@@ -27,6 +28,9 @@ export class CreateFormComponent implements OnInit {
   private imageToSend: FormGroup = this.formBuilder.group({
     image: ['']
   });
+  isSuccess: boolean = false;
+
+
 
   newCardForm: FormGroup = new FormGroup({
     clothType: new FormControl('', [
@@ -48,7 +52,7 @@ export class CreateFormComponent implements OnInit {
     ])
   });
 
-  constructor(private createFormService: CreateFormService, private formBuilder: FormBuilder) {}
+  constructor(private createFormService: CreateFormService, private formBuilder: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
     this.isSubmitted = false;
@@ -116,7 +120,12 @@ export class CreateFormComponent implements OnInit {
 
       const getResponse = (response) => {
         console.log(response);
-        this.closeForm('');
+        if (!response?.error) {
+          this.isSuccess = true;
+          setTimeout(() => {
+            this.closeForm('');
+          }, 1200);
+        }
       };
 
       this.createFormService.saveClothes(this.newCardForm.value, getResponse);
@@ -128,5 +137,6 @@ export class CreateFormComponent implements OnInit {
       this.createFormService.postImage(formData, getImageName);
     }
   }
+
 
 }

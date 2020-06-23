@@ -1,8 +1,9 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import IClothesImage from '../../wardrobe/models/clothesImage.model';
 import {WardrobeService} from '../../wardrobe/wardrobe.service';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {StylisationService} from '../stylisation.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-stylisation-creator',
@@ -21,12 +22,13 @@ export class StylisationCreatorComponent implements OnInit {
   private bodySlider: ElementRef;
   @ViewChild('topBottomSlider')
   private topBottomSlider: ElementRef;
+  isSuccess: boolean = false;
 
   newStyleForm: FormGroup = new FormGroup({
     tag: new FormControl('')
   });
 
-  constructor(private wardrobeService: WardrobeService, private stylisationService: StylisationService) { }
+  constructor(private wardrobeService: WardrobeService, private stylisationService: StylisationService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -77,13 +79,22 @@ export class StylisationCreatorComponent implements OnInit {
     if (this.bodySlider.nativeElement.classList.contains('show-flex')) {
       selectedClothes = [this.selectedBody];
     } else {
-      console.log(this.selectedTop, this.selectedBottom);
       selectedClothes = [this.selectedTop, this.selectedBottom];
     }
+
     const newStylisation = {
       clothes: selectedClothes,
       tag: this.newStyleForm.get('tag').value
     };
-    this.stylisationService.saveNewStylisation(newStylisation);
+
+    const getResponse = (response) => {
+      if (!response?.error) {
+        this.isSuccess = true;
+        setTimeout(() => {
+          this.router.navigate(['/stylisations']);
+        }, 1000);
+      }
+    };
+    this.stylisationService.saveNewStylisation(newStylisation, getResponse);
   }
 }

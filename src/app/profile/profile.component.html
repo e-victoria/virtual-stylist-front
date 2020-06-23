@@ -12,7 +12,7 @@
         <p class="form-errors__message" *ngIf="passwordConfirmation.errors?.passwordNotMatch && isSubmitted">Passwords do not match</p>
         <p class="form-errors__message" *ngIf="gender.errors?.required && isSubmitted">Gender is required</p>
       </div>
-
+      <p class="form-success__message" *ngIf="isSubmitted && isSuccess">User changes saved!</p>
       <div class="profile-details__wrapper">
         <label for="profileName" class="visually-hidden">Name</label>
         <input id="profileName"

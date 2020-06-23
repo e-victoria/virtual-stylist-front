@@ -265,6 +265,13 @@ ul {
   color: $red;
 }
 
+.form-success__message {
+  font-size: 1em;
+  margin: 0;
+  padding: 0 0.2em;
+  color: $green;
+}
+
 .error-border {
   border: 0.05em solid $red;
   box-shadow: 0 0 0.1em $red;

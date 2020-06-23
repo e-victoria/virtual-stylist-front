@@ -20,6 +20,7 @@ export class CreateFormService {
   saveClothes(newClothes: NewClothes, callback) {
     this.http.post((`${environment.serverLocalHost}/wardrobe`), newClothes).subscribe(
       (res) => {
+        console.log(res);
         callback(res);
       });
   }
@@ -27,6 +28,7 @@ export class CreateFormService {
   postImage(image: FormData, callback) {
     this.http.post((`${environment.serverLocalHost}/img`), image).subscribe(
       (res) => {
+        console.log(res);
         callback(res);
       });
   }

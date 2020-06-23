@@ -11,6 +11,7 @@
       <p class="form-errors__message" *ngIf="imageName.errors?.required && isSubmitted">Image is required</p>
       <p class="form-errors__message" *ngIf="isSubmitted && !isImageRight">Image should be under 5MB</p>
     </div>
+    <p class="form-success__message" *ngIf="isSubmitted && isSuccess">Item added successfully!</p>
     <label for="new-clothes-tag" class="visually-hidden"></label>
     <input id="new-clothes-tag" class="form-input add-card__input" type="text" formControlName="tag" placeholder="Tag #MyFavouriteDress">
     <app-select-input (selectedValue)="getSelectValue($event)"

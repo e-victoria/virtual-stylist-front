@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import IProfile from './profile.model';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
+import {Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ProfileService} from './profile.service';
 import {RegisterService} from '../auth/register/register.service';
@@ -17,6 +18,7 @@ export class ProfileComponent implements OnInit {
   isSubmitted: boolean = false;
   genderOptions: string[];
   newInfo: IProfile;
+  isSuccess: boolean = false;
   @ViewChild('passwordConfirm') private passwordConfirm: ElementRef;
 
   editForm: FormGroup = new FormGroup({
@@ -39,7 +41,7 @@ export class ProfileComponent implements OnInit {
     ])
   }, {validators: this.checkPasswords.bind(this)});
 
-  constructor(private profileService: ProfileService, private registerService: RegisterService) { }
+  constructor(private profileService: ProfileService, private registerService: RegisterService, private router: Router) { }
 
   ngOnInit(): void {
     this.getUserData();
@@ -122,14 +124,19 @@ export class ProfileComponent implements OnInit {
 
   saveChanges(event) {
     event.preventDefault();
+    this.isSubmitted = true;
 
     console.log(this.editForm.value);
 
     const getResponse = (response) => {
       console.log(response);
+      if (!response?.error) {
+        this.isSuccess = true;
+      }
     };
 
     this.newInfo = this.editForm.value;
+
     if (this.editForm.valid) {
       if (this.editForm.get('password').value === '******'){
         this.newInfo['password'] = '';
@@ -137,7 +144,7 @@ export class ProfileComponent implements OnInit {
       }
       this.profileService.saveChanges(this.newInfo, getResponse);
     }
-    this.isSubmitted = true;
+    this.router.navigate(['./profile']);
   }
 
   checkPasswords(formGroup: FormGroup) {

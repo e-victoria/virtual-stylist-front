@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import User from "../../user/user.model";
-import {environment} from "../../../environments/environment";
-import {FormGroup} from "@angular/forms";
+import User from '../../user.model';
+import {environment} from '../../../environments/environment';
+import {FormGroup} from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'

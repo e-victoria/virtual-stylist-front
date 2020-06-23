@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import {Observable} from 'rxjs';
 import {ClothData} from './models/clothData';
+import IClothesImage from './models/clothesImage.model';
 
 @Injectable({
   providedIn: 'root'

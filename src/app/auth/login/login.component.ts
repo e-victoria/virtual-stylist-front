@@ -13,6 +13,7 @@ export class LoginComponent {
   hasResponse = false;
   isUserDataIncorrect = false;
   isSubmitted = false;
+  isSuccess = false;
 
   loginForm: FormGroup = new FormGroup({
     email: new FormControl('', [
@@ -47,13 +48,16 @@ export class LoginComponent {
     const getResponse = (response) => {
       this.hasResponse = true;
       this.loginService.saveToken(response.token);
-      if (response.error) {
+      if (!response.error) {
+        this.isSuccess = true;
+        setTimeout(() => {
+          this.router.navigate(['/']);
+        }, 1200);
+      }else{
         this.isUserDataIncorrect = true;
-      } else {
-        this.router.navigate(['/']);
       }
     };
-
+    this.isUserDataIncorrect = false;
     if (this.loginForm.valid) {
       this.loginService.checkUser(userData, getResponse);
     }

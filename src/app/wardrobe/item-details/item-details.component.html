@@ -5,6 +5,7 @@
       <img class="clothes__img item__img" src="{{image}}"  default="../../assets/img/empty.png" alt="clothes">
     </a>
     <form class="item__details" [formGroup]="editForm">
+      <p class="form-success__message" *ngIf="isSubmitted && isSuccess">Changes successfully saved!</p>
       <div class="item-details__wrapper">
         <label for="itemDetailsTag">Tag: <input id="itemDetailsTag" formControlName="tag" class="item__details-content item__details-content--disabled" value="{{item?.tag}}" disabled></label>
         <button type="button" class="item-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>

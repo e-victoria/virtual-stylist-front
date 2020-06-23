@@ -32,8 +32,8 @@ export class LoginService {
     if (this.router.url !== '/') {
       this.router.navigate(['']);
     } else {
-      console.log('test test');
       window.location.reload();
     }
   }
+
 }
