@@ -48,6 +48,7 @@ export class ItemSliderComponent implements AfterViewInit {
       this.activeItem--;
       this.imageWrappers[this.activeItem].classList.add('show-flex');
     }
+    this.selectedItem.emit(this.clothesList[this.activeItem]);
   }
 
   nextBtn() {
@@ -60,6 +61,7 @@ export class ItemSliderComponent implements AfterViewInit {
       this.imageWrappers[this.activeItem].classList.add('show-flex');
       this.content.nativeElement.style.transform = `none`;
     }
+    this.selectedItem.emit(this.clothesList[this.activeItem]);
   }
 }
 
