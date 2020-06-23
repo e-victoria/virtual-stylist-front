@@ -40,7 +40,7 @@ export class StylisationsComponent implements OnInit {
 
       const getMoreData = (data) => {
         for (const item of data.content) {
-          this.stylisationsList.push(item);
+          this.stylisationsList?.push(item);
           this.isMore = data.last;
         }
       };

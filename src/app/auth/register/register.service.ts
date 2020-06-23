@@ -24,7 +24,7 @@ export class RegisterService {
         callback(res);
       },
       (error) => {
-        callback(error)
+        callback(error);
       });
   }
 }
