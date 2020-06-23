@@ -1,0 +1,37 @@
+@import "../../assets/scss/variables";
+
+.carousel-wrapper .section-title {
+  margin-bottom: 0;
+}
+.carousel {
+  padding: 0 25vw;
+  overflow: hidden;
+  position: relative;
+
+  .content {
+    display: flex;
+    padding: 2em 0;
+    align-items: center;
+    width: 100%;
+    transition: 500ms ease-in-out;
+  }
+}
+
+.stylisation {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 30em;
+  overflow: hidden;
+  border-radius: 1.12em;
+  box-shadow: $btn-shadow;
+  background-color: $light-grey;
+}
+
+.clothes__img {
+  width: 100%;
+  height: auto;
+  border-radius: 1.15em;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
