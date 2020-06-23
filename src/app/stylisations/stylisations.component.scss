@@ -1,10 +1,20 @@
 @import "../../assets/scss/variables";
 
+@keyframes slowlyShow {
+  from {
+    opacity: 0.1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .stylisations {
   padding: 1em 5vw;
 }
 
 .stylisation {
+  position: relative;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -13,6 +23,30 @@
   border-radius: 1.12em;
   box-shadow: $btn-shadow;
   background-color: $light-grey;
+
+  &:hover .stylisation__delete-btn {
+    display: block;
+    animation: slowlyShow;
+    animation-duration: 900ms;
+  }
+}
+
+.stylisation__delete-btn {
+  display: none;
+  width: 3.3em;
+  height: 3.3em;
+  border-radius: 0 0 0 0.7em;
+  top: 0;
+  right: 0;
+  position: absolute;
+  background-color: #ffffff;
+  box-sizing: border-box;
+
+  &:before,
+  &:after {
+    top: 1.5em;
+    right: 0.3em;
+  }
 }
 
 .stylisations__wrapper {
