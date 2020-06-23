@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {RegisterService} from "./register.service";
-import User from "../../user/user.model";
+import User from "../../user.model";
 import {Router} from "@angular/router";
 
 @Component({
@@ -14,6 +14,7 @@ export class RegisterComponent {
   hasResponse: boolean = false;
   genderOptions: string[];
   isSubmitted: boolean = false;
+  isSuccess: boolean = true;
   emailExists: boolean = false;
 
   constructor(private registerService: RegisterService, private router: Router) {
@@ -74,10 +75,14 @@ export class RegisterComponent {
       } else {
         this.router.navigate(['/']);
       }
-    }
+    };
 
     if (this.newRegisterForm.valid) {
-      this.registerService.registerNewUser(<User>this.newRegisterForm.value, getResponse)
+      setTimeout(() => {
+        this.registerService.registerNewUser(<User>this.newRegisterForm.value, getResponse);
+        this.isSuccess = true;
+        this.router.navigate(['/']);
+      }, 1000);
     }
 
     this.isSubmitted = true;
@@ -85,5 +90,7 @@ export class RegisterComponent {
 
   checkPasswords(formGroup: FormGroup) {
     this.registerService.checkPasswords(formGroup);
+    this.isSuccess = true;
   }
 }
+

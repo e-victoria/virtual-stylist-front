@@ -6,7 +6,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {environment} from '../../environments/environment';
 import {ProfileService} from './profile.service';
 import {RegisterService} from '../auth/register/register.service';
-import User from '../user/user.model';
+import User from '../user.model';
 
 @Component({
   selector: 'app-profile',
@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit {
   isSubmitted: boolean = false;
   genderOptions: string[];
   newInfo: IProfile;
+  isSuccess: boolean = true;
   @ViewChild('passwordConfirm') private passwordConfirm: ElementRef;
 
   editForm: FormGroup = new FormGroup({
@@ -42,7 +43,7 @@ export class ProfileComponent implements OnInit {
     ])
   }, {validators: this.checkPasswords.bind(this)});
 
-  constructor(private profileService: ProfileService, private registerService: RegisterService) { }
+  constructor(private profileService: ProfileService, private registerService: RegisterService, private router: Router) { }
 
   ngOnInit(): void {
     this.getUserData();
@@ -134,13 +135,18 @@ export class ProfileComponent implements OnInit {
 
     this.newInfo = this.editForm.value;
     if (this.editForm.valid) {
-      if (this.editForm.get('password').value === '******'){
-        this.newInfo['password'] = '';
-        this.newInfo['passwordConfirmation'] = '';
-      }
-      this.profileService.saveChanges(this.newInfo, getResponse);
+      setTimeout(() => {
+        if (this.editForm.get('password').value === '******'){
+          this.newInfo['password'] = '';
+          this.newInfo['passwordConfirmation'] = '';
+        }
+        this.profileService.saveChanges(this.newInfo, getResponse);
+        this.isSuccess = true;
+        this.isSubmitted = true;
+      }, 1000);
+      this.isSuccess = false;
     }
-    this.isSubmitted = true;
+    this.router.navigate(['./profile']);
   }
 
   checkPasswords(formGroup: FormGroup) {

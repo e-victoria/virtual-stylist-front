@@ -3,6 +3,7 @@ import IClothesImage from '../../wardrobe/models/clothesImage.model';
 import {WardrobeService} from '../../wardrobe/wardrobe.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {StylisationService} from '../stylisation.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-stylisation-creator',
@@ -21,12 +22,13 @@ export class StylisationCreatorComponent implements OnInit {
   private bodySlider: ElementRef;
   @ViewChild('topBottomSlider')
   private topBottomSlider: ElementRef;
+  isSuccess: boolean = true;
 
   newStyleForm: FormGroup = new FormGroup({
     tag: new FormControl('')
   });
 
-  constructor(private wardrobeService: WardrobeService, private stylisationService: StylisationService) { }
+  constructor(private wardrobeService: WardrobeService, private stylisationService: StylisationService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -83,6 +85,10 @@ export class StylisationCreatorComponent implements OnInit {
       clothes: selectedClothes,
       tag: this.newStyleForm.get('tag').value
     };
-    this.stylisationService.saveNewStylisation(newStylisation);
+    setTimeout(() => {
+      this.stylisationService.saveNewStylisation(newStylisation);
+      this.isSuccess = true;
+      this.router.navigate(['/stylisations']);
+    }, 1000);
   }
 }

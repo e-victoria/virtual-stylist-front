@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {LoginService} from "./login.service";
 import {Router} from "@angular/router";
+import User from '../../user.model';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,7 @@ export class LoginComponent {
   hasResponse: boolean = false;
   isUserDataIncorrect: boolean = false;
   isSubmitted: boolean = false;
+  isSuccess: boolean = true;
 
   loginForm: FormGroup = new FormGroup({
     email: new FormControl('', [
@@ -55,7 +57,11 @@ export class LoginComponent {
     }
 
     if (this.loginForm.valid) {
-      this.loginService.checkUser(userData, getResponse);
+      setTimeout(() => {
+        this.loginService.checkUser(userData, getResponse);
+        this.isSuccess = true;
+        this.router.navigate(['/']);
+      }, 1000);
     }
   }
 }

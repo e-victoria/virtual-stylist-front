@@ -23,7 +23,7 @@ export class LoginService {
         callback(res);
       },
       (error) => {
-        callback(error)
+        callback(error);
       });
   }
 
@@ -36,4 +36,5 @@ export class LoginService {
       window.location.reload();
     }
   }
+
 }

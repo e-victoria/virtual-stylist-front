@@ -5,6 +5,7 @@
     <p class="form-errors__message" *ngIf="email.errors?.email && isSubmitted">Email is invalid</p>
     <p class="form-errors__message" *ngIf="password.errors?.required && isSubmitted">Password is required</p>
   </div>
+  <p class="form-success__message" *ngIf="isSubmitted && loginForm.valid">User successfully registered!</p>
   <div *ngIf="hasResponse" class="register__errors form-errors">
     <p class="form-errors__message" *ngIf="isUserDataIncorrect">Wrong login or password</p>
   </div>
