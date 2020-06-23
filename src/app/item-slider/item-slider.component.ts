@@ -2,10 +2,6 @@ import {AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewC
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import IClothesImage from '../wardrobe/models/clothesImage.model';
 import {environment} from '../../environments/environment';
-import {Observable} from 'rxjs';
-import IClothes from '../wardrobe/models/item-detail.model';
-import {ClothData} from '../wardrobe/models/clothData';
-import {tap} from 'rxjs/operators';
 
 
 @Component({
@@ -36,7 +32,6 @@ export class ItemSliderComponent implements AfterViewInit {
   totalItems;
 
   ngAfterViewInit(): void {
-    console.log(this.clothesList);
     this.imageWrappers = this.carousel.nativeElement.querySelectorAll('.image-wrapper');
     this.imageWrappers[this.activeItem]?.classList.add('show-flex');
     this.totalItems = this.carousel.nativeElement.querySelectorAll('.image-wrapper').length - 1;
@@ -53,6 +48,7 @@ export class ItemSliderComponent implements AfterViewInit {
       this.activeItem--;
       this.imageWrappers[this.activeItem].classList.add('show-flex');
     }
+    this.selectedItem.emit(this.clothesList[this.activeItem]);
   }
 
   nextBtn() {
@@ -65,6 +61,7 @@ export class ItemSliderComponent implements AfterViewInit {
       this.imageWrappers[this.activeItem].classList.add('show-flex');
       this.content.nativeElement.style.transform = `none`;
     }
+    this.selectedItem.emit(this.clothesList[this.activeItem]);
   }
 }
 

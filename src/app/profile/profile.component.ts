@@ -1,12 +1,10 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import IProfile from './profile.model';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
-import {Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {environment} from '../../environments/environment';
 import {ProfileService} from './profile.service';
 import {RegisterService} from '../auth/register/register.service';
-import User from '../user.model';
+
 
 @Component({
   selector: 'app-profile',

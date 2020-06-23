@@ -7,11 +7,13 @@
   <h2 class="section-title">Your stylisations</h2>
   <div *ngIf="!stylisations" class="stylisations__wrapper">
     <div class="stysations__item stylisation {{stylisation.clothesForDisplayStylization.length === 1 ? 'stylisation__dress' : ''}}" *ngFor="let stylisation of stylisationsList">
+      <div (click)="deleteStylisation(stylisation.id)" class="stylisation__delete-btn close-btn"><span class="visually-hidden">Delete</span></div>
       <app-stylisation-item class="stylisations__part" [stylisation]="stylisation.clothesForDisplayStylization"></app-stylisation-item>
     </div>
   </div>
   <div *ngIf="stylisations" class="stylisations__wrapper">
     <div class="stysations__item stylisation" *ngFor="let stylisation of stylisations">
+      <div (click)="deleteStylisation(stylisation.id)" class="stylisation__delete-btn close-btn"><span class="visually-hidden">Delete</span></div>
       <app-stylisation-item class="stylisations__part" [stylisation]="stylisation.clothesForDisplayStylization"></app-stylisation-item>
     </div>
     </div>

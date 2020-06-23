@@ -1,7 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import IClothesImage from '../../wardrobe/models/clothesImage.model';
 import {WardrobeService} from '../../wardrobe/wardrobe.service';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import {StylisationService} from '../stylisation.service';
 import {Router} from '@angular/router';
 
@@ -79,6 +79,7 @@ export class StylisationCreatorComponent implements OnInit {
     if (this.bodySlider.nativeElement.classList.contains('show-flex')) {
       selectedClothes = [this.selectedBody];
     } else {
+      console.log(this.selectedTop, this.selectedBottom);
       selectedClothes = [this.selectedTop, this.selectedBottom];
     }
     const newStylisation = {
