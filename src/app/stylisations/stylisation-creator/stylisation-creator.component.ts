@@ -77,6 +77,7 @@ export class StylisationCreatorComponent implements OnInit {
     if (this.bodySlider.nativeElement.classList.contains('show-flex')) {
       selectedClothes = [this.selectedBody];
     } else {
+      console.log(this.selectedTop, this.selectedBottom);
       selectedClothes = [this.selectedTop, this.selectedBottom];
     }
     const newStylisation = {
