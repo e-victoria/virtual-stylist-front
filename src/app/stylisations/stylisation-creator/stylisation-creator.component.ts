@@ -85,9 +85,9 @@ export class StylisationCreatorComponent implements OnInit {
       clothes: selectedClothes,
       tag: this.newStyleForm.get('tag').value
     };
+    this.isSuccess = true;
     setTimeout(() => {
       this.stylisationService.saveNewStylisation(newStylisation);
-      this.isSuccess = true;
       this.router.navigate(['/stylisations']);
     }, 1000);
   }

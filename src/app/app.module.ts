@@ -19,7 +19,6 @@ import { ImagePreloadDirective } from './image-preload.directive';
 import { RegisterComponent } from './auth/register/register.component';
 import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './auth/login/login.component';
-import { UserComponent } from './user/user.component';
 import {TokenInterceptor} from './token.interceptor';
 import { StylisationsComponent } from './stylisations/stylisations.component';
 import { ImgSecurePipe } from './img-secure.pipe';

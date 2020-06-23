@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {LoginService} from "./login.service";
 import {Router} from "@angular/router";
-import User from '../../user.model';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +13,7 @@ export class LoginComponent {
   hasResponse: boolean = false;
   isUserDataIncorrect: boolean = false;
   isSubmitted: boolean = false;
-  isSuccess: boolean = true;
+  isSuccess: boolean = false;
 
   loginForm: FormGroup = new FormGroup({
     email: new FormControl('', [
@@ -44,24 +43,23 @@ export class LoginComponent {
     const userData: object = {
       'login': this.loginForm.value.email,
       'password': this.loginForm.value.password
-    }
+    };
 
     const getResponse = (response) => {
       this.hasResponse = true;
       this.loginService.saveToken(response.token);
-      if(response.error) {
-        this.isUserDataIncorrect = true;
-      } else {
-        this.router.navigate(['/']);
-      }
-    }
-
-    if (this.loginForm.valid) {
-      setTimeout(() => {
-        this.loginService.checkUser(userData, getResponse);
+      if(!response.error) {
         this.isSuccess = true;
-        this.router.navigate(['/']);
-      }, 1000);
+        setTimeout(() => {
+          this.router.navigate(['/']);
+        }, 1000);
+      }else{
+        this.isUserDataIncorrect = true;
+      }
+    };
+    this.isUserDataIncorrect = false;
+    if (this.loginForm.valid) {
+      this.loginService.checkUser(userData, getResponse);
     }
   }
 }
