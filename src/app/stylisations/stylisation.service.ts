@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {environment} from "../../environments/environment";
-import IStylisation from "./models/stylisation.model";
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../environments/environment';
+import IStylisation from './models/stylisation.model';
 import NewStylisation from './models/newStylisation';
-import {Observable} from 'rxjs';
-import {ClothData} from '../wardrobe/models/clothData';
 import IClothesBodyPart from './models/IClothesBodyPart';
 
 @Injectable({
@@ -37,5 +35,15 @@ export class StylisationService {
           callback(res);
         },
       );
+  }
+
+  deleteStylisation(stylisationId: number, callback) {
+    this.http.delete((`${environment.serverLocalHost}/stylization/${stylisationId}`)).subscribe(
+      (res) => {
+        callback(res);
+      },
+      (error) => {
+        callback(error);
+      });
   }
 }

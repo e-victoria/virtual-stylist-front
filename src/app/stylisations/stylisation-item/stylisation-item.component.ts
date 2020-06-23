@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {environment} from '../../../environments/environment';
 import IClothesBodyPart from '../models/IClothesBodyPart';
-import IStylisation from '../models/stylisation.model';
 
 @Component({
   selector: 'app-stylisation-item',

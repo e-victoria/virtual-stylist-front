@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {environment} from "../../../environments/environment";
-import {HttpClient} from "@angular/common/http";
-import {Router} from "@angular/router";
+import {environment} from '../../../environments/environment';
+import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class LoginService {
     localStorage.setItem('token', token);
     window.setTimeout(() => {
       localStorage.removeItem('token');
-    }, 900000000)
+    }, 900000000);
   }
 
   checkUser(userData: object, callback): void {
@@ -23,7 +23,7 @@ export class LoginService {
         callback(res);
       },
       (error) => {
-        callback(error)
+        callback(error);
       });
   }
 
