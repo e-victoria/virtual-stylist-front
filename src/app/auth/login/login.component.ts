@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {LoginService} from "./login.service";
-import {Router} from "@angular/router";
+import { Component } from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {LoginService} from './login.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,9 +10,9 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent {
 
-  hasResponse: boolean = false;
-  isUserDataIncorrect: boolean = false;
-  isSubmitted: boolean = false;
+  hasResponse = false;
+  isUserDataIncorrect = false;
+  isSubmitted = false;
 
   loginForm: FormGroup = new FormGroup({
     email: new FormControl('', [
@@ -27,7 +27,7 @@ export class LoginComponent {
   constructor(private loginService: LoginService, private router: Router) { }
 
   get email(){
-    this.loginForm.get('email').setValue(this.loginForm.get('email').value.trim())
+    this.loginForm.get('email').setValue(this.loginForm.get('email').value.trim());
     return this.loginForm.get('email');
   }
 
@@ -40,19 +40,19 @@ export class LoginComponent {
     this.isSubmitted = true;
 
     const userData: object = {
-      'login': this.loginForm.value.email,
-      'password': this.loginForm.value.password
-    }
+      login: this.loginForm.value.email,
+      password: this.loginForm.value.password
+    };
 
     const getResponse = (response) => {
       this.hasResponse = true;
       this.loginService.saveToken(response.token);
-      if(response.error) {
+      if (response.error) {
         this.isUserDataIncorrect = true;
       } else {
         this.router.navigate(['/']);
       }
-    }
+    };
 
     if (this.loginForm.valid) {
       this.loginService.checkUser(userData, getResponse);

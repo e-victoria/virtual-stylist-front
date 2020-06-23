@@ -1,9 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import IStylisation from "./models/stylisation.model";
-import {StylisationService} from "./stylisation.service";
-import {WardrobeService} from "../wardrobe/wardrobe.service";
-import {environment} from '../../environments/environment';
-import IClothesBodyPart from './models/IClothesBodyPart';
+import IStylisation from './models/stylisation.model';
+import {StylisationService} from './stylisation.service';
+import {WardrobeService} from '../wardrobe/wardrobe.service';
 
 @Component({
   selector: 'app-stylisations',
@@ -12,11 +10,10 @@ import IClothesBodyPart from './models/IClothesBodyPart';
 })
 export class StylisationsComponent implements OnInit {
 
-  private itemsAmountOnPage: number = 6;
-  private pageNumber: number = 0;
+  private itemsAmountOnPage = 6;
+  private pageNumber = 0;
   stylisationsList: IStylisation[];
   private isMore: boolean;
-  env = environment;
   @Input()
   stylisations: IStylisation[];
 
@@ -53,7 +50,7 @@ export class StylisationsComponent implements OnInit {
 
     const getResponse = (response) => {
       console.log(response);
-    }
+    };
 
     this.stylisationService.deleteStylisation(stylisationId, getResponse);
   }
