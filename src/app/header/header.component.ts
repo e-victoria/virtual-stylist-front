@@ -1,8 +1,8 @@
 import {AfterViewInit, Component, ElementRef, OnChanges, OnInit, ViewChild} from '@angular/core';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
-import {Router} from "@angular/router";
-import {LoginService} from "../auth/login/login.service";
+import {Router} from '@angular/router';
+import {LoginService} from '../auth/login/login.service';
 
 
 @Component({
@@ -14,7 +14,7 @@ export class HeaderComponent implements AfterViewInit {
 
   faUser = faUser;
   faSignInAlt = faSignInAlt;
-  isLoggedIn: boolean = false;
+  isLoggedIn = false;
   @ViewChild('profileMenu')
   private profileMenu: ElementRef;
   @ViewChild('logo')
@@ -22,7 +22,7 @@ export class HeaderComponent implements AfterViewInit {
 
   constructor(private router: Router, private loginService: LoginService) {
     this.router.events.subscribe((val) => {
-      if(localStorage.getItem('token')) {
+      if (localStorage.getItem('token')) {
         this.isLoggedIn = true;
       }
     });

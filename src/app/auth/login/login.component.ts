@@ -53,13 +53,16 @@ export class LoginComponent {
         setTimeout(() => {
           this.router.navigate(['/']);
         }, 1200);
-      }else{
-        this.isUserDataIncorrect = true;
+      } else {
+        if (response.error) {
+          this.isUserDataIncorrect = true;
+        }
+      }
+
+      this.isUserDataIncorrect = false;
+      if (this.loginForm.valid) {
+        this.loginService.checkUser(userData, getResponse);
       }
     };
-    this.isUserDataIncorrect = false;
-    if (this.loginForm.valid) {
-      this.loginService.checkUser(userData, getResponse);
-    }
   }
 }
