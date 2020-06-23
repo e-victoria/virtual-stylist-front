@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl, FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {RegisterService} from "./register.service";
-import User from "../../user.model";
-import {Router} from "@angular/router";
+import { Component } from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {RegisterService} from './register.service';
+import User from '../../user.model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,11 +11,11 @@ import {Router} from "@angular/router";
 })
 export class RegisterComponent {
 
-  hasResponse: boolean = false;
+  hasResponse = false;
   genderOptions: string[];
-  isSubmitted: boolean = false;
-  isSuccess: boolean = true;
-  emailExists: boolean = false;
+  isSubmitted = false;
+  isSuccess = false;
+  emailExists = false;
 
   constructor(private registerService: RegisterService, private router: Router) {
     this.genderOptions = [
@@ -67,30 +67,27 @@ export class RegisterComponent {
 
   saveUser(event){
     event.preventDefault();
+    this.isSubmitted = true;
 
     const getResponse = (response) => {
       this.hasResponse = true;
-      if(response.error === 'The email is already registered') {
+      if (response?.error === 'The email is already registered') {
         this.emailExists = true;
-      } else {
-        this.router.navigate(['/']);
+      } else if (!response?.error) {
+        this.isSuccess = true;
+        setTimeout(() => {
+          this.router.navigate(['/']);
+        }, 1200);
       }
     };
 
     if (this.newRegisterForm.valid) {
-      setTimeout(() => {
-        this.registerService.registerNewUser(<User>this.newRegisterForm.value, getResponse);
-        this.isSuccess = true;
-        this.router.navigate(['/']);
-      }, 1000);
+      this.registerService.registerNewUser(this.newRegisterForm.value as User, getResponse);
     }
-
-    this.isSubmitted = true;
   }
 
   checkPasswords(formGroup: FormGroup) {
     this.registerService.checkPasswords(formGroup);
-    this.isSuccess = true;
   }
 }
 

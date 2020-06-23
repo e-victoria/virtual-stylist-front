@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {environment} from "../../../environments/environment";
-import {HttpClient} from "@angular/common/http";
-import {Router} from "@angular/router";
+import {environment} from '../../../environments/environment';
+import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +32,6 @@ export class LoginService {
     if (this.router.url !== '/') {
       this.router.navigate(['']);
     } else {
-      console.log('test test');
       window.location.reload();
     }
   }

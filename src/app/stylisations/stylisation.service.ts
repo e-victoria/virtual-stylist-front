@@ -23,10 +23,10 @@ export class StylisationService {
       );
   }
 
-  saveNewStylisation(stylisation: NewStylisation) {
+  saveNewStylisation(stylisation: NewStylisation, callback) {
     this.http.post((`${environment.serverLocalHost}/stylization`), stylisation).subscribe(
       (res) => {
-        console.log(res);
+        callback(res);
       });
   }
 

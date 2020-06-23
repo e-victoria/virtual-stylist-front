@@ -3,10 +3,8 @@ import IProfile from './profile.model';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import {Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {environment} from '../../environments/environment';
 import {ProfileService} from './profile.service';
 import {RegisterService} from '../auth/register/register.service';
-import User from '../user.model';
 
 @Component({
   selector: 'app-profile',
@@ -20,7 +18,7 @@ export class ProfileComponent implements OnInit {
   isSubmitted: boolean = false;
   genderOptions: string[];
   newInfo: IProfile;
-  isSuccess: boolean = true;
+  isSuccess: boolean = false;
   @ViewChild('passwordConfirm') private passwordConfirm: ElementRef;
 
   editForm: FormGroup = new FormGroup({
@@ -126,25 +124,25 @@ export class ProfileComponent implements OnInit {
 
   saveChanges(event) {
     event.preventDefault();
+    this.isSubmitted = true;
 
     console.log(this.editForm.value);
 
     const getResponse = (response) => {
       console.log(response);
+      if (!response?.error) {
+        this.isSuccess = true;
+      }
     };
 
     this.newInfo = this.editForm.value;
+
     if (this.editForm.valid) {
-      setTimeout(() => {
-        if (this.editForm.get('password').value === '******'){
-          this.newInfo['password'] = '';
-          this.newInfo['passwordConfirmation'] = '';
-        }
-        this.profileService.saveChanges(this.newInfo, getResponse);
-        this.isSuccess = true;
-        this.isSubmitted = true;
-      }, 1000);
-      this.isSuccess = false;
+      if (this.editForm.get('password').value === '******'){
+        this.newInfo['password'] = '';
+        this.newInfo['passwordConfirmation'] = '';
+      }
+      this.profileService.saveChanges(this.newInfo, getResponse);
     }
     this.router.navigate(['./profile']);
   }

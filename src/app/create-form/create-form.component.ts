@@ -28,7 +28,7 @@ export class CreateFormComponent implements OnInit {
   private imageToSend: FormGroup = this.formBuilder.group({
     image: ['']
   });
-  isSuccess: boolean = true;
+  isSuccess: boolean = false;
 
 
 
@@ -120,7 +120,12 @@ export class CreateFormComponent implements OnInit {
 
       const getResponse = (response) => {
         console.log(response);
-        this.closeForm('');
+        if (!response?.error) {
+          this.isSuccess = true;
+          setTimeout(() => {
+            this.closeForm('');
+          }, 1200);
+        }
       };
 
       this.createFormService.saveClothes(this.newCardForm.value, getResponse);
@@ -129,12 +134,7 @@ export class CreateFormComponent implements OnInit {
     formData.append('file', this.imageToSend.get('image').value);
 
     if (this.newCardForm.valid) {
-      setTimeout(() => {
-        this.createFormService.postImage(formData, getImageName);
-        this.isSuccess = true;
-        console.log('work test');
-        this.router.navigate(['/wardrobe']);
-      }, 1000);
+      this.createFormService.postImage(formData, getImageName);
     }
   }
 

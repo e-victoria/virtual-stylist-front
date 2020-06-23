@@ -27,6 +27,7 @@ export class ItemDetailsComponent implements OnInit {
   styleOptions: string[];
   newInfo: IClothes;
   private itemId: number;
+  isSuccess = false;
 
   editForm: FormGroup = new FormGroup({
     clothType: new FormControl('', [
@@ -132,7 +133,9 @@ export class ItemDetailsComponent implements OnInit {
     console.log(this.editForm.value);
 
     const getResponse = (response) => {
-      console.log(response);
+      if (!response?.error) {
+        this.isSuccess = true;
+      };
     };
     this.newInfo = this.editForm.value;
     this.newInfo.id = this.itemId;
@@ -142,6 +145,7 @@ export class ItemDetailsComponent implements OnInit {
   }
 
   getStylisations(): void {
+
     const getResponse = (data) => {
       console.log(data);
       for (const item of data) {
@@ -153,7 +157,6 @@ export class ItemDetailsComponent implements OnInit {
             imageName: this.item?.imageName
           }]
         };
-        console.log(data);
         this.stylisations.push(stylisation);
       }
     };
