@@ -58,11 +58,12 @@ export class LoginComponent {
           this.isUserDataIncorrect = true;
         }
       }
-
-      this.isUserDataIncorrect = false;
-      if (this.loginForm.valid) {
-        this.loginService.checkUser(userData, getResponse);
-      }
     };
+
+    if (this.loginForm.valid) {
+      this.isUserDataIncorrect = false;
+      this.loginService.checkUser(userData, getResponse);
+    } else {
+    }
   }
 }
