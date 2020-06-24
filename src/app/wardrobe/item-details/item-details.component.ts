@@ -28,6 +28,7 @@ export class ItemDetailsComponent implements OnInit {
   newInfo: IClothes;
   itemId: number;
   isSuccess = false;
+  isDeleted = false;
   @ViewChild('hasPattern')
   private hasPattern: ElementRef;
 
@@ -151,10 +152,12 @@ export class ItemDetailsComponent implements OnInit {
   }
 
   deleteClothes(clothesId: number) {
-
     const getResponse = (response) => {
       if (!response?.error) {
-        alert('success');
+        this.isDeleted = true;
+        setTimeout(() => {
+          this.router.navigate(['wardrobe']);
+        }, 1200);
       }
     };
 
