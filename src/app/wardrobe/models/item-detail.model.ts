@@ -5,6 +5,7 @@ export default interface IClothes {
   color: string;
   code: string;
   brand: string;
+  hasPattern: boolean;
   style: string;
   size: string;
   tag: string;

@@ -47,6 +47,7 @@ export class CreateFormComponent implements OnInit {
       Validators.required
     ]),
     code: new FormControl(''),
+    hasPattern: new FormControl(''),
     imageName: new FormControl('', [
       Validators.required
     ])

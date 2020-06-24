@@ -61,6 +61,14 @@
       <label for="itemDetailLink">Link: <input id="itemDetailLink" formControlName="shopLink" class="item__details-content item__details-content--disabled" value="{{item?.shopLink ? item.shopLink : 'no link'}}" disabled></label>
         <button type="button" class="item-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
       </div>
+      <div class="new-clothes__checkbox-wrapper">
+        <p class="checkbox__question"> Does this item has a pattern?</p>
+        <div class="new-clothes__radio-input">
+          <input #hasPattern id="new-clothes-patternTrue" class="visually-hidden checkbox-input" type="checkbox"
+                 formControlName="hasPattern" value="true" name="hasPattern">
+          <label for="new-clothes-patternTrue" class="checkbox-input__label">Yes</label>
+        </div>
+      </div>
     </form>
   </div>
   <div class="item-details__btn-wrapper">
