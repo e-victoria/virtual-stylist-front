@@ -11,7 +11,7 @@ import {HomeComponent} from './home/home.component';
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent},
+  { path: '', component: HomeComponent, canActivate: [UserGuard]},
   { path: 'wardrobe', component: WardrobeComponent, canActivate: [UserGuard] },
   { path: 'wardrobe/:id', component: ItemDetailsComponent, canActivate: [UserGuard]},
   { path: 'auth', component: AuthComponent },

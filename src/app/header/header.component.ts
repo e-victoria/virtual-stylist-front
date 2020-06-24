@@ -21,6 +21,10 @@ export class HeaderComponent implements AfterViewInit {
   private logo: ElementRef;
 
   constructor(private router: Router, private loginService: LoginService) {
+    console.log('here');
+    if (!localStorage.getItem('token')) {
+      this.router.navigate(['auth']);
+    }
     this.router.events.subscribe((val) => {
       if (localStorage.getItem('token')) {
         this.isLoggedIn = true;
