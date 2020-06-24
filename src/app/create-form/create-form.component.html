@@ -45,7 +45,14 @@
     </app-select-input>
     <label for="new-clothes-link" class="visually-hidden"></label>
     <input id="new-clothes-link" class="form-input add-card__input" type="text" formControlName="shopLink" placeholder="Link">
-
+    <div class="new-clothes__radio-wrapper">
+      <p>Does this item has a pattern?</p>
+      <div class="new-clothes__radio-input">
+        <input id="new-clothes-patternTrue" class="visually-hidden checkbox-input" type="checkbox"
+               formControlName="hasPattern" value="true" name="hasPattern">
+        <label for="new-clothes-patternTrue" class="checkbox-input__label">Yes</label>
+      </div>
+    </div>
     <div class="new-clothes__photo-btn-wrapper">
     <button class="btn upload-photo__btn" type="button" (click)="filePicker.click()"><fa-icon [icon]="faCloudUploadAlt"></fa-icon> Upload photo*
       <input #filePicker

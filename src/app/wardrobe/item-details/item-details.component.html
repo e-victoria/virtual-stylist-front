@@ -61,12 +61,24 @@
       <label for="itemDetailLink">Link: <input id="itemDetailLink" formControlName="shopLink" class="item__details-content item__details-content--disabled" value="{{item?.shopLink ? item.shopLink : 'no link'}}" disabled></label>
         <button type="button" class="item-details__change-btn btn btn-pen" (click)="activateEditMode($event)"><span class="visually-hidden">Change</span><fa-icon [icon]="faPen"></fa-icon></button>
       </div>
+      <div class="new-clothes__checkbox-wrapper">
+        <p class="checkbox__question"> Does this item has a pattern?</p>
+        <div class="new-clothes__radio-input">
+          <input #hasPattern id="new-clothes-patternTrue" class="visually-hidden checkbox-input" type="checkbox"
+                 formControlName="hasPattern" value="true" name="hasPattern">
+          <label for="new-clothes-patternTrue" class="checkbox-input__label">Yes</label>
+        </div>
+      </div>
     </form>
+    <div class="popup-message" *ngIf="isDeleted">
+      <p class="form-success__message">Successfully deleted!</p>
+    </div>
   </div>
-  <div class="item-details__save-btn-wrapper">
+  <div class="item-details__btn-wrapper">
+    <button (click)="deleteClothes(itemId)" type="button" class="btn btn-pen item-details__delete-btn">DELETE</button>
     <button (click)="saveChanges($event)" type="submit" class="btn btn-pen item-details__save-btn">SAVE</button>
   </div>
 </section>
-  <div *ngIf="stylisations">
+  <div *ngIf="stylisations.length > 0">
     <app-stylisations [stylisations]="stylisations"></app-stylisations>
   </div>

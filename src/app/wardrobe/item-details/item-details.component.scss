@@ -30,6 +30,12 @@
   }
 }
 
+.checkbox__question {
+  font-size: 1.1em;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}
+
 .item__link {
   display: flex;
   width: 30%;
@@ -71,15 +77,25 @@
   padding: 1em 0;
 }
 
-.item-details__save-btn-wrapper {
-  width: 100%;
+.item-details__btn-wrapper {
+  margin-left: 9%;
+  width: 90%;
+  margin-top: 3em;
+  align-items: center;
+  justify-content: center;
   display: flex;
 }
 
-.item-details__save-btn {
-  margin: 3em auto;
-  width: 28%;
+.item-details__save-btn,
+.item-details__delete-btn, {
+  margin: 0;
+  width: 29%;
   font-size: 1.3em;
+}
+
+.item-details__delete-btn {
+  width: 17%;
+  margin-right: 3em;
 }
 
 .item-details__select {

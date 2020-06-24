@@ -24,7 +24,7 @@
   box-shadow: $btn-shadow;
   background-color: $light-grey;
 
-  &:hover .stylisation__delete-btn {
+  &:hover .item__delete-btn {
     display: block;
     animation: slowlyShow;
     animation-duration: 900ms;
@@ -48,6 +48,7 @@
     right: 0.3em;
   }
 }
+
 
 .stylisations__wrapper {
   display: grid;

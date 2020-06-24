@@ -1,5 +1,14 @@
 @import "../../assets/scss/variables";
 
+@keyframes slowlyShow {
+  from {
+    opacity: 0.1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .wardrobe {
   position: relative;
   display: flex;
@@ -48,6 +57,12 @@
 
   &:hover::before {
     animation: shine .75s;
+  }
+
+  &:hover .item__delete-btn {
+    display: block;
+    animation: slowlyShow;
+    animation-duration: 900ms;
   }
 }
 
