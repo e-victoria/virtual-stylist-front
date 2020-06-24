@@ -24,6 +24,8 @@ export class HeaderComponent implements AfterViewInit {
     this.router.events.subscribe((val) => {
       if (localStorage.getItem('token')) {
         this.isLoggedIn = true;
+      } else {
+        this.isLoggedIn = false;
       }
     });
   }
