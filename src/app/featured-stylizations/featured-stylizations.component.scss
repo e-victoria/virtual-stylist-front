@@ -35,3 +35,25 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   cursor: pointer;
 }
+
+.featured {
+  width: 100%;
+  padding: 2em 10vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.featured__img-wrapper {
+  display: flex;
+  width: 23%;
+  height: 30em;
+  border-radius: 1.7em;
+  box-shadow: $btn-shadow;
+  background-color: $light-grey;
+
+  &:not(:last-child) {
+    margin-right: 2em;
+  }
+}
