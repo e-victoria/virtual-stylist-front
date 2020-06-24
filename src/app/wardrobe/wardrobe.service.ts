@@ -26,6 +26,16 @@ export class WardrobeService {
     this.requestImage(imageName, getImage);
   }
 
+  deleteItem(id: number, callback) {
+    this.http.delete((`${environment.serverLocalHost}/wardrobe/${id}`)).subscribe(
+      (res) => {
+        callback(res);
+      },
+      (error) => {
+        callback(error);
+      });
+  }
+
   requestImage(imageName: string, callback): void {
     this.http.get(`${environment.serverLocalHost}/img/${imageName}`,{responseType: 'blob'})
       .subscribe(

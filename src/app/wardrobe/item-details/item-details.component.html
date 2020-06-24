@@ -63,10 +63,11 @@
       </div>
     </form>
   </div>
-  <div class="item-details__save-btn-wrapper">
+  <div class="item-details__btn-wrapper">
+    <button (click)="deleteClothes(itemId)" type="button" class="btn btn-pen item-details__delete-btn">DELETE</button>
     <button (click)="saveChanges($event)" type="submit" class="btn btn-pen item-details__save-btn">SAVE</button>
   </div>
 </section>
-  <div *ngIf="stylisations">
+  <div *ngIf="stylisations.length > 0">
     <app-stylisations [stylisations]="stylisations"></app-stylisations>
   </div>

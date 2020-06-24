@@ -145,6 +145,17 @@ export class ItemDetailsComponent implements OnInit {
     this.isSubmitted = true;
   }
 
+  deleteClothes(clothesId: number) {
+
+    const getResponse = (response) => {
+      if (!response?.error) {
+        alert('success');
+      }
+    };
+
+    this.wardrobeService.deleteItem(clothesId, getResponse);
+  }
+
   getStylisations(): void {
 
     const getResponse = (data) => {
