@@ -19,6 +19,7 @@ export class ProfileComponent implements OnInit {
   genderOptions: string[];
   newInfo: IProfile;
   isSuccess: boolean = false;
+  isServerError: boolean = false;
   @ViewChild('passwordConfirm') private passwordConfirm: ElementRef;
 
   editForm: FormGroup = new FormGroup({
@@ -133,6 +134,7 @@ export class ProfileComponent implements OnInit {
       if (!response?.error) {
         this.isSuccess = true;
       }
+      this.isServerError = true;
     };
 
     this.newInfo = this.editForm.value;
@@ -144,6 +146,7 @@ export class ProfileComponent implements OnInit {
       }
       this.profileService.saveChanges(this.newInfo, getResponse);
     }
+    this.isServerError = true;
     this.router.navigate(['./profile']);
   }
 

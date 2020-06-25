@@ -23,6 +23,7 @@ export class StylisationCreatorComponent implements OnInit {
   @ViewChild('topBottomSlider')
   private topBottomSlider: ElementRef;
   isSuccess: boolean = false;
+  isServerError: boolean = false;
 
   newStyleForm: FormGroup = new FormGroup({
     tag: new FormControl('')
@@ -94,8 +95,13 @@ export class StylisationCreatorComponent implements OnInit {
         setTimeout(() => {
           this.router.navigate(['/stylisations']);
         }, 1000);
+      }else {
+        this.isSuccess = false;
+        this.isServerError = true;
       }
+
     };
+
     this.stylisationService.saveNewStylisation(newStylisation, getResponse);
   }
 }
