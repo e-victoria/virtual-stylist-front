@@ -1,5 +1,7 @@
 # VirtualStylist
 
+### To run this project you also need to run backend sever locally. You can find the repo [here](https://github.com/magdalenagola/virtual-stylist)
+
 ## Install all the dependecies
 Run `npm install`
 
