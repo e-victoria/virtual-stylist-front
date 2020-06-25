@@ -30,7 +30,7 @@ export class LoginService {
   logOut() {
     localStorage.removeItem('token');
     if (this.router.url !== '/') {
-      this.router.navigate(['']);
+      this.router.navigate(['auth']);
     } else {
       window.location.reload();
     }

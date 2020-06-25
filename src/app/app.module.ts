@@ -27,6 +27,7 @@ import { StylisationItemComponent } from './stylisations/stylisation-item/stylis
 import {FeaturedStylizationsComponent} from './featured-stylizations/featured-stylizations.component';
 import {CarouselModule} from 'ngx-owl-carousel-o';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     StylisationsComponent,
     ImgSecurePipe,
     StylisationCreatorComponent,
-    StylisationItemComponent
+    StylisationItemComponent,
+    HomeComponent
   ],
   imports: [
     BrowserAnimationsModule,

@@ -1,6 +1,6 @@
 <section class="carousel-wrapper">
   <h2 class="section-title">Your featured stylisations</h2>
-  <div class="carousel" #carousel>
+  <div *ngIf="items?.length > 2" class="carousel" #carousel>
     <owl-carousel-o class="content" [options]="customOptions">
       <ng-container *ngFor="let item of items">
         <ng-template carouselSlide>
@@ -10,5 +10,10 @@
         </ng-template>
       </ng-container>
     </owl-carousel-o>
+  </div>
+  <div *ngIf="items?.length < 3" class="featured">
+    <div class="featured__img-wrapper" *ngFor="let item of items">
+      <app-stylisation-item class="stylisations__part" [stylisation]="item.clothesForDisplayStylization"></app-stylisation-item>
+    </div>
   </div>
 </section>

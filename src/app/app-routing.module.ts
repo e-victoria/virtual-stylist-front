@@ -7,15 +7,15 @@ import {UserGuard} from './user.guard';
 import {ProfileComponent} from './profile/profile.component';
 import {StylisationsComponent} from './stylisations/stylisations.component';
 import {StylisationCreatorComponent} from './stylisations/stylisation-creator/stylisation-creator.component';
-import {FeaturedStylizationsComponent} from './featured-stylizations/featured-stylizations.component';
+import {HomeComponent} from './home/home.component';
 
 
 const routes: Routes = [
+  { path: '', component: HomeComponent, canActivate: [UserGuard]},
   { path: 'wardrobe', component: WardrobeComponent, canActivate: [UserGuard] },
   { path: 'wardrobe/:id', component: ItemDetailsComponent, canActivate: [UserGuard]},
   { path: 'auth', component: AuthComponent },
   { path: 'profile', component: ProfileComponent},
-  { path: 'main-page', component: FeaturedStylizationsComponent},
   { path: 'stylisations', component: StylisationsComponent, canActivate: [UserGuard] },
   { path: 'create-stylisation', component: StylisationCreatorComponent, canActivate: [UserGuard] }
 ];

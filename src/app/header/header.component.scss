@@ -50,23 +50,28 @@
   }
 }
 
-.active{
-  text-decoration: underline !important;
+.active::after {
+  content: "";
+  display: inline-block;
+  width: 100%;
+  height: 0.135em;
+  border-radius: 0.5em;
+  position: absolute;
+  bottom: -0.1em;
+  left: 0;
+  background-color: $pink;
 }
 
 .site-list__link {
   color: $default-font-color;
   text-decoration: none;
+  position: relative;
   font-size: 1.1em;
 
   &:hover {
     color: $darker-font-color;
   }
 }
-
-//.site-list__link--active {
-//  text-decoration: underline;
-//}
 
 .page-header__logo {
   display: inline-block;
@@ -88,6 +93,7 @@
 }
 
 .profile-menu {
+  z-index: 5;
   min-width: 10vw;
   position: absolute;
   top: 4.5em;
