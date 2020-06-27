@@ -23,6 +23,9 @@ export class ItemDetailService {
     this.http.put((`${environment.serverLocalHost}/wardrobe`), newClothes).subscribe(
       (res) => {
         callback(res);
+      },
+      (error) => {
+        callback(error);
       });
   }
 }

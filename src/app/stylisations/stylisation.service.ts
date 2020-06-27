@@ -25,6 +25,9 @@ export class StylisationService {
     this.http.post((`${environment.serverLocalHost}/stylization`), stylisation).subscribe(
       (res) => {
         callback(res);
+      },
+      (error) => {
+        callback(error);
       });
   }
 
