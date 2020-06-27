@@ -29,6 +29,7 @@ export class ItemDetailsComponent implements OnInit {
   itemId: number;
   isSuccess = false;
   isDeleted = false;
+  isServerError = false;
   @ViewChild('hasPattern')
   private hasPattern: ElementRef;
 
@@ -158,6 +159,8 @@ export class ItemDetailsComponent implements OnInit {
         setTimeout(() => {
           this.router.navigate(['wardrobe']);
         }, 1200);
+      }else {
+        this.isDeleted = true;
       }
     };
 

@@ -73,6 +73,7 @@
     <div class="popup-message" *ngIf="isDeleted">
       <p class="form-success__message">Successfully deleted!</p>
     </div>
+    <p class="form-errors__message" *ngIf="isSubmitted && isServerError">Connection error! Please try again later</p>
   </div>
   <div class="item-details__btn-wrapper">
     <button (click)="deleteClothes(itemId)" type="button" class="btn btn-pen item-details__delete-btn">DELETE</button>

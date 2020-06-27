@@ -11,6 +11,7 @@
     <p class="form-errors__message" *ngIf="gender.errors?.required && isSubmitted">Gender is required</p>
   </div>
   <p class="form-success__message" *ngIf="isSubmitted && isSuccess">User successfully registered!</p>
+  <p class="form-errors__message" *ngIf="isSubmitted && isServerError">Connection error! Please try again later</p>
   <div *ngIf="hasResponse" class="register__errors form-errors">
     <p class="form-errors__message" *ngIf="emailExists">User already exists</p>
   </div>

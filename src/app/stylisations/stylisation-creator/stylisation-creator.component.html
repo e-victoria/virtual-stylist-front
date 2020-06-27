@@ -39,6 +39,7 @@
       <h3 class="new-style-form__header">Create new stylisation</h3>
       <div class="new-style-form__input-wrapper">
         <p class="form-success__message" *ngIf="isSuccess">New stylisation created!</p>
+        <p class="form-errors__message" *ngIf="isServerError">Connection error! Please try again later</p>
         <label for="newStyleTag" class="visually-hidden">tag</label>
         <input class="new-style-form__input form-input"
                id="newStyleTag"

@@ -16,6 +16,7 @@ export class RegisterComponent {
   isSubmitted = false;
   isSuccess = false;
   emailExists = false;
+  isServerError = false;
 
   constructor(private registerService: RegisterService, private router: Router) {
     this.genderOptions = [
@@ -78,6 +79,8 @@ export class RegisterComponent {
         setTimeout(() => {
           this.router.navigate(['/']);
         }, 1200);
+      } else {
+        this.isServerError = true;
       }
     };
 

@@ -23,6 +23,9 @@ export class ProfileService {
     this.http.put((`${environment.serverLocalHost}/user`), newProfile).subscribe(
       (res) => {
         callback(res);
+      },
+      (error) => {
+        callback(error);
       });
   }
 

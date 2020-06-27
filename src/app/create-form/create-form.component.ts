@@ -29,6 +29,7 @@ export class CreateFormComponent implements OnInit {
     image: ['']
   });
   isSuccess: boolean = false;
+  isServerError: boolean = false;
 
 
 
@@ -126,6 +127,8 @@ export class CreateFormComponent implements OnInit {
           setTimeout(() => {
             this.closeForm('');
           }, 1200);
+        } else {
+          this.isServerError = true;
         }
       };
 
@@ -136,6 +139,8 @@ export class CreateFormComponent implements OnInit {
 
     if (this.newCardForm.valid) {
       this.createFormService.postImage(formData, getImageName);
+    }else{
+      this.isServerError = true;
     }
   }
 

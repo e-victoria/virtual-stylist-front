@@ -14,6 +14,7 @@ export class LoginComponent {
   isUserDataIncorrect = false;
   isSubmitted = false;
   isSuccess = false;
+  isServerError = false;
 
   loginForm: FormGroup = new FormGroup({
     email: new FormControl('', [
@@ -53,10 +54,9 @@ export class LoginComponent {
         setTimeout(() => {
           this.router.navigate(['/']);
         }, 1200);
-      } else {
-        if (response.error) {
-          this.isUserDataIncorrect = true;
-        }
+      } else if (response.error) {
+        this.isServerError = true;
+        this.isUserDataIncorrect = false;
       }
     };
 
@@ -64,6 +64,8 @@ export class LoginComponent {
       this.isUserDataIncorrect = false;
       this.loginService.checkUser(userData, getResponse);
     } else {
+      this.isServerError = false;
+      this.isUserDataIncorrect = true;
     }
   }
 }
