@@ -22,6 +22,9 @@ export class CreateFormService {
       (res) => {
         console.log(res);
         callback(res);
+      },
+      (error) => {
+        callback(error);
       });
   }
 
@@ -30,6 +33,9 @@ export class CreateFormService {
       (res) => {
         console.log(res);
         callback(res);
+      },
+      (error) => {
+        callback(error);
       });
   }
 
