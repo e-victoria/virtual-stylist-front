@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import IStylisation from './models/stylisation.model';
 import {StylisationService} from './stylisation.service';
 import {WardrobeService} from '../wardrobe/wardrobe.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-stylisations',
@@ -10,14 +11,14 @@ import {WardrobeService} from '../wardrobe/wardrobe.service';
 })
 export class StylisationsComponent implements OnInit {
 
-  private itemsAmountOnPage = 6;
+  private itemsAmountOnPage = 3;
   private pageNumber = 0;
   stylisationsList: IStylisation[];
   private isMore: boolean;
   @Input()
   stylisations: IStylisation[];
 
-  constructor(private stylisationService: StylisationService, private wardrobeService: WardrobeService) { }
+  constructor(private stylisationService: StylisationService, private router: Router) { }
 
   ngOnInit(): void {
     const getData = (data) => {
