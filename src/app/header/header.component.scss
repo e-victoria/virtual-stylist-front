@@ -42,10 +42,6 @@
   box-sizing: border-box;
   text-align: center;
 
-  &:last-child {
-    text-align: left;
-  }
-
   &:nth-child(3) {
     padding-left: 8%;
   }
@@ -57,6 +53,10 @@
   &:first-child {
     text-align: right;
   }
+}
+
+#menuOptionNewStyle {
+  text-align: left;
 }
 
 .active::after {

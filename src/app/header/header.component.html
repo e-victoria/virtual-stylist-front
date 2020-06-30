@@ -11,7 +11,7 @@
       <li class="site-list__item">
         <a id="menuStylisations" routerLink="stylisations" class="site-list__link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Your stylisations</a>
       </li>
-      <li class="site-list__item">
+      <li id="menuOptionNewStyle" class="site-list__item">
         <a id="menuCreateStyle" routerLink="create-stylisation" class="site-list__link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">New stylisation</a>
       </li>
       <li class="site-list__item site-list__item--profile">
@@ -22,7 +22,7 @@
       </li>
     </ul>
     <div *ngIf="isLoggedIn" class="site-list__profile">
-      <button class="btn site-list__profile-btn" (click)="toggleMenu($event)">
+      <button class="btn site-list__profile-btn" (click)="toggleMenu($event, profileMenu)">
         <fa-icon [icon]="faUser"></fa-icon>
       </button>
       <ul #profileMenu class="main-nav__sublist profile-menu">
@@ -36,7 +36,7 @@
     </div>
     <a *ngIf="!isLoggedIn" href="#" class="btn auth-icon" routerLink="auth"><span class="visually-hidden">Login/Register</span><fa-icon [icon]="faSignInAlt"></fa-icon></a>
   </nav>
-  <button (click)="toggleNav($event)" type="button" class="main-nav__toggle">
+  <button (click)="toggleMenu($event, nav)" type="button" class="main-nav__toggle">
     <span class="visually-hidden">Toggle menu button</span>
     <span class="main-nav__btn-element"></span>
     <span class="main-nav__btn-element"></span>

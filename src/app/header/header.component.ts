@@ -40,14 +40,14 @@ export class HeaderComponent implements AfterViewInit {
     this.logo.nativeElement.style.marginLeft = `-${this.logo.nativeElement.offsetWidth / 2}px`;
   }
 
-  toggleMenu(event) {
+  toggleMenu(event, menu: HTMLElement) {
     event.preventDefault();
     event.stopPropagation();
-    this.profileMenu.nativeElement.classList.toggle('show-flex');
+    menu.classList.toggle('show-flex');
 
     const hideMenu = (e) => {
-      if (!this.profileMenu.nativeElement.contains(e.target)) {
-        this.profileMenu.nativeElement.classList.remove('show-flex');
+      if (!menu.contains(e.target)) {
+        menu.classList.remove('show-flex');
         document.removeEventListener('click', hideMenu);
       }
     };
@@ -59,10 +59,20 @@ export class HeaderComponent implements AfterViewInit {
     this.loginService.logOut();
   }
 
-  toggleNav(event) {
-    event.preventDefault();
-
-    this.nav.nativeElement.classList.toggle('show-flex');
-  }
+  // toggleNav(event) {
+  //   event.preventDefault();
+  //   event.stopPropagation();
+  //
+  //   this.nav.nativeElement.classList.toggle('show-flex');
+  //
+  //   const hideMenu = (e) => {
+  //     if (!this.nav.nativeElement.contains(e.target)) {
+  //       this.nav.nativeElement.classList.remove('show-flex');
+  //       document.removeEventListener('click', hideMenu);
+  //     }
+  //   };
+  //
+  //   document.addEventListener('click', hideMenu);
+  // }
 
 }
