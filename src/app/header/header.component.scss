@@ -1,5 +1,14 @@
 @import '../../assets/scss/variables';
 
+.main-nav__toggle {
+  display: none;
+}
+
+.site-list__item--profile,
+.site-list__item--logout {
+  display: none;
+}
+
 .page-header {
   width: 100%;
   padding: 1.4em 0vw;
@@ -151,5 +160,89 @@
   & fa-icon{
     font-size: 1.7em;
     color: $default-font-color;
+  }
+}
+
+@media (max-width: 1200px) {
+  .page-header {
+    display: flex;
+    padding: 1.4em 2vw;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .page-header__logo {
+    position: static;
+    margin: 0 !important;
+  }
+
+  .main-nav {
+    display: none;
+  }
+
+  .main-nav__toggle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 3.5em;
+    height: 2.5em;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:hover .main-nav__btn-element {
+      background-color: $pink;
+    }
+  }
+
+  .main-nav__btn-element {
+    width: 100%;
+    height: 0.5em;
+    background-color: $gold;
+    border-radius: 0.7em;
+  }
+
+  .auth-icon,
+  .profile-menu__logout {
+    display: none;
+  }
+
+  .main-nav {
+    padding: 1em 0.3em;
+    width: 30%;
+    position: absolute;
+    right: 3%;
+    top: 7em;
+    box-shadow: $item-shadow;
+    border-radius: 0.3em;
+    background-color: #ffffff;
+    z-index: 20;
+  }
+
+  .site-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .site-list__item {
+    width: 100%;
+    text-align: center !important;
+    padding: 1em !important;
+
+    &:not(:last-child) {
+      border-bottom: 0.06em solid $light-beige;
+    }
+  }
+
+  .site-list__item--profile,
+  .site-list__item--logout {
+    display: inline-block;
+  }
+
+  .site-list__profile-btn {
+    display: none;
   }
 }

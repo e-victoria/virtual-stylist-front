@@ -19,6 +19,8 @@ export class HeaderComponent implements AfterViewInit {
   private profileMenu: ElementRef;
   @ViewChild('logo')
   private logo: ElementRef;
+  @ViewChild('nav')
+  private nav: ElementRef;
 
   constructor(private router: Router, private loginService: LoginService) {
     console.log('here');
@@ -55,6 +57,12 @@ export class HeaderComponent implements AfterViewInit {
 
   logOut(): void {
     this.loginService.logOut();
+  }
+
+  toggleNav(event) {
+    event.preventDefault();
+
+    this.nav.nativeElement.classList.toggle('show-flex');
   }
 
 }
