@@ -92,3 +92,19 @@
   font-size: 1.15em;
   font-weight: 500;
 }
+
+@media (max-width: 1200px) {
+  .create-style {
+    margin: 0 auto;
+    padding: 4em 5vw 0 5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  .create-style__form-wrapper {
+    order: -2;
+    margin: 0 0 5em 0;
+    width: 50%;
+  }
+}
