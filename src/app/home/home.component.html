@@ -1,4 +1,11 @@
 <section class="home">
   <h2 class="visually-hidden">Welcome to Virtual Stylist</h2>
-  <app-featured-stylizations></app-featured-stylizations>
+  <app-featured-stylizations *ngIf="items?.length" [items]="items"></app-featured-stylizations>
+  <div class="no-item" *ngIf="!items?.length">
+    <div class="no-item__popup">
+      <h3 class="item-title">Your featured stylisations</h3>
+      <p class="no-item__message">nothing to show</p>
+      <a routerLink="create-stylisation" class="btn form-button no-item__btn">ADD NEW ITEM</a>
+    </div>
+  </div>
 </section>

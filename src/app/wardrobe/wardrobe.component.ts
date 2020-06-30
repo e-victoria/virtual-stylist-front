@@ -35,6 +35,7 @@ export class WardrobeComponent implements AfterViewInit, OnInit {
           this.isLastPage = clothData.last;
         })
       );
+    console.log(this.clothesData$);
   }
 
   onScroll() {

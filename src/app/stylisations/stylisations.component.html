@@ -1,4 +1,4 @@
-<section class="stylisations"
+<section class="stylisations" [ngClass]="!stylisations?.length ? 'no-item' : ''"
          infiniteScroll
          [infiniteScrollDistance]="2"
          [infiniteScrollThrottle]="50"
@@ -17,4 +17,11 @@
       <app-stylisation-item class="stylisations__part" [stylisation]="stylisation.clothesForDisplayStylization"></app-stylisation-item>
     </div>
     </div>
+
+  <div class="no-item__popup" *ngIf="!stylisations?.length">
+    <h3 class="item-title">Your stylisations</h3>
+    <p class="no-item__message">nothing to show</p>
+    <a routerLink="/create-form" class="btn form-button no-item__btn">ADD NEW STYLISATION</a>
+  </div>
+
 </section>

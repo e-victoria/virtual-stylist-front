@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import IStylisation from '../stylisations/models/stylisation.model';
+import {StylisationService} from '../stylisations/stylisation.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  items: IStylisation[];
+
+  constructor(private stylisationService: StylisationService) {}
 
   ngOnInit(): void {
+
+    const getData = (data) => {
+      this.items = data.content;
+    };
+
+    this.stylisationService.getStylisations(6, 0, getData);
   }
 
 }

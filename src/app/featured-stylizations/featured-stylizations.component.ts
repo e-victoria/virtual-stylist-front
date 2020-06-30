@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {OwlOptions} from 'ngx-owl-carousel-o';
 import {StylisationService} from '../stylisations/stylisation.service';
 import IStylisation from '../stylisations/models/stylisation.model';
@@ -10,6 +10,7 @@ import IStylisation from '../stylisations/models/stylisation.model';
 })
 export class FeaturedStylizationsComponent implements OnInit {
 
+  @Input()
   items: IStylisation[];
   @ViewChild('carousel')
   private contentWrapper: ElementRef;
@@ -34,15 +35,9 @@ export class FeaturedStylizationsComponent implements OnInit {
     nav: false
   };
 
-  constructor(private stylisationService: StylisationService) {}
+  constructor() {}
 
   ngOnInit(): void {
-
-    const getData = (data) => {
-      this.items = data.content;
-    };
-
-    this.stylisationService.getStylisations(6, 0, getData);
   }
 
 }
