@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import IStylisation from './models/stylisation.model';
 import {StylisationService} from './stylisation.service';
-import {WardrobeService} from '../wardrobe/wardrobe.service';
 import {Router} from '@angular/router';
 
 @Component({
