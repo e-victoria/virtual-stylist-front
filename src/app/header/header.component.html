@@ -1,6 +1,6 @@
 <header class="page-header">
   <a #logo class="logo page-header__logo">VirtualStylist</a>
-  <nav class="main-nav">
+  <nav class="main-nav" #nav>
     <ul class="main-nav__list site-list">
       <li class="site-list__item">
         <a id="menuHome" routerLink="/" class="site-list__link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
@@ -11,12 +11,18 @@
       <li class="site-list__item">
         <a id="menuStylisations" routerLink="stylisations" class="site-list__link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Your stylisations</a>
       </li>
-      <li class="site-list__item">
+      <li id="menuOptionNewStyle" class="site-list__item">
         <a id="menuCreateStyle" routerLink="create-stylisation" class="site-list__link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">New stylisation</a>
+      </li>
+      <li class="site-list__item site-list__item--profile">
+        <a routerLink="profile" class="site-list__link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Profile</a>
+      </li>
+      <li class="site-list__item site-list__item--logout">
+        <a routerLink="auth" (click)="logOut()" class="site-list__link">Logout</a>
       </li>
     </ul>
     <div *ngIf="isLoggedIn" class="site-list__profile">
-      <button class="btn site-list__profile-btn" (click)="toggleMenu($event)">
+      <button class="btn site-list__profile-btn" (click)="toggleMenu($event, profileMenu)">
         <fa-icon [icon]="faUser"></fa-icon>
       </button>
       <ul #profileMenu class="main-nav__sublist profile-menu">
@@ -24,10 +30,16 @@
           <a routerLink="profile" class="profile-menu__link">Profile</a>
         </li>
         <li class="profile-menu__item">
-          <a (click)="logOut()" class="profile-menu__link">Log out</a>
+          <a (click)="logOut()" class="profile-menu__link profile-menu__logout">Log out</a>
         </li>
       </ul>
     </div>
     <a *ngIf="!isLoggedIn" href="#" class="btn auth-icon" routerLink="auth"><span class="visually-hidden">Login/Register</span><fa-icon [icon]="faSignInAlt"></fa-icon></a>
   </nav>
+  <button (click)="toggleMenu($event, nav)" type="button" class="main-nav__toggle">
+    <span class="visually-hidden">Toggle menu button</span>
+    <span class="main-nav__btn-element"></span>
+    <span class="main-nav__btn-element"></span>
+    <span class="main-nav__btn-element"></span>
+  </button>
 </header>
