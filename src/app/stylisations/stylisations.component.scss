@@ -108,21 +108,4 @@
     grid-template-columns: repeat(1, 1fr);
     gap: 2em 2em;
   }
-  .stylisation__delete-btn {
-    display: block;
-    width: 3.3em;
-    height: 3.3em;
-    border-radius: 0 0 0 0.7em;
-    top: 0;
-    right: 0;
-    position: absolute;
-    background-color: transparent;
-    box-sizing: border-box;
-
-    &:before,
-    &:after {
-      top: 1.5em;
-      right: 0.3em;
-    }
-  }
 }
