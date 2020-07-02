@@ -63,3 +63,20 @@
 .form-success__message {
   margin-right: 2.8em;
 }
+
+@media (max-width: 768px) {
+  .profile__details {
+    padding-left: 0;
+  }
+  .profile__wrapper {
+    width: 80%;
+  }
+  .profile-details__save-btn-wrapper {
+    margin-top: 2em;
+    margin-right: 0;
+  }
+  .form-button {
+    width: 17em;
+    height: 4em;
+  }
+}
