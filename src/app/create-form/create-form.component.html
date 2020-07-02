@@ -8,6 +8,7 @@
       <p class="form-errors__message" *ngIf="clothType.errors?.required && isSubmitted">Cloth type is required</p>
       <p class="form-errors__message" *ngIf="color.errors?.required && isSubmitted">Color is required</p>
       <p class="form-errors__message" *ngIf="style.errors?.required && isSubmitted">Style is required</p>
+      <p class="form-errors__message" *ngIf="size.errors?.required && isSubmitted">Size is required</p>
       <p class="form-errors__message" *ngIf="imageName.errors?.required && isSubmitted">Image is required</p>
       <p class="form-errors__message" *ngIf="isSubmitted && !isImageRight">Image should be under 5MB</p>
     </div>
