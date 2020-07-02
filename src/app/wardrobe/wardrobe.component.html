@@ -15,46 +15,6 @@
           <img class="clothes__img" [attr.src]="(env.serverLocalHost + '/img/' + cloth.imageName) | imgSecure | async" default="../../assets/img/empty.png"  alt="clothes">
         </a>
       </li>
-      <li class="clothes__item" *ngFor="let cloth of (clothesData$ | async)?.content">
-        <a class="clothes__link" [routerLink]="['/wardrobe', cloth.id]">
-          <img class="clothes__img" [attr.src]="(env.serverLocalHost + '/img/' + cloth.imageName) | imgSecure | async" default="../../assets/img/empty.png"  alt="clothes">
-        </a>
-      </li>
-      <li class="clothes__item" *ngFor="let cloth of (clothesData$ | async)?.content">
-        <a class="clothes__link" [routerLink]="['/wardrobe', cloth.id]">
-          <img class="clothes__img" [attr.src]="(env.serverLocalHost + '/img/' + cloth.imageName) | imgSecure | async" default="../../assets/img/empty.png"  alt="clothes">
-        </a>
-      </li>
-      <li class="clothes__item" *ngFor="let cloth of (clothesData$ | async)?.content">
-        <a class="clothes__link" [routerLink]="['/wardrobe', cloth.id]">
-          <img class="clothes__img" [attr.src]="(env.serverLocalHost + '/img/' + cloth.imageName) | imgSecure | async" default="../../assets/img/empty.png"  alt="clothes">
-        </a>
-      </li>
-      <li class="clothes__item" *ngFor="let cloth of (clothesData$ | async)?.content">
-        <a class="clothes__link" [routerLink]="['/wardrobe', cloth.id]">
-          <img class="clothes__img" [attr.src]="(env.serverLocalHost + '/img/' + cloth.imageName) | imgSecure | async" default="../../assets/img/empty.png"  alt="clothes">
-        </a>
-      </li>
-      <li class="clothes__item" *ngFor="let cloth of (clothesData$ | async)?.content">
-        <a class="clothes__link" [routerLink]="['/wardrobe', cloth.id]">
-          <img class="clothes__img" [attr.src]="(env.serverLocalHost + '/img/' + cloth.imageName) | imgSecure | async" default="../../assets/img/empty.png"  alt="clothes">
-        </a>
-      </li>
-      <li class="clothes__item" *ngFor="let cloth of (clothesData$ | async)?.content">
-        <a class="clothes__link" [routerLink]="['/wardrobe', cloth.id]">
-          <img class="clothes__img" [attr.src]="(env.serverLocalHost + '/img/' + cloth.imageName) | imgSecure | async" default="../../assets/img/empty.png"  alt="clothes">
-        </a>
-      </li>
-      <li class="clothes__item" *ngFor="let cloth of (clothesData$ | async)?.content">
-        <a class="clothes__link" [routerLink]="['/wardrobe', cloth.id]">
-          <img class="clothes__img" [attr.src]="(env.serverLocalHost + '/img/' + cloth.imageName) | imgSecure | async" default="../../assets/img/empty.png"  alt="clothes">
-        </a>
-      </li>
-      <li class="clothes__item" *ngFor="let cloth of (clothesData$ | async)?.content">
-        <a class="clothes__link" [routerLink]="['/wardrobe', cloth.id]">
-          <img class="clothes__img" [attr.src]="(env.serverLocalHost + '/img/' + cloth.imageName) | imgSecure | async" default="../../assets/img/empty.png"  alt="clothes">
-        </a>
-      </li>
     </ul>
   </div>
   <div #form class="wardrobe__new-wrapper">
