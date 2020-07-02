@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild, ElementRef, EventEmitter, Output, Input} from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef, EventEmitter, Output} from '@angular/core';
 import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 import { faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
 import {CreateFormService} from './create-form.service';
