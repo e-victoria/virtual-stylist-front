@@ -88,3 +88,29 @@
   }
 }
 
+@media (max-width: 992px) {
+  .new-clothes {
+      width: 80%;
+    }
+
+  .new-clothes__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 4vw;
+  }
+
+  .add-card__input,
+  .new-clothes__select {
+    width: 100% !important;
+    margin: 0 auto !important;
+    margin-bottom: 1.5em !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .new-clothes__form {
+  }
+}
+

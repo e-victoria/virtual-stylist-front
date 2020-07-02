@@ -21,8 +21,10 @@
   margin-bottom: 1.1em;
 }
 
-.clothes__wrapper {
+.wardrobe__popup {
+  z-index: 10;
 }
+
 .clothes__list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -116,7 +118,6 @@
 .wardrobe__new-wrapper {
   display: none;
   width: 100%;
-  height: 100%;
   padding: 2.2em 0;
   top: 0;
   left: 0;
@@ -136,6 +137,10 @@
 }
 
 @media (max-width: 1200px) {
+  .wardrobe__popup {
+    width: 100%;
+  }
+
   .clothes__list {
     grid-template-columns: repeat(3, 1fr);
   }
