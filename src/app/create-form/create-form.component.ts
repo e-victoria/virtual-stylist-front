@@ -37,7 +37,9 @@ export class CreateFormComponent implements OnInit {
     clothType: new FormControl('', [
       Validators.required
     ]),
-    size: new FormControl(''),
+    size: new FormControl('', [
+      Validators.required
+      ]),
     color: new FormControl('', [
       Validators.required
     ]),
@@ -71,6 +73,10 @@ export class CreateFormComponent implements OnInit {
 
   get style(){
     return this.newCardForm.get('style');
+  }
+
+  get size(){
+    return this.newCardForm.get('size');
   }
 
   get imageName(){
@@ -139,8 +145,6 @@ export class CreateFormComponent implements OnInit {
 
     if (this.newCardForm.valid) {
       this.createFormService.postImage(formData, getImageName);
-    }else{
-      this.isServerError = true;
     }
   }
 
