@@ -134,3 +134,24 @@
     width: 80%;
   }
 }
+
+@media (max-width: 1200px) {
+  .clothes__list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .clothes__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .clothes__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
