@@ -16,3 +16,19 @@
     padding-left: 2.5vw;
   }
 }
+
+@media (max-width: 768px) {
+  .auth-wrapper{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    padding: 3em 1vw;
+    align-items: center;
+  }
+  .auth-item{
+    align-self: center;
+    justify-self: center;
+    padding: 0 !important;
+    width: 80%;
+  }
+}
+
