@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  serverLocalHost: 'http://localhost:8080'
+  serverLocalHost: 'https://virtual-stylist.herokuapp.com'
 };
 
 /*

@@ -76,9 +76,6 @@ export class RegisterComponent {
         this.emailExists = true;
       } else if (!response?.error) {
         this.isSuccess = true;
-        setTimeout(() => {
-          this.router.navigate(['/']);
-        }, 1200);
       } else {
         this.isServerError = true;
       }

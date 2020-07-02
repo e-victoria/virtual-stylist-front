@@ -54,7 +54,10 @@ export class LoginComponent {
         setTimeout(() => {
           this.router.navigate(['/']);
         }, 1200);
+      } else if (response?.error.error === 'Unauthorized') {
+        this.isUserDataIncorrect = true;
       } else if (response.error) {
+        console.log(response.error.error);
         this.isServerError = true;
         this.isUserDataIncorrect = false;
       }
@@ -63,9 +66,6 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this.isUserDataIncorrect = false;
       this.loginService.checkUser(userData, getResponse);
-    } else {
-      this.isServerError = false;
-      this.isUserDataIncorrect = true;
     }
   }
 }
