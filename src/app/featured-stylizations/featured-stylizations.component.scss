@@ -47,7 +47,7 @@
 
 .featured__img-wrapper {
   display: flex;
-  width: 23%;
+  width: 24%;
   height: 30em;
   border-radius: 1.7em;
   box-shadow: $btn-shadow;
@@ -56,6 +56,11 @@
   &:not(:last-child) {
     margin-right: 2em;
   }
+}
+
+.stylisations__part {
+  width: 100% !important;
+  height: 100% !important;
 }
 
 @media (max-width: 768px) {
