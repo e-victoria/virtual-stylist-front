@@ -1,17 +1,26 @@
-:host {
+.stylisations__wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
+  height: 100%;
   overflow: hidden;
 }
 
-.stylisations__part {
+.class {
+  height: 100%;
+}
+
+.stylisations__cloth {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  //width: 100%;
   height: 50%;
 }
 
 .stylisation__img {
-  width: auto !important;
-  height: 50% !important;
+  width: auto;
+  height: 100%;
 }

@@ -48,9 +48,9 @@ export class LoginComponent {
 
     const getResponse = (response) => {
       this.hasResponse = true;
-      this.loginService.saveToken(response.token);
       if (!response.error) {
         this.isSuccess = true;
+        this.loginService.saveToken(response.token);
         setTimeout(() => {
           this.router.navigate(['/']);
         }, 1200);

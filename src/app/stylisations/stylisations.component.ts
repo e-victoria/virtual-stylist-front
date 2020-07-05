@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 })
 export class StylisationsComponent implements OnInit {
 
-  private itemsAmountOnPage = 3;
+  private itemsAmountOnPage = 18;
   private pageNumber = 0;
   stylisationsList: IStylisation[];
   private isMore: boolean;
