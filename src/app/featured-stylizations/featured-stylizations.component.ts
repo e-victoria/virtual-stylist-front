@@ -22,7 +22,7 @@ export class FeaturedStylizationsComponent implements OnInit {
     pullDrag: false,
     dots: false,
     center: true,
-    autoplay: false,
+    autoplay: true,
     lazyLoad: true,
     autoplayTimeout: 2000,
     navSpeed: 700,
