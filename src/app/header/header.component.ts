@@ -23,11 +23,11 @@ export class HeaderComponent implements AfterViewInit {
   private nav: ElementRef;
 
   constructor(private router: Router, private loginService: LoginService) {
-    console.log('here');
     if (!localStorage.getItem('token')) {
       this.router.navigate(['auth']);
     }
     this.router.events.subscribe((val) => {
+      this.nav.nativeElement.classList.remove('show-flex');
       if (localStorage.getItem('token')) {
         this.isLoggedIn = true;
       } else {
@@ -58,21 +58,5 @@ export class HeaderComponent implements AfterViewInit {
   logOut(): void {
     this.loginService.logOut();
   }
-
-  // toggleNav(event) {
-  //   event.preventDefault();
-  //   event.stopPropagation();
-  //
-  //   this.nav.nativeElement.classList.toggle('show-flex');
-  //
-  //   const hideMenu = (e) => {
-  //     if (!this.nav.nativeElement.contains(e.target)) {
-  //       this.nav.nativeElement.classList.remove('show-flex');
-  //       document.removeEventListener('click', hideMenu);
-  //     }
-  //   };
-  //
-  //   document.addEventListener('click', hideMenu);
-  // }
 
 }
