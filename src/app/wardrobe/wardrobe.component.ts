@@ -2,9 +2,6 @@ import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/
 import IClothes from './models/item-detail.model';
 import {WardrobeService} from './wardrobe.service';
 import {environment} from '../../environments/environment';
-import {Observable} from 'rxjs';
-import {ClothData} from './models/clothData';
-import {map, mergeMap, take, tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-wardrobe',
@@ -16,7 +13,7 @@ export class WardrobeComponent implements AfterViewInit, OnInit {
 
   private pageNumber = 0;
   private itemsAmountOnPage = 8;
-  clothesData$: Observable<ClothData>;
+  clothesList: IClothes[];
   @ViewChild('form')
   private form: ElementRef;
   private isLastPage = false;
@@ -29,32 +26,24 @@ export class WardrobeComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit(): void {
-    this.clothesData$ = this.wardrobeService.getClothes(this.itemsAmountOnPage, this.pageNumber++)
-      .pipe(
-        tap((clothData: ClothData) => {
-          this.isLastPage = clothData.last;
-        })
-      );
-    console.log(this.clothesData$);
+    this.wardrobeService.getClothes(this.itemsAmountOnPage, this.pageNumber).subscribe({
+      next: data => {
+        this.clothesList = data.content;
+        this.isLastPage = data.last;
+      }
+    });
   }
 
   onScroll() {
-    console.log(!this.isLastPage);
+    this.pageNumber += 1;
+
     if (!this.isLastPage) {
-      this.clothesData$ = this.clothesData$
-        .pipe(
-          mergeMap((clothData: ClothData) => this.wardrobeService.getClothes(this.itemsAmountOnPage, ++this.pageNumber)
-            .pipe(
-              map((newClothData: ClothData) => {
-                console.log(newClothData);
-                clothData.last = newClothData.last;
-                newClothData.content.forEach((content: IClothes) => clothData.content.push(content));
-                return clothData;
-              })
-            )
-          ),
-          take(1)
-        );
+      this.wardrobeService.getClothes(this.itemsAmountOnPage, this.pageNumber).subscribe({
+        next: data => {
+          this.clothesList = this.clothesList.concat(...data.content);
+          this.isLastPage = data.last;
+        }
+      });
     }
   }
 
@@ -64,7 +53,6 @@ export class WardrobeComponent implements AfterViewInit, OnInit {
   }
 
   closePopUp(event) {
-    console.log(event);
     if (event === 'close') {
       this.form.nativeElement.classList.remove('show-flex');
     }
