@@ -1,5 +1,5 @@
-import {Component, OnInit, ViewChild, ElementRef, EventEmitter, Output} from '@angular/core';
-import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
+import {Component, OnInit, ViewChild, ElementRef, EventEmitter, Output, OnDestroy} from '@angular/core';
+import {FormGroup, FormControl, Validators, FormBuilder, FormGroupDirective} from '@angular/forms';
 import { faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
 import {CreateFormService} from './create-form.service';
 import {Router} from '@angular/router';
@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
   templateUrl: './create-form.component.html',
   styleUrls: ['./create-form.component.scss']
 })
-export class CreateFormComponent implements OnInit {
+export class CreateFormComponent implements OnInit, OnDestroy {
 
   @ViewChild('selectList')
   private selectList: ElementRef;
@@ -58,9 +58,15 @@ export class CreateFormComponent implements OnInit {
 
   constructor(private createFormService: CreateFormService, private formBuilder: FormBuilder, private router: Router) {}
 
+  ngOnDestroy(): void {
+        console.log('test123');
+    }
+
   ngOnInit(): void {
     this.isSubmitted = false;
     this.getSelectOptions();
+    this.getSelectOptions();
+    this.newCardForm.reset();
   }
 
   get clothType() {
@@ -92,6 +98,7 @@ export class CreateFormComponent implements OnInit {
         this.clothTypeOptions = options['ClothType'];
       }
     });
+    this.newCardForm.reset();
   }
 
   getSelectValue(event) {
@@ -105,6 +112,7 @@ export class CreateFormComponent implements OnInit {
       event.preventDefault();
     }
     this.closeEvent.emit('close');
+    this.newCardForm.reset();
   }
 
   saveImage(event) {
@@ -123,12 +131,14 @@ export class CreateFormComponent implements OnInit {
   saveItem(event) {
     event.preventDefault();
     this.isSubmitted = true;
+
     const getImageName = (path) => {
       this.newCardForm.value.imageName = path.fileName;
 
       const getResponse = (response) => {
-        console.log(response);
+
         if (!response?.error) {
+          this.newCardForm.reset();
           this.isSuccess = true;
           setTimeout(() => {
             this.closeForm('');
@@ -139,14 +149,16 @@ export class CreateFormComponent implements OnInit {
       };
 
       this.createFormService.saveClothes(this.newCardForm.value, getResponse);
+
     };
     const formData = new FormData();
     formData.append('file', this.imageToSend.get('image').value);
 
+
     if (this.newCardForm.valid) {
       this.createFormService.postImage(formData, getImageName);
+      this.router.navigate(['wardrobe']);
     }
   }
-
 
 }

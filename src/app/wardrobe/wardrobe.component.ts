@@ -19,6 +19,7 @@ export class WardrobeComponent implements AfterViewInit, OnInit {
   private isLastPage = false;
   env = environment;
 
+
   constructor(private wardrobeService: WardrobeService) { }
 
   ngAfterViewInit(): void {
@@ -50,11 +51,14 @@ export class WardrobeComponent implements AfterViewInit, OnInit {
   openForm(event) {
     event.preventDefault();
     this.form.nativeElement.classList.add('show-flex');
+    // this.modalOpen = true;
   }
 
   closePopUp(event) {
     if (event === 'close') {
+      console.log('test234');
       this.form.nativeElement.classList.remove('show-flex');
+      // this.modalOpen = false;
     }
   }
 
