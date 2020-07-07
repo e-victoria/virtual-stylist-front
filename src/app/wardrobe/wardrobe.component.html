@@ -17,7 +17,7 @@
       </li>
     </ul>
   </div>
-  <div #form class="wardrobe__new-wrapper">
+  <div *ngIf="shouldOpen" #form class="wardrobe__new-wrapper">
     <app-create-form class="wardrobe__popup" (closeEvent)="closePopUp($event)"></app-create-form>
   </div>
 </section>
