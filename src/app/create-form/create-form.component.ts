@@ -1,15 +1,14 @@
-import {Component, OnInit, ViewChild, ElementRef, EventEmitter, Output, OnDestroy} from '@angular/core';
-import {FormGroup, FormControl, Validators, FormBuilder, FormGroupDirective} from '@angular/forms';
+import {Component, OnInit, ViewChild, ElementRef, EventEmitter, Output} from '@angular/core';
+import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 import { faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
 import {CreateFormService} from './create-form.service';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-create-form',
   templateUrl: './create-form.component.html',
   styleUrls: ['./create-form.component.scss']
 })
-export class CreateFormComponent implements OnInit, OnDestroy {
+export class CreateFormComponent implements OnInit {
 
   @ViewChild('selectList')
   private selectList: ElementRef;
@@ -28,8 +27,8 @@ export class CreateFormComponent implements OnInit, OnDestroy {
   private imageToSend: FormGroup = this.formBuilder.group({
     image: ['']
   });
-  isSuccess: boolean = false;
-  isServerError: boolean = false;
+  isSuccess = false;
+  isServerError = false;
 
 
 
@@ -56,17 +55,12 @@ export class CreateFormComponent implements OnInit, OnDestroy {
     ])
   });
 
-  constructor(private createFormService: CreateFormService, private formBuilder: FormBuilder, private router: Router) {}
-
-  ngOnDestroy(): void {
-        console.log('test123');
-    }
+  constructor(private createFormService: CreateFormService, private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
     this.isSubmitted = false;
     this.getSelectOptions();
     this.getSelectOptions();
-    this.newCardForm.reset();
   }
 
   get clothType() {
@@ -98,7 +92,6 @@ export class CreateFormComponent implements OnInit, OnDestroy {
         this.clothTypeOptions = options['ClothType'];
       }
     });
-    this.newCardForm.reset();
   }
 
   getSelectValue(event) {
@@ -112,7 +105,6 @@ export class CreateFormComponent implements OnInit, OnDestroy {
       event.preventDefault();
     }
     this.closeEvent.emit('close');
-    this.newCardForm.reset();
   }
 
   saveImage(event) {
@@ -138,7 +130,6 @@ export class CreateFormComponent implements OnInit, OnDestroy {
       const getResponse = (response) => {
 
         if (!response?.error) {
-          this.newCardForm.reset();
           this.isSuccess = true;
           setTimeout(() => {
             this.closeForm('');
@@ -157,7 +148,6 @@ export class CreateFormComponent implements OnInit, OnDestroy {
 
     if (this.newCardForm.valid) {
       this.createFormService.postImage(formData, getImageName);
-      this.router.navigate(['wardrobe']);
     }
   }
 
