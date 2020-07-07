@@ -3,13 +3,13 @@
   <button (click)="closeForm($event)" class="btn close-btn">
     <span class="visually-hidden">Close</span>
   </button>
-  <form enctype="multipart/form-data" class="new-clothes__form" [formGroup]="newCardForm">
-    <div *ngIf="isSubmitted && !newCardForm.valid" class="new-clothes__errors form-errors">
-      <p class="form-errors__message" *ngIf="clothType.errors?.required && isSubmitted">Cloth type is required</p>
-      <p class="form-errors__message" *ngIf="color.errors?.required && isSubmitted">Color is required</p>
-      <p class="form-errors__message" *ngIf="style.errors?.required && isSubmitted">Style is required</p>
-      <p class="form-errors__message" *ngIf="size.errors?.required && isSubmitted">Size is required</p>
-      <p class="form-errors__message" *ngIf="imageName.errors?.required && isSubmitted">Image is required</p>
+  <form enctype="multipart/form-data" class="new-clothes__form" [formGroup]="newCardForm" >
+    <div *ngIf="isSubmitted && !newCardForm.valid && newCardForm.untouched" class="new-clothes__errors form-errors" >
+      <p class="form-errors__message" *ngIf="clothType.errors?.required && isSubmitted && clothType.untouched">Cloth type is required</p>
+      <p class="form-errors__message" *ngIf="color.errors?.required && isSubmitted && color.untouched">Color is required</p>
+      <p class="form-errors__message" *ngIf="style.errors?.required && isSubmitted && style.untouched">Style is required</p>
+      <p class="form-errors__message" *ngIf="size.errors?.required && isSubmitted && size.untouched">Size is required</p>
+      <p class="form-errors__message" *ngIf="imageName.errors?.required && isSubmitted && imageName.untouched">Image is required</p>
       <p class="form-errors__message" *ngIf="isSubmitted && !isImageRight">Image should be under 5MB</p>
     </div>
     <p class="form-success__message" *ngIf="isSubmitted && isSuccess">Item added successfully!</p>
@@ -18,7 +18,7 @@
     <input id="new-clothes-tag" class="form-input add-card__input" type="text" formControlName="tag" placeholder="Tag #MyFavouriteDress">
     <app-select-input (selectedValue)="getSelectValue($event)"
                       class="new-clothes__select new-clothes__select--category"
-                      labelClass="{{clothType.errors && isSubmitted ? 'error-border new-form__error-border' : ''}}"
+                      labelClass="{{clothType.errors && isSubmitted && clothType.untouched ? 'error-border new-form__error-border' : ''}}"
                       inputId="new-clothes-category"
                       inputName="clothType"
                       [options]="clothTypeOptions" ></app-select-input>
