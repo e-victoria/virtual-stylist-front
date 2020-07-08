@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import IClothesImage from '../../wardrobe/models/clothesImage.model';
 import {WardrobeService} from '../../wardrobe/wardrobe.service';
 import {FormControl, FormGroup} from '@angular/forms';
@@ -24,6 +24,10 @@ export class StylisationCreatorComponent implements OnInit {
   private topBottomSlider: ElementRef;
   isSuccess: boolean = false;
   isServerError: boolean = false;
+  @Input()
+  proposedTop: IClothesImage[];
+  @Input()
+  proposedBottom: IClothesImage[];
 
   newStyleForm: FormGroup = new FormGroup({
     tag: new FormControl('')
@@ -45,8 +49,12 @@ export class StylisationCreatorComponent implements OnInit {
       this.bodyClothesList = data;
     };
 
-    this.wardrobeService.getClothesByBodyPart('CHEST', getTopClothes);
-    this.wardrobeService.getClothesByBodyPart('LEGS', getBottomClothes);
+    if (!this.proposedTop) {
+      this.wardrobeService.getClothesByBodyPart('CHEST', getTopClothes);
+    }
+    if (!this.proposedBottom) {
+      this.wardrobeService.getClothesByBodyPart('LEGS', getBottomClothes);
+    }
     this.wardrobeService.getClothesByBodyPart('BODY', getBodyClothes);
   }
 
