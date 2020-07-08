@@ -68,4 +68,28 @@ export class LoginComponent {
       this.loginService.checkUser(userData, getResponse);
     }
   }
+  guestLogin(event): void {
+    event.preventDefault();
+    const userData: object = {
+      login: 'kasia.kowalska@gmail.com',
+      password: 'kasia123'
+    };
+
+    const getResponse = (response) => {
+      this.hasResponse = true;
+      if (!response.error) {
+        this.isSuccess = true;
+        this.loginService.saveToken(response.token);
+        setTimeout(() => {
+          this.router.navigate(['/']);
+        }, 1200);
+      } else if (response?.error.error === 'Unauthorized') {
+        this.isUserDataIncorrect = true;
+      } else if (response.error) {
+        this.isServerError = true;
+        this.isUserDataIncorrect = false;
+      }
+    };
+    this.loginService.checkUser(userData, getResponse);
+  }
 }
