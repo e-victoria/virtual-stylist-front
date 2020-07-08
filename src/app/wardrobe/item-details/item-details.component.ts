@@ -154,13 +154,13 @@ export class ItemDetailsComponent implements OnInit {
 
   deleteClothes(clothesId: number) {
     const getResponse = (response) => {
-      if (!response?.error) {
+      if (!response?.error && response) {
         this.isDeleted = true;
         setTimeout(() => {
           this.router.navigate(['wardrobe']);
         }, 1200);
-      }else {
-        this.isDeleted = true;
+      } else {
+        this.isDeleted = false;
       }
     };
 
