@@ -3,6 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import {Observable} from 'rxjs';
 import {ClothData} from './models/clothData';
+import IClothesImage from './models/clothesImage.model';
+import IClothes from './models/item-detail.model';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +45,10 @@ export class WardrobeService {
           callback(res);
         },
       );
+  }
+
+  getClothesById(id: string): Observable<IClothes> {
+    return this.http.get<IClothes>(`${environment.serverLocalHost}/wardrobe/${id}`);
   }
 
   getClothes(itemsAmount: number, pageNumber: number): Observable<ClothData> {

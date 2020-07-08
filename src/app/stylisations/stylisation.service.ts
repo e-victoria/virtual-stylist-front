@@ -4,6 +4,8 @@ import {environment} from '../../environments/environment';
 import IStylisation from './models/stylisation.model';
 import NewStylisation from './models/newStylisation';
 import IClothesBodyPart from './models/IClothesBodyPart';
+import {Observable} from 'rxjs';
+import IClothes from '../wardrobe/models/item-detail.model';
 
 @Injectable({
   providedIn: 'root'
@@ -49,4 +51,12 @@ export class StylisationService {
         callback(error);
       });
   }
+
+  getProposedStylisations(id: string, callback): void {
+    this.http.get(`${environment.serverLocalHost}/stylization/design/${id}`)
+      .subscribe(
+        (res) => {
+          callback(res);
+        },
+      );  }
 }

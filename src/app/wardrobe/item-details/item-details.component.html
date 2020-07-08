@@ -76,8 +76,9 @@
     <p class="form-errors__message" *ngIf="isSubmitted && isServerError">Connection error! Please try again later</p>
   </div>
   <div class="item-details__btn-wrapper">
-    <button (click)="deleteClothes(itemId)" type="button" class="btn btn-pen item-details__delete-btn">DELETE</button>
-    <button (click)="saveChanges($event)" type="submit" class="btn btn-pen item-details__save-btn">SAVE</button>
+    <button (click)="deleteClothes(itemId)" type="button" class="form-button btn btn-pen item-details__delete-btn">DELETE</button>
+    <button (click)="saveChanges($event)" type="submit" class="form-button btn btn-pen item-details__save-btn">SAVE</button>
+    <a [routerLink]="['/create-stylisation', itemId]" class="form-button btn btn-pen item-details__new-stylisation">{{'Create stylisation'| uppercase}}</a>
   </div>
 </section>
   <div *ngIf="stylisations.length > 0">
