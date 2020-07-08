@@ -22,13 +22,13 @@
     <div #topBottomSlider class="sliders__wrapper">
       <div class="create-style__top">
         <app-item-slider (selectedItem)="getSelectedTop($event)"
-                         *ngIf="topClothesList || itemTop"
+                         *ngIf="(bottomClothesList || itemBottom) && (topClothesList || itemTop)"
                          [clothesList]="itemTop ? itemTop : topClothesList">
         </app-item-slider>
       </div>
       <div class="create-style__bottom">
         <app-item-slider (selectedItem)="getSelectedBottom($event)"
-                         *ngIf="bottomClothesList || itemBottom"
+                         *ngIf="(bottomClothesList || itemBottom) && (topClothesList || itemTop)"
                          [clothesList]="itemBottom ? itemBottom : bottomClothesList">
         </app-item-slider>
       </div>
