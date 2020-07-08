@@ -36,6 +36,10 @@ export class StylisationCreatorComponent implements OnInit {
 
   ngOnInit(): void {
     this.mainItemId = this.router.url.split('/').pop();
+    if (!Number(this.mainItemId)) {
+      this.mainItemId = undefined;
+    }
+
     this.getMainItem();
   }
 
@@ -55,13 +59,11 @@ export class StylisationCreatorComponent implements OnInit {
     if (!this.itemTop) {
       this.wardrobeService.getClothesByBodyPart('CHEST', getTopClothes);
     } else {
-      console.log('here');
       this.stylisationService.getProposedStylisations(this.mainItemId, getBottomClothes);
     }
     if (!this.itemBottom) {
       this.wardrobeService.getClothesByBodyPart('LEGS', getBottomClothes);
     } else {
-      console.log('here');
       this.stylisationService.getProposedStylisations(this.mainItemId, getTopClothes);
     }
 

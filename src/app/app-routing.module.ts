@@ -17,8 +17,9 @@ const routes: Routes = [
   { path: 'auth', component: AuthComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [UserGuard]},
   { path: 'stylisations', component: StylisationsComponent, canActivate: [UserGuard] },
-  { path: 'create-stylisation', component: StylisationCreatorComponent, canActivate: [UserGuard] },
-  { path: 'create-stylisation/:id', component: StylisationCreatorComponent, canActivate: [UserGuard] }
+  { path: 'create-stylisation/:id', component: StylisationCreatorComponent, canActivate: [UserGuard] },
+  { path: 'create-stylisation', component: StylisationCreatorComponent, canActivate: [UserGuard], pathMatch: 'full' },
+
 ];
 
 @NgModule({

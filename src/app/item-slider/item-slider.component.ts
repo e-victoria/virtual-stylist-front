@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, Output, ViewChild} from '@angular/core';
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import IClothesImage from '../wardrobe/models/clothesImage.model';
 import {environment} from '../../environments/environment';
@@ -9,7 +9,8 @@ import {environment} from '../../environments/environment';
   templateUrl: './item-slider.component.html',
   styleUrls: [ './item-slider.component.scss' ]
 })
-export class ItemSliderComponent implements AfterViewInit {
+export class ItemSliderComponent implements AfterViewInit, OnChanges {
+
   @ViewChild('previous')
   previous: ElementRef;
   @ViewChild('next')
@@ -31,13 +32,18 @@ export class ItemSliderComponent implements AfterViewInit {
   activeItem = 0;
   totalItems;
 
+  ngOnChanges(changes: import('@angular/core').SimpleChanges): void {
+    this.imageWrappers[this.activeItem]?.classList.add('show-flex');
+    this.totalItems = this.carousel.nativeElement.querySelectorAll('.image-wrapper').length - 1;
+    this.selectedItem.emit(this.clothesList[this.activeItem]);
+  }
+
   ngAfterViewInit(): void {
     this.imageWrappers = this.carousel.nativeElement.querySelectorAll('.image-wrapper');
     this.imageWrappers[this.activeItem]?.classList.add('show-flex');
     this.totalItems = this.carousel.nativeElement.querySelectorAll('.image-wrapper').length - 1;
     this.selectedItem.emit(this.clothesList[this.activeItem]);
   }
-
 
   previousBtn() {
     this.imageWrappers[this.activeItem].classList.remove('show-flex');
