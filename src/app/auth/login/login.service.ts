@@ -36,4 +36,14 @@ export class LoginService {
     }
   }
 
+  loginAsGuest(callback) {
+    this.http.post((`${environment.serverLocalHost}/auth/guest`), null).subscribe(
+      (res) => {
+        callback(res);
+      },
+      (error) => {
+        callback(error);
+      });
+  }
+
 }
