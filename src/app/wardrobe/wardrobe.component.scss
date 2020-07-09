@@ -39,7 +39,7 @@
 }
 
 .clothes__link {
-  height: 22em;
+  height: 25em;
   display: flex;
   position: relative;
   border: 1px solid transparent;
@@ -142,17 +142,29 @@
   .clothes__list {
     gap: 4em 9%;
   }
+
+  .clothes__link {
+    height: 31em;
+  }
+
   .wardrobe{
     padding: 3em 18%;
   }
 }
 @media (max-width: 2000px) {
+
   .wardrobe{
     padding: 2em 13vw;
   }
+
+  .clothes__link {
+    height: 29em;
+  }
+
   .clothes__list{
     gap: 4em 6%
   }
+
 }
 @media (max-width: 1501px) {
   .wardrobe{
@@ -167,22 +179,41 @@
     width: 100%;
   }
 
+  .clothes__link {
+    height: 27em;
+  }
+
   .clothes__list {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (max-width: 992px) {
+  .clothes__link {
+    height: 30em;
+  }
+
   .clothes__list {
     grid-template-columns: repeat(2, 1fr);
+    gap: 3em 3.5em;
   }
 }
 
 @media (max-width: 576px) {
   .clothes__list {
+    padding: 0 1.5em;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  .clothes__link {
+    height: 31em;
+  }
+
+  .clothes__item:not(:last-child) {
+    margin-bottom: 3em;
   }
 }
 
