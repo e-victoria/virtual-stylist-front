@@ -138,14 +138,29 @@
   }
 }
 
-@media (min-width: 1200px) {
+@media (max-width: 2880px) {
   .clothes__list {
-    gap: 6em 7%;
+    gap: 4em 9%;
   }
   .wardrobe{
-    padding: 3em 16vw;
+    padding: 3em 18%;
   }
-
+}
+@media (max-width: 2000px) {
+  .wardrobe{
+    padding: 2em 13vw;
+  }
+  .clothes__list{
+    gap: 4em 6%
+  }
+}
+@media (max-width: 1501px) {
+  .wardrobe{
+    padding: 3em 8.5vw;
+  }
+  .clothes__list{
+    gap: 4em 3%
+  }
 }
 @media (max-width: 1200px) {
   .wardrobe__popup {

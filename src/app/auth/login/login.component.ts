@@ -75,6 +75,7 @@ export class LoginComponent {
   guestLogin(event): void {
     event.preventDefault();
 
+
     const getResponse = (response) => {
       this.getResponse(response);
     };
