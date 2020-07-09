@@ -117,6 +117,11 @@
   justify-content: center;
   background-color: darken($pink, 5%);
 }
+@media (min-width: 1200px) {
+  .item{
+    padding: 0 12em;
+  }
+}
 
 @media (max-width: 992px) {
   .item{

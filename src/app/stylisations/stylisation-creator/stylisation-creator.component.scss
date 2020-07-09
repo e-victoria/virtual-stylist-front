@@ -134,6 +134,11 @@
     width: 80%;
   }
 }
+@media (min-width: 1200px) {
+  .create-style{
+    padding: 5em 18vw 0 7vw;
+  }
+}
 
 @media (max-width: 710px) {
   .create-style__form-wrapper {
