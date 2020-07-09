@@ -121,6 +121,27 @@
   justify-content: center;
   background-color: darken($pink, 5%);
 }
+
+@media (max-width: 2000px) and (min-width: 1500px) {
+  .item__wrapper {
+    margin-bottom: 3em;
+  }
+
+  .item__link {
+    height: 40em;
+  }
+}
+
+@media (max-width: 2880px) and (min-width: 2001px) {
+  .item__wrapper {
+    margin-bottom: 5em;
+  }
+
+  .item__link {
+    height: 45em;
+  }
+}
+
 @media (max-width: 1200px) {
   .item{
     padding: 0 12em;

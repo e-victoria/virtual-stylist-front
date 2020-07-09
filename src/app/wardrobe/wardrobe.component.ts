@@ -28,6 +28,11 @@ export class WardrobeComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit(): void {
+
+    if (window.outerWidth > 2000) {
+      this.itemsAmountOnPage = 15;
+    }
+
     this.wardrobeService.getClothes(this.itemsAmountOnPage, this.pageNumber).subscribe({
       next: data => {
         this.clothesList = data.content;
