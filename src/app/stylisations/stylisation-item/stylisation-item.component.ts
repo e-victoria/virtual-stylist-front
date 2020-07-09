@@ -26,6 +26,7 @@ export class StylisationItemComponent implements OnInit {
         this.dressStylisation = clothes;
       }
     }
+    console.log(this.sortedStylisation)
   }
 
 }

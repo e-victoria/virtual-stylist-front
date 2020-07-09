@@ -1,6 +1,6 @@
-<section [ngClass]="!topClothesList?.length ? 'no-item' : 'create-style'">
+<section [ngClass]="!topClothesList?.length && !bottomClothesList?.length ? 'no-item' : 'create-style'">
   <h2 class="visually-hidden">Create your stylisation</h2>
-  <div class="create-style__sliders" *ngIf="topClothesList?.length">
+  <div class="create-style__sliders" *ngIf="topClothesList?.length || itemTop">
     <div class="create-style__choice">
       <span #firstBtn
             (click)="changeSlider($event, secondBtn)"
@@ -22,19 +22,19 @@
     <div #topBottomSlider class="sliders__wrapper">
       <div class="create-style__top">
         <app-item-slider (selectedItem)="getSelectedTop($event)"
-                         *ngIf="topClothesList"
-                         [clothesList]="topClothesList">
+                         *ngIf="(bottomClothesList || itemBottom) && (topClothesList || itemTop)"
+                         [clothesList]="itemTop ? itemTop : topClothesList">
         </app-item-slider>
       </div>
       <div class="create-style__bottom">
         <app-item-slider (selectedItem)="getSelectedBottom($event)"
-                         *ngIf="bottomClothesList"
-                         [clothesList]="bottomClothesList">
+                         *ngIf="(bottomClothesList || itemBottom) && (topClothesList || itemTop)"
+                         [clothesList]="itemBottom ? itemBottom : bottomClothesList">
         </app-item-slider>
       </div>
     </div>
   </div>
-  <div class="create-style__form-wrapper"  *ngIf="topClothesList?.length">
+  <div class="create-style__form-wrapper"  *ngIf="topClothesList?.length || itemTop">
     <form [formGroup]="newStyleForm" class="create-style__form new-style-form">
       <h3 class="new-style-form__header">Create new stylisation</h3>
       <div class="new-style-form__input-wrapper">
@@ -50,7 +50,7 @@
     </form>
   </div>
 
-  <div class="no-item__popup" *ngIf="!topClothesList?.length">
+  <div class="no-item__popup" *ngIf="!topClothesList?.length && !bottomClothesList?.length">
     <h3 class="item-title">Not enough clothes</h3>
     <p class="no-item__message">nothing to show</p>
     <a routerLink="/wardrobe" class="btn form-button no-item__btn">ADD NEW ITEM</a>

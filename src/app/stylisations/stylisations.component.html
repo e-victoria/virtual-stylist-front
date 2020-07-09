@@ -1,4 +1,4 @@
-<section [ngClass]="!stylisationsList?.length ? 'no-item' : 'stylisations'"
+<section [ngClass]="!stylisationsList?.length && !stylisations?.length ? 'no-item' : 'stylisations'"
          infiniteScroll
          [infiniteScrollDistance]="2"
          [infiniteScrollThrottle]="50"
@@ -13,12 +13,12 @@
   </div>
   <div *ngIf="stylisations" class="stylisations__wrapper">
     <div class="stysations__item stylisation" *ngFor="let stylisation of stylisations">
-      <div (click)="deleteStylisation(stylisation.id)" class="item__delete-btn close-btn"><span class="visually-hidden">Delete</span></div>
+      <div (click)="deleteStylisation(stylisation.id)" class="stylisation__delete-btn close-btn"><span class="visually-hidden">Delete</span></div>
       <app-stylisation-item class="stylisations__part" [stylisation]="stylisation.clothesForDisplayStylization"></app-stylisation-item>
     </div>
     </div>
 
-  <div class="no-item__popup" *ngIf="!stylisationsList?.length">
+  <div class="no-item__popup" *ngIf="!stylisationsList?.length && !stylisations?.length">
     <h3 class="item-title">Your stylisations</h3>
     <p class="no-item__message">nothing to show</p>
     <a routerLink="/create-stylisation" class="btn form-button no-item__btn">ADD NEW STYLISATION</a>

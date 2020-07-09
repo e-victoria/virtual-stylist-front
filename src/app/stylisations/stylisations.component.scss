@@ -23,11 +23,13 @@
   border-radius: 1.12em;
   box-shadow: $btn-shadow;
   background-color: $light-grey;
+  cursor: pointer;
 
-  &:hover .item__delete-btn {
+  &:hover .stylisation__delete-btn {
     display: block;
     animation: slowlyShow;
     animation-duration: 900ms;
+    z-index: 20;
   }
 }
 
