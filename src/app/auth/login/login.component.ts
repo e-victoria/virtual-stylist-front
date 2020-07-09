@@ -47,20 +47,7 @@ export class LoginComponent {
     };
 
     const getResponse = (response) => {
-      this.hasResponse = true;
-      if (!response.error) {
-        this.isSuccess = true;
-        this.loginService.saveToken(response.token);
-        setTimeout(() => {
-          this.router.navigate(['/']);
-        }, 1200);
-      } else if (response?.error.error === 'Unauthorized') {
-        this.isUserDataIncorrect = true;
-      } else if (response.error) {
-        console.log(response.error.error);
-        this.isServerError = true;
-        this.isUserDataIncorrect = false;
-      }
+      this.getResponse(response);
     };
 
     if (this.loginForm.valid) {
@@ -68,28 +55,30 @@ export class LoginComponent {
       this.loginService.checkUser(userData, getResponse);
     }
   }
+
+  getResponse(response) {
+    this.hasResponse = true;
+    if (!response.error) {
+      this.isSuccess = true;
+      this.loginService.saveToken(response.token);
+      setTimeout(() => {
+        this.router.navigate(['/']);
+      }, 1200);
+    } else if (response?.error.error === 'Unauthorized') {
+      this.isUserDataIncorrect = true;
+    } else if (response.error) {
+      this.isServerError = true;
+      this.isUserDataIncorrect = false;
+    }
+  }
+
   guestLogin(event): void {
     event.preventDefault();
-    const userData: object = {
-      login: 'kasia.kowalska@gmail.com',
-      password: 'kasia123'
-    };
 
     const getResponse = (response) => {
-      this.hasResponse = true;
-      if (!response.error) {
-        this.isSuccess = true;
-        this.loginService.saveToken(response.token);
-        setTimeout(() => {
-          this.router.navigate(['/']);
-        }, 1200);
-      } else if (response?.error.error === 'Unauthorized') {
-        this.isUserDataIncorrect = true;
-      } else if (response.error) {
-        this.isServerError = true;
-        this.isUserDataIncorrect = false;
-      }
+      this.getResponse(response);
     };
-    this.loginService.checkUser(userData, getResponse);
+
+    this.loginService.loginAsGuest(getResponse);
   }
 }
