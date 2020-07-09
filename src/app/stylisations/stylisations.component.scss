@@ -66,6 +66,11 @@
 .stylisation__dress {
   justify-content: center;
 }
+@media (min-width: 1200px) {
+  .stylisations {
+    padding: 3em 10vw;
+  }
+}
 
 @media (max-width: 1200px) {
   .stylisations {

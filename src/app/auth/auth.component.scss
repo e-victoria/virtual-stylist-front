@@ -16,6 +16,12 @@
     padding-left: 2.5vw;
   }
 }
+@media (min-width: 1200px) {
+  .auth-wrapper{
+    margin-left: 10em;
+    margin-right: 10em;
+  }
+}
 
 @media (max-width: 768px) {
   .auth-wrapper{

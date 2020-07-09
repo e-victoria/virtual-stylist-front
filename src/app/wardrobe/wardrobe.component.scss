@@ -138,6 +138,15 @@
   }
 }
 
+@media (min-width: 1200px) {
+  .clothes__list {
+    gap: 6em 7%;
+  }
+  .wardrobe{
+    padding: 3em 16vw;
+  }
+
+}
 @media (max-width: 1200px) {
   .wardrobe__popup {
     width: 100%;

@@ -64,6 +64,12 @@
   margin-right: 2.8em;
 }
 
+@media (min-width: 1200px) {
+ .profile-details__wrapper{
+   width: 85%;
+ }
+}
+
 @media (max-width: 768px) {
   .profile__details {
     padding-left: 0;
