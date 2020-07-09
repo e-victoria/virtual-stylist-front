@@ -72,7 +72,7 @@ export class LoginComponent {
     event.preventDefault();
     const userData: object = {
       login: 'kasia.kowalska@gmail.com',
-      password: 'kasia123'
+      password: '4u5YdYf3liH6n3V0zfIkMKwRY'
     };
 
     const getResponse = (response) => {
