@@ -85,6 +85,7 @@
     </a>
   </div>
 </section>
-  <div *ngIf="stylisations.length > 0">
-    <app-stylisations [stylisations]="stylisations"></app-stylisations>
-  </div>
+<app-popup *ngIf="isPopup" (canClose)="closePopup($event)" messageText="This action is not allowed for guest users."></app-popup>
+<div *ngIf="stylisations.length > 0">
+  <app-stylisations [stylisations]="stylisations"></app-stylisations>
+</div>

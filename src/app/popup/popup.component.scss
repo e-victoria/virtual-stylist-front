@@ -4,9 +4,9 @@
 .popup {
   @include blur-bg;
   width: 100%;
-  height: calc(100% - 5em);
-  position: absolute;
-  top: 5em;
+  height: calc(100% + 9em);
+  position: fixed;
+  top: -9em;
   left: 0;
   text-align: justify;
   background-color: rgba($light-grey, 0.2);
@@ -16,7 +16,7 @@
 
 .popup__wrapper {
   width: 45%;
-  margin-top: 1.3em;
+  margin-top: 15.3em;
   margin-left: 27.5%;
   padding: 4em 6.3em;
   display: flex;

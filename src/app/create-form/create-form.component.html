@@ -69,4 +69,5 @@
     </div>
   </form>
 </section>
+<app-popup *ngIf="isPopup" (canClose)="closePopup($event)" messageText="This action is not allowed for guest users."></app-popup>
 <router-outlet></router-outlet>

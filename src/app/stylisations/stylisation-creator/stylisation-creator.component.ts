@@ -26,6 +26,7 @@ export class StylisationCreatorComponent implements OnInit {
   @ViewChild('topBottomSlider')
   private topBottomSlider: ElementRef;
   isSuccess = false;
+  isPopup = false;
   isServerError = false;
 
   newStyleForm: FormGroup = new FormGroup({
@@ -112,6 +113,12 @@ export class StylisationCreatorComponent implements OnInit {
     this.selectedBottom = value;
   }
 
+  closePopup(event) {
+    if (event) {
+      this.isPopup = false;
+    }
+  }
+
   saveStyle(event) {
     event.preventDefault();
     let selectedClothes: IClothesImage[];
@@ -133,7 +140,9 @@ export class StylisationCreatorComponent implements OnInit {
         setTimeout(() => {
           this.router.navigate(['/stylisations']);
         }, 1000);
-      }else {
+      } else if (response.error.error === 'Forbidden') {
+        this.isPopup = true;
+      } else {
         this.isSuccess = false;
         this.isServerError = true;
       }

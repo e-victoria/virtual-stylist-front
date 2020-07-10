@@ -29,6 +29,7 @@ export class CreateFormComponent implements OnInit {
   });
   isSuccess = false;
   isServerError = false;
+  isPopup = false;
 
 
 
@@ -120,6 +121,12 @@ export class CreateFormComponent implements OnInit {
     }
   }
 
+  closePopup(event) {
+    if (event) {
+      this.isPopup = false;
+    }
+  }
+
   saveItem(event) {
     event.preventDefault();
     this.isSubmitted = true;
@@ -134,6 +141,8 @@ export class CreateFormComponent implements OnInit {
           setTimeout(() => {
             this.closeForm('');
           }, 1200);
+        } else if (response.error.error === 'Forbidden') {
+          this.isPopup = true;
         } else {
           this.isServerError = true;
         }
