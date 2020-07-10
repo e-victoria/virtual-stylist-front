@@ -1,0 +1,70 @@
+@import "../../assets/scss/variables";
+@import "../../assets/scss/mixins";
+
+.popup {
+  @include blur-bg;
+  width: 100%;
+  height: calc(100% - 5em);
+  position: absolute;
+  top: 5em;
+  left: 0;
+  text-align: justify;
+  background-color: rgba($light-grey, 0.2);
+  z-index: 100;
+  box-sizing: border-box;
+}
+
+.popup__wrapper {
+  width: 45%;
+  margin-top: 1.3em;
+  margin-left: 27.5%;
+  padding: 4em 6.3em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: rgba($light-grey, 0.9);
+  border-radius: 0.7em;
+  box-shadow: $btn-shadow;
+  border: 0.1em solid $pink;
+}
+
+.popup__text {
+  margin: 0 0 3.5em 0;
+  padding: 0;
+  font-size: 1.2em;
+  line-height: 1.75em;
+}
+
+.popup__btn {
+  margin: 0;
+  width: 35%;
+  height: auto;
+  font-size: 1.1em;
+  padding: 1em !important;
+}
+
+@media (max-width: 1200px) {
+  .popup__wrapper {
+    width: 65%;
+    margin-left: 17.5%;
+  }
+
+  .popup__btn {
+    width: 45%;
+  }
+}
+
+@media (max-width: 768px) {
+  .popup__wrapper {
+    width: 85%;
+    padding: 3em 4em;
+    margin-left: 7.5%;
+  }
+
+  .popup__btn {
+    width: 45%;
+  }
+}
+
+

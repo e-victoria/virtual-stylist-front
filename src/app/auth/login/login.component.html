@@ -16,5 +16,10 @@
   <input id="login-password" class="{{password.errors && isSubmitted ? 'error-border new-form__error-border' : ''}} form-input login__input" type="password" formControlName="password" placeholder="Password">
   <a href="#" class="login__reminder">Forgot your password?</a>
   <button (click)="checkUser($event)" class="btn login__btn form-button" type="submit">Login</button>
-  <button (click)="guestLogin($event)" class="btn login-guest__btn form-button" type="submit">Login as a Guest</button>
+  <button (click)="showGuestMessage($event)" class="btn login-guest__btn form-button" type="submit">Login as a Guest</button>
 </form>
+<app-popup (canClose)="guestLogin($event)" *ngIf="isPopup" messageText="The 'Login as a Guest' option is intended to allow
+  user to check some functionalities of this application without the need to register a new user account. As a guest
+  user you are granted a read-only access.
+  That means you will not be able to perform such actions as adding, editing or deleting clothes and stylizations.">
+</app-popup>

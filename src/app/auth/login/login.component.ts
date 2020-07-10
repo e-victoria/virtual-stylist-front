@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {LoginService} from './login.service';
 import {Router} from '@angular/router';
@@ -15,6 +15,9 @@ export class LoginComponent {
   isSubmitted = false;
   isSuccess = false;
   isServerError = false;
+  isPopup = false;
+  @Output()
+  isPopupEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   loginForm: FormGroup = new FormGroup({
     email: new FormControl('', [
@@ -72,14 +75,20 @@ export class LoginComponent {
     }
   }
 
-  guestLogin(event): void {
+  showGuestMessage(event) {
     event.preventDefault();
+    this.isPopupEmitter.emit(true);
+    this.isPopup = true;
+  }
 
+  guestLogin(event): void {
+    if (event) {
+      console.log('component');
+      const getResponse = (response) => {
+        this.getResponse(response);
+      };
 
-    const getResponse = (response) => {
-      this.getResponse(response);
-    };
-
-    this.loginService.loginAsGuest(getResponse);
+      this.loginService.loginAsGuest(getResponse);
+    }
   }
 }
