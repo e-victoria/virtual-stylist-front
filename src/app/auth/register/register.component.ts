@@ -91,8 +91,10 @@ export class RegisterComponent {
 
   showGuestMessage(event) {
     event.preventDefault();
-    this.isPopupEmitter.emit(true);
-    this.isPopup = true;
+    if (this.newRegisterForm.valid) {
+      this.isPopupEmitter.emit(true);
+      this.isPopup = true;
+    }
   }
 
   checkPasswords(formGroup: FormGroup) {
