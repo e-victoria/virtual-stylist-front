@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {RegisterService} from './register.service';
 import User from '../../user.model';
@@ -17,6 +17,9 @@ export class RegisterComponent {
   isSuccess = false;
   emailExists = false;
   isServerError = false;
+  isPopup = false;
+  @Output()
+  isPopupEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(private registerService: RegisterService, private router: Router) {
     this.genderOptions = [
@@ -83,6 +86,14 @@ export class RegisterComponent {
 
     if (this.newRegisterForm.valid) {
       this.registerService.registerNewUser(this.newRegisterForm.value as User, getResponse);
+    }
+  }
+
+  showGuestMessage(event) {
+    event.preventDefault();
+    if (this.newRegisterForm.valid) {
+      this.isPopupEmitter.emit(true);
+      this.isPopup = true;
     }
   }
 

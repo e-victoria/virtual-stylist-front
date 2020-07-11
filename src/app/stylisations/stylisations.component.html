@@ -25,3 +25,4 @@
   </div>
 
 </section>
+<app-popup *ngIf="isPopup" (canClose)="closePopup($event)" messageText="This action is not allowed for guest users."></app-popup>

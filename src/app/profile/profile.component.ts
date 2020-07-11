@@ -19,6 +19,7 @@ export class ProfileComponent implements OnInit {
   genderOptions: string[];
   newInfo: IProfile;
   isSuccess: boolean = false;
+  isPopup = false;
   isServerError: boolean = false;
   @ViewChild('passwordConfirm') private passwordConfirm: ElementRef;
 
@@ -123,6 +124,12 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  closePopup(event) {
+    if (event) {
+      this.isPopup = false;
+    }
+  }
+
   saveChanges(event) {
     event.preventDefault();
     this.isSubmitted = true;
@@ -133,8 +140,11 @@ export class ProfileComponent implements OnInit {
       console.log(response);
       if (!response?.error) {
         this.isSuccess = true;
+      } else if (response.error.error === 'Forbidden') {
+        this.isPopup = true;
+      } else {
+        this.isServerError = true;
       }
-      this.isServerError = true;
     };
 
     this.newInfo = this.editForm.value;

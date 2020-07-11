@@ -14,6 +14,7 @@ export class StylisationsComponent implements OnInit {
   private pageNumber = 0;
   stylisationsList: IStylisation[];
   private isMore: boolean;
+  isPopup = false;
   @Input()
   stylisations: IStylisation[];
 
@@ -27,6 +28,12 @@ export class StylisationsComponent implements OnInit {
 
     if (!this.stylisations) {
       this.stylisationService.getStylisations(this.itemsAmountOnPage, this.pageNumber, getData);
+    }
+  }
+
+  closePopup(event) {
+    if (event) {
+      this.isPopup = false;
     }
   }
 
@@ -49,7 +56,9 @@ export class StylisationsComponent implements OnInit {
   deleteStylisation(stylisationId) {
 
     const getResponse = (response) => {
-      console.log(response);
+      if (response.error.error === 'Forbidden') {
+        this.isPopup = true;
+      }
     };
 
     this.stylisationService.deleteStylisation(stylisationId, getResponse);

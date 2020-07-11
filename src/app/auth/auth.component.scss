@@ -1,9 +1,9 @@
-.auth-wrapper{
+.auth-wrapper {
   display: flex;
   padding: 3em 1vw;
 }
 
-.auth-item{
+.auth-item {
   box-sizing: border-box;
   width: 50%;
   padding: 0.5em 5vw;
@@ -16,11 +16,9 @@
     padding-left: 2.5vw;
   }
 }
-@media (min-width: 1200px) {
-  .auth-wrapper{
-    margin-left: 10em;
-    margin-right: 10em;
-  }
+
+@media (max-width: 1200px) {
+
 }
 
 @media (max-width: 768px) {

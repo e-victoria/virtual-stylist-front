@@ -36,8 +36,8 @@
                     inputName="gender"
                     [options]="genderOptions">
   </app-select-input>
-
-
-  <button (click)="saveUser($event)" class="btn register__btn form-button" type="submit">Register</button>
-
+  <button (click)="showGuestMessage($event)" class="btn register__btn form-button" type="submit">Register</button>
 </form>
+<app-popup (canClose)="saveUser($event)" *ngIf="isPopup" messageText="Your account was granted a read-only access.
+That means you will not be able to perform such actions as adding, editing or deleting clothes and stylisations.">
+</app-popup>

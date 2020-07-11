@@ -30,6 +30,7 @@ export class ItemDetailsComponent implements OnInit {
   isSuccess = false;
   isDeleted = false;
   isServerError = false;
+  isPopup = false;
   @ViewChild('hasPattern')
   private hasPattern: ElementRef;
 
@@ -106,6 +107,12 @@ export class ItemDetailsComponent implements OnInit {
     });
   }
 
+  closePopup(event) {
+    if (event) {
+      this.isPopup = false;
+    }
+  }
+
   activateEditMode(event){
     event.stopPropagation();
     event.preventDefault();
@@ -140,7 +147,9 @@ export class ItemDetailsComponent implements OnInit {
     console.log(this.editForm.value);
 
     const getResponse = (response) => {
-      if (!response?.error) {
+      if (response.error.error === 'Forbidden') {
+        this.isPopup = true;
+      } else if (!response?.error) {
         this.isSuccess = true;
       };
     };
@@ -159,6 +168,8 @@ export class ItemDetailsComponent implements OnInit {
         setTimeout(() => {
           this.router.navigate(['wardrobe']);
         }, 1200);
+      } else if (response.error.error === 'Forbidden') {
+        this.isPopup = true;
       } else {
         this.isDeleted = false;
       }

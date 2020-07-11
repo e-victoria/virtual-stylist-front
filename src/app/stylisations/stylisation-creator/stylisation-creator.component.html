@@ -56,3 +56,4 @@
     <a routerLink="/wardrobe" class="btn form-button no-item__btn">ADD NEW ITEM</a>
   </div>
 </section>
+<app-popup *ngIf="isPopup" (canClose)="closePopup($event)" messageText="This action is not allowed for guest users."></app-popup>
