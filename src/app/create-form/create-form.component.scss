@@ -115,7 +115,10 @@
 }
 
 @media (max-width: 576px) {
-  .new-clothes__form {
+  .new-clothes__btn,
+  .new-clothes__photo-btn-wrapper,
+  .upload-photo__btn{
+    width: 100%;
   }
 }
 
