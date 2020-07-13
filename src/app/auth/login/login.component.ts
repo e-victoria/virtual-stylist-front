@@ -83,7 +83,6 @@ export class LoginComponent {
 
   guestLogin(event): void {
     if (event) {
-      console.log('component');
       const getResponse = (response) => {
         this.getResponse(response);
       };

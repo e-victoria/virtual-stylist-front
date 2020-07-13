@@ -8,7 +8,7 @@ import IStylisation from '../stylisations/models/stylisation.model';
   templateUrl: './featured-stylizations.component.html',
   styleUrls: ['./featured-stylizations.component.scss']
 })
-export class FeaturedStylizationsComponent implements OnInit {
+export class FeaturedStylizationsComponent {
 
   @Input()
   items: IStylisation[];
@@ -36,8 +36,5 @@ export class FeaturedStylizationsComponent implements OnInit {
   };
 
   constructor() {}
-
-  ngOnInit(): void {
-  }
 
 }

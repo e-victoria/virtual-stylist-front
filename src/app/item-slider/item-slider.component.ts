@@ -42,12 +42,6 @@ export class ItemSliderComponent implements AfterViewInit, AfterContentChecked {
 
   activeItem = 0;
 
-  // ngOnChanges(changes: import('@angular/core').SimpleChanges): void {
-  //   this.content.first.nativeElement?.classList.add('show-flex');
-  //   this.totalItems = this.carousel.nativeElement.querySelectorAll('.image-wrapper').length - 1;
-  //   this.selectedItem.emit(this.clothesList[this.activeItem]);
-  // }
-
   ngAfterViewInit(): void {
     this.content.toArray()[this.activeItem].nativeElement?.classList.add('show-flex');
     this.selectedItem.emit(this.clothesList[this.activeItem]);
@@ -59,7 +53,6 @@ export class ItemSliderComponent implements AfterViewInit, AfterContentChecked {
 
 
   previousBtn() {
-    console.log('prev')
     this.content.toArray()[this.activeItem]?.nativeElement.classList.remove('show-flex');
     if (this.activeItem === 0) {
       this.activeItem = this.content?.toArray().length - 1;
@@ -72,10 +65,8 @@ export class ItemSliderComponent implements AfterViewInit, AfterContentChecked {
   }
 
   nextBtn() {
-    console.log('next')
     this.content.toArray()[this.activeItem]?.nativeElement.classList.remove('show-flex');
     if (this.activeItem < this.content?.toArray().length - 1) {
-      console.log('if')
       this.activeItem++;
       this.content.toArray()[this.activeItem]?.nativeElement.classList.add('show-flex');
     } else {
