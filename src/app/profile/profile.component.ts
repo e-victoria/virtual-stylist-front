@@ -139,6 +139,8 @@ export class ProfileComponent implements OnInit {
         this.isSuccess = true;
       } else if (response.error.error === 'Forbidden') {
         this.isPopup = true;
+      } else if (response.error.status === 401) {
+        this.router.navigate(['auth']);
       } else {
         this.isServerError = true;
       }

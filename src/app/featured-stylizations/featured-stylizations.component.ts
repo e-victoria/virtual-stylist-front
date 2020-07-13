@@ -1,6 +1,5 @@
 import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {OwlOptions} from 'ngx-owl-carousel-o';
-import {StylisationService} from '../stylisations/stylisation.service';
 import IStylisation from '../stylisations/models/stylisation.model';
 
 @Component({

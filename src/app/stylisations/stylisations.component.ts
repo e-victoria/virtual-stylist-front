@@ -22,6 +22,9 @@ export class StylisationsComponent implements OnInit {
 
   ngOnInit(): void {
     const getData = (data) => {
+      if (data.error?.status === 401) {
+        this.router.navigate(['auth']);
+      }
       this.stylisationsList = data.content;
       this.isMore = data.last;
     };

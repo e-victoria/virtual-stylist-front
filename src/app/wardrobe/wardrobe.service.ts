@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import {Observable} from 'rxjs';
+import {Observable, throwError} from 'rxjs';
 import {ClothData} from './models/clothData';
-import IClothesImage from './models/clothesImage.model';
+import { catchError } from 'rxjs/operators';
 import IClothes from './models/item-detail.model';
 
 @Injectable({
@@ -52,7 +52,8 @@ export class WardrobeService {
   }
 
   getClothes(itemsAmount: number, pageNumber: number): Observable<ClothData> {
-    return this.http.get<ClothData>(`${environment.serverLocalHost}/wardrobe?size=${itemsAmount}&page=${pageNumber}`);
+    return this.http.get<ClothData>(`${environment.serverLocalHost}/wardrobe?size=${itemsAmount}&page=${pageNumber}`).pipe(
+      catchError(this.errorHandler));
   }
 
   getClothesByBodyPart(bodyPart: string, callback) {
@@ -61,6 +62,13 @@ export class WardrobeService {
         (res) => {
           callback(res);
         },
+        error => {
+          callback(error);
+        }
       );
+  }
+
+  errorHandler(error: HttpErrorResponse) {
+    return throwError(error.status);
   }
 }
