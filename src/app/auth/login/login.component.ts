@@ -15,6 +15,7 @@ export class LoginComponent {
   isSubmitted = false;
   isSuccess = false;
   isServerError = false;
+  isLoading = false;
   isPopup = false;
   @Output()
   isPopupEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -65,6 +66,7 @@ export class LoginComponent {
       this.isSuccess = true;
       this.loginService.saveToken(response.token);
       setTimeout(() => {
+        this.isLoading = false;
         this.router.navigate(['/']);
       }, 1200);
     } else if (response?.error.error === 'Unauthorized') {
@@ -88,6 +90,7 @@ export class LoginComponent {
       };
 
       this.loginService.loginAsGuest(getResponse);
+      this.isLoading = true;
     }
   }
 }

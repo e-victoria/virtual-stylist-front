@@ -29,6 +29,7 @@ import {CarouselModule} from 'ngx-owl-carousel-o';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { PopupComponent } from './popup/popup.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { PopupComponent } from './popup/popup.component';
     StylisationCreatorComponent,
     StylisationItemComponent,
     HomeComponent,
-    PopupComponent
+    PopupComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserAnimationsModule,

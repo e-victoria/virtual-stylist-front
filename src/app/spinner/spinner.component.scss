@@ -1,0 +1,70 @@
+@import "../../assets/scss/variables";
+
+.backdrop {
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(0.13em);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 200;
+}
+
+.spinner {
+  position: absolute;
+  top: calc(50% - 8em);
+  left: calc(50% - 1.2em);
+
+  width: 2.4em;
+  height: 2.4em;
+  border-top: 0.5em solid aliceblue;
+  border-right: 0.5em solid aliceblue;
+  border-bottom: 0.5em solid aliceblue;
+  border-left: 0.5em solid #8c618d;
+  border-radius: 50%;
+
+  animation-name: spin;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+    border-left: 0.5em solid $pink;
+  }
+
+  25%{
+    transform: rotate(360deg);
+    border-left: 0.5em solid darken($pink, 3%);
+  }
+
+  50%{
+    transform: rotate(720deg);
+    border-left: 0.5em solid $pink;
+  }
+
+  75%{
+    transform: rotate(1080deg);
+    border-left: 0.5em solid darken($pink, 5%);
+  }
+
+  100% {
+    transform: rotate(1440deg);
+    border-left: 0.5em solid $pink;
+  }
+
+}
+
+.logo {
+  position:absolute;
+  top:calc(50% - 2.2em);
+  left:calc(50% - 1.5em);
+
+  font-weight: 500;
+  color: $gold;
+  font-size: 1.7em;
+  letter-spacing:0.1em;
+}

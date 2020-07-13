@@ -18,6 +18,7 @@
   <button (click)="checkUser($event)" class="btn login__btn form-button" type="submit">Login</button>
   <button (click)="showGuestMessage($event)" class="btn login-guest__btn form-button" type="submit">Login as a Guest</button>
 </form>
+<app-spinner *ngIf="isLoading"></app-spinner>
 <app-popup (canClose)="guestLogin($event)" *ngIf="isPopup" messageText="The 'Login as a Guest' option is intended to allow
   user to check some functionalities of this application without the need to register a new user account. As a guest
   user you are granted a read-only access.
