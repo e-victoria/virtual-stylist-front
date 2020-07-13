@@ -47,6 +47,9 @@ export class StylisationCreatorComponent implements OnInit {
   getClothes() {
     const getTopClothes = (data) => {
       this.topClothesList = data;
+      if (data.error.status === 401) {
+        this.router.navigate(['auth']);
+      }
     };
 
     const getBottomClothes = (data) => {

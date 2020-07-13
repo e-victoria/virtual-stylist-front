@@ -4,8 +4,6 @@ import {environment} from '../../environments/environment';
 import IStylisation from './models/stylisation.model';
 import NewStylisation from './models/newStylisation';
 import IClothesBodyPart from './models/IClothesBodyPart';
-import {Observable} from 'rxjs';
-import IClothes from '../wardrobe/models/item-detail.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +18,9 @@ export class StylisationService {
         (res) => {
           callback(res);
         },
+        (error => {
+          callback(error);
+        })
       );
   }
 

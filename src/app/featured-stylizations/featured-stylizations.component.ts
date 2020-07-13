@@ -1,6 +1,5 @@
 import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {OwlOptions} from 'ngx-owl-carousel-o';
-import {StylisationService} from '../stylisations/stylisation.service';
 import IStylisation from '../stylisations/models/stylisation.model';
 
 @Component({
@@ -8,7 +7,7 @@ import IStylisation from '../stylisations/models/stylisation.model';
   templateUrl: './featured-stylizations.component.html',
   styleUrls: ['./featured-stylizations.component.scss']
 })
-export class FeaturedStylizationsComponent implements OnInit {
+export class FeaturedStylizationsComponent {
 
   @Input()
   items: IStylisation[];
@@ -36,8 +35,5 @@ export class FeaturedStylizationsComponent implements OnInit {
   };
 
   constructor() {}
-
-  ngOnInit(): void {
-  }
 
 }

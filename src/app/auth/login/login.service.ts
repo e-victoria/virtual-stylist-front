@@ -37,7 +37,6 @@ export class LoginService {
   }
 
   loginAsGuest(callback) {
-    console.log('service');
     this.http.post((`${environment.serverLocalHost}/auth/guest`), null).subscribe(
       (res) => {
         callback(res);

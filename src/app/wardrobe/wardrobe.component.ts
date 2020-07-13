@@ -2,6 +2,8 @@ import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/
 import IClothes from './models/item-detail.model';
 import {WardrobeService} from './wardrobe.service';
 import {environment} from '../../environments/environment';
+import {tap} from 'rxjs/operators';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-wardrobe',
@@ -21,7 +23,7 @@ export class WardrobeComponent implements AfterViewInit, OnInit {
   shouldOpen = false;
 
 
-  constructor(private wardrobeService: WardrobeService) { }
+  constructor(private wardrobeService: WardrobeService, private router: Router) { }
 
   ngAfterViewInit(): void {
     document.getElementById('menuWardrobe').classList.add('site-list__link--active');
@@ -33,12 +35,17 @@ export class WardrobeComponent implements AfterViewInit, OnInit {
       this.itemsAmountOnPage = 15;
     }
 
-    this.wardrobeService.getClothes(this.itemsAmountOnPage, this.pageNumber).subscribe({
-      next: data => {
+    this.wardrobeService.getClothes(this.itemsAmountOnPage, this.pageNumber).subscribe(
+      data => {
         this.clothesList = data.content;
         this.isLastPage = data.last;
+      },
+      error => {
+        if (error && error === 401) {
+          this.router.navigate(['auth']);
+        }
       }
-    });
+    );
   }
 
   onScroll() {
