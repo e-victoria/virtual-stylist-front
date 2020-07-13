@@ -104,7 +104,7 @@ export class ProfileComponent implements OnInit {
       select.classList.toggle('show-flex');
     }
 
-    if(input) {
+    if (input) {
       input.removeAttribute('disabled');
       input.classList.add('profile__details-content--active');
       if (input.getAttribute('id') === 'profilePassword'){
@@ -134,10 +134,7 @@ export class ProfileComponent implements OnInit {
     event.preventDefault();
     this.isSubmitted = true;
 
-    console.log(this.editForm.value);
-
     const getResponse = (response) => {
-      console.log(response);
       if (!response?.error) {
         this.isSuccess = true;
       } else if (response.error.error === 'Forbidden') {
@@ -156,7 +153,6 @@ export class ProfileComponent implements OnInit {
       }
       this.profileService.saveChanges(this.newInfo, getResponse);
     }
-    this.isServerError = true;
     this.router.navigate(['./profile']);
   }
 
