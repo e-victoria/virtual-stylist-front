@@ -43,8 +43,8 @@ export class ItemSliderComponent implements AfterViewInit, AfterContentChecked {
   activeItem = 0;
 
   ngAfterViewInit(): void {
-    this.content.toArray()[this.activeItem].nativeElement?.classList.add('show-flex');
-    this.selectedItem.emit(this.clothesList[this.activeItem]);
+    this.content.toArray()[this.activeItem]?.nativeElement?.classList.add('show-flex');
+    this.clothesList ? this.selectedItem.emit(this.clothesList[this.activeItem]) : '';
   }
 
   ngAfterContentChecked(): void {
@@ -70,7 +70,6 @@ export class ItemSliderComponent implements AfterViewInit, AfterContentChecked {
       this.activeItem++;
       this.content.toArray()[this.activeItem]?.nativeElement.classList.add('show-flex');
     } else {
-      console.log('else')
       this.activeItem = 0;
       this.content.toArray()[this.activeItem]?.nativeElement.classList.add('show-flex');
     }

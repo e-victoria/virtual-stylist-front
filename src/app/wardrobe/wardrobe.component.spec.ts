@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { WardrobeComponent } from './wardrobe.component';
+import {HttpClientModule} from '@angular/common/http';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('WardrobeComponent', () => {
   let component: WardrobeComponent;
@@ -8,7 +10,8 @@ describe('WardrobeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WardrobeComponent ]
+      declarations: [ WardrobeComponent ],
+      imports: [ HttpClientModule, RouterTestingModule ]
     })
     .compileComponents();
   }));

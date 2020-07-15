@@ -1,12 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 
 import { StylisationService } from './stylisation.service';
+import {HttpClientModule} from '@angular/common/http';
 
 describe('StylisationService', () => {
   let service: StylisationService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [ HttpClientModule ]
+    }).compileComponents();
     service = TestBed.inject(StylisationService);
   });
 
