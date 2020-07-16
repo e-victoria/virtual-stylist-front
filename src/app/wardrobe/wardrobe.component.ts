@@ -26,7 +26,7 @@ export class WardrobeComponent implements AfterViewInit, OnInit {
   constructor(private wardrobeService: WardrobeService, private router: Router) { }
 
   ngAfterViewInit(): void {
-    document.getElementById('menuWardrobe').classList.add('site-list__link--active');
+    document.getElementById('menuWardrobe')?.classList.add('site-list__link--active');
   }
 
   ngOnInit(): void {

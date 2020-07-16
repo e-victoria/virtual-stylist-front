@@ -17,13 +17,15 @@ export class StylisationItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    for (const clothes of this.stylisation) {
-      if (clothes.bodyPart === 'CHEST') {
-        this.sortedStylisation[0] = clothes;
-      } else if (clothes.bodyPart === 'LEGS') {
-        this.sortedStylisation[1] = clothes;
-      } else {
-        this.dressStylisation = clothes;
+    if (this.stylisation) {
+      for (const clothes of this.stylisation) {
+        if (clothes.bodyPart === 'CHEST') {
+          this.sortedStylisation[0] = clothes;
+        } else if (clothes.bodyPart === 'LEGS') {
+          this.sortedStylisation[1] = clothes;
+        } else {
+          this.dressStylisation = clothes;
+        }
       }
     }
   }
